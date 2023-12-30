@@ -157,6 +157,7 @@ module.exports = class UserController {
             res.status(422).json({message: 'O nome é obrigatório!'})
             return
         }
+        user.name = name
         if(!email) {
             res.status(422).json({message: 'O email é obrigatório!'})
             return
