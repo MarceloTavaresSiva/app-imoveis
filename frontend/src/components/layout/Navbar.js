@@ -11,7 +11,10 @@ function Navbar() {
     return (
         <nav className={styles.navbar}>
             <div>
-                <h2>AppMoveis</h2>
+                <h2>            
+                    <Link to="/">AppMoveis</Link>
+                </h2>
+
             </div>
 
             <ul>

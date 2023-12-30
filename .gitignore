@@ -72,7 +72,7 @@ backend/node_modules/
 # Docusaurus cache and generated files
 .docusaurus
 
-package-lock.json
+frontend/package-lock.json
 
 
 # Stores VSCode versions used for testing VSCode extensions
