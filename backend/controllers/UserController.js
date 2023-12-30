@@ -180,6 +180,11 @@ module.exports = class UserController {
         }
         user.phone = phone
 
+        if(!password || !confirmpassword) {
+          res.status(422).json({message: 'Senha nao pode ser vazia!'})
+          return
+        }
+
         if(password != confirmpassword) {
             res.status(422).json({message: 'As senhas não conferem!'})
             return
