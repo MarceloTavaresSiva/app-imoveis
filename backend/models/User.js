@@ -24,7 +24,7 @@ const User = mongoose.model(
         role: {
             type: String,
             enum: ["owner", "admin", "customer", "superadmin"],
-          },
+        },
     }, 
     {timestamps: true},
     ),
