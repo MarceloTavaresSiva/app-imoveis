@@ -5,7 +5,7 @@ const Move = mongoose.model(
     'Move',
     new Schema(
     {
-        name: {
+        imovel: {
             type: String,
             required: true
         },
@@ -35,4 +35,7 @@ const Move = mongoose.model(
     ),
 )
 
+
 module.exports = Move;
+
+

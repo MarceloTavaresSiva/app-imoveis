@@ -7,14 +7,14 @@ const Move = require("../models/Move")
 module.exports = class MoveController {
     //create a move
     static async create(req, res) {
-        const {name, tipo, preco, descricao } = req.body
+        const {imovel, tipo, preco, descricao } = req.body
         const images = req.files
         const available = true
 
         //images upload
         
         //validation
-        if(!name) {
+        if(!imovel) {
             res.status(422).json({message: "O nome do imovel e obrigatorio!" })
             return
         }
@@ -45,7 +45,7 @@ module.exports = class MoveController {
 
         //create move
         const move = new Move({
-            name,
+            imovel,
             tipo,
             preco,
             descricao,

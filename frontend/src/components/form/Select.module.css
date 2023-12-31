@@ -1,9 +1,13 @@
 
+
+
+
 .form_control {
     display: flex;
     flex-direction: column;
     margin-bottom: 1em;
 }
+
 
 .form_control label {
     margin-bottom: 0.6em;
@@ -16,4 +20,9 @@
     border: 1px solid #777;
     border-radius: 5px;
 }
+
+
+
+
+
 

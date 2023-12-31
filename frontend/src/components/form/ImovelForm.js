@@ -8,52 +8,14 @@ import Select from "./Select"
 function ImovelForm({handleSubmit, movesData, btnText}) {
     const [moves, setmoves] = useState(movesData || {})
     const [preview, setPreview] = useState([])
-    const tipos = ['Casa', 'Apartamento', 'Kitnet']
 
-    function onFileChange(e) {
-        console.log(e.target.files)
-        setPreview(Array.from(e.target.files))
-        setmoves({...moves, images: [...e.target.files]})
-    }
+    function onFileChange(e) {}
 
-    function handleChange (e) {
-        setmoves({...moves, [e.target.name]: e.target.value})
-    }
+    function handleChange (e) {}
 
-    function handleTipos(e) {
-        setmoves({...moves, tipo: e.target.options[e.target.selectedIndex].text})
-    }
-
-    function submit(e) {
-        e.preventDefault()
-        console.log(moves)
-        handleSubmit(moves)
-    }
-
-
-    return (
-        <form onSubmit={submit} className={formStyles.form_container}>
-            <div className={formStyles.preview_pet_images}>
-                {preview.length > 0 
-                    ? preview.map((image, index) => (   
-                        <img 
-                            src={URL.createObjectURL(image)} 
-                            alt={moves.name} 
-                            key={`${moves.name}+${index}`}
-                        />
-                    )) 
-                    : moves.images &&  
-                      moves.images.map((image, index) => (
-                    <img 
-                        src={`${process.env.REACT_APP_API}/images/imoveis/${image}`} 
-                        alt={moves.name} 
-                        key={`${moves.name}+${index}`}
-                    />
-                    ))}
-            </div>
-
+    return <form className={formStyles.form_container}>
         <Input 
-            text="Imagem do Imovel"
+            text="Imagens do Imovel"
             type="file"
             name="images"
             handleOnChange={onFileChange}
@@ -68,33 +30,30 @@ function ImovelForm({handleSubmit, movesData, btnText}) {
             value={moves.name || ''}
         />
         <Input 
-            text="Preço do imovel"
+            text="Preço do Imovel"
             type="text"
             name="preco"
             placeholder="Preço do imovel"
             handleOnChange={handleChange}
-            value={moves.preco || ''}
+            value={moves.name || ''}
         />
         <Input 
-            text="descricão do imovel"
+            text="descricao do Imovel"
             type="text"
-            name="descricao"
+            name="description"
             placeholder="Digite a descrição do Imovel"
             handleOnChange={handleChange}
-            value={moves.descricao || ''}
+            value={moves.name || ''}
         />
-
-        <option>Selecione uma opcão</option>
-        <Select
-            name="tipo"
-            text="Selecione o tipo de imovel"
-            options={tipos}
-            handleOnChange={handleTipos}
-            value={moves.tipo || ''}
+        <Select 
+            name="descriçao"
+            text="tipo"
+            value={moves.value || ''}
+        
         />
         <input type="submit" value={btnText} />
+
     </form>
-    )
 }
 
 export default ImovelForm
