@@ -8,6 +8,7 @@ const getToken = require('../helpers/get-token')
 const getUserByToken = require('../helpers/get-user-by-token')
 
 module.exports = class UserController {
+  
   static async register(req, res) {
     const name = req.body.name
     const email = req.body.email
