@@ -28,7 +28,7 @@ function Navbar() {
                     <Link to="imovel/myadmin">Imoveis</Link>
                 </li>
                 <li>
-                    <Link to="/user/profile">Perfil</Link>
+                    <Link to="/user/profile">Editar Perfil</Link>
                 </li>
                 <li onClick={logout}>Sair</li>
                 </>
@@ -38,7 +38,7 @@ function Navbar() {
                         <Link to="/login">Entrar</Link>
                     </li>
                     <li>
-                        <Link to="/register">Cadastrar</Link>
+                        <Link to="/register">Criar Conta</Link>
                     </li>
                 </>
                 )}
