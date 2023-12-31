@@ -11,10 +11,10 @@ import RoudedImage from '../../layout/RoudedImage'
 
 
 function Profile() {
-    const [user, setUser] = useState ({});
-    const [preview, setPreview] = useState ('');
+    const [user, setUser] = useState({});
+    const [preview, setPreview] = useState('');
     const [token] = useState(localStorage.getItem('token') || '')
-    const {setFlashMessage} = useFlashMessage()
+    const { setFlashMessage } = useFlashMessage()
 
 
     useEffect(() => {
@@ -29,7 +29,7 @@ function Profile() {
 
     function onFileChange(e) {
         setPreview(e.target.files[0])
-        setUser({...user, [e.target.name]: e.target.files[0]})
+        setUser({ ...user, [e.target.name]: e.target.files[0] })
     }
 
     function handleChange(e) {
@@ -48,18 +48,18 @@ function Profile() {
         formData.append('user', userFormData)
         console.log(formData)
         const data = await api
-        .patch(`/users/edit/${user._id}`, formData, {
-            headers: {
-                Authorization: `Bearer ${JSON.parse(token)}`,
-                'Content-Type': 'multipart/form-data',
-            },
-        }).then((response) => {
-            return response.data
+            .patch(`/users/edit/${user._id}`, formData, {
+                headers: {
+                    Authorization: `Bearer ${JSON.parse(token)}`,
+                    'Content-Type': 'multipart/form-data',
+                },
+            }).then((response) => {
+                return response.data
 
-        }).catch((err) => {
-            msgType = 'error'
-            return err.response.data
-        })
+            }).catch((err) => {
+                msgType = 'error'
+                return err.response.data
+            })
 
         setFlashMessage(data.message, msgType)
     }
@@ -72,61 +72,95 @@ function Profile() {
                     <RoudedImage
                         src={
                             preview ? URL.createObjectURL(preview)
-                            : `${process.env.REACT_APP_API}/images/users/${user.image}`
+                                : `${process.env.REACT_APP_API}/images/users/${user.image}`
                         }
                         alt={user.name}
                     />
                 )}
             </div>
             <form onSubmit={handleSubmit} className={formStyles.form_container}>
-                <Input 
-                text="Image"
-                type="file"
-                name="image"
-                handleOnChange={onFileChange}
+                <Input
+                    text="Image"
+                    type="file"
+                    name="image"
+                    handleOnChange={onFileChange}
+                />
+
+                <Input
+                    text="E-mail"
+                    type="email"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    handleOnChange={handleChange}
+                    value={user.email || ''}
+                />
+
+                <Input
+                    text="Nome"
+                    type="text"
+                    name="name"
+                    placeholder="Digite o nome"
+                    handleOnChange={handleChange}
+                    value={user.name || ''}
                 />
 
                 <Input 
-                text="E-mail"
-                type="email"
-                name="email"
-                placeholder="Digite seu e-mail"
-                handleOnChange={handleChange}
-                value={user.email || ''}
+                    text="Nome e sobrenome"
+                    type="text"
+                    name="name"
+                    placeholder="Digite o nome"
+                    handleOnChange={handleChange}
+                    value={user.name || ''}
+                />
+
+                <Input
+                    text="Telefone"
+                    type="text"
+                    name="phone"
+                    placeholder="Digite o seu telefone"
+                    handleOnChange={handleChange}
+                    value={user.phone || ''}
+                />
+
+                <Input
+                    text="Tipo"
+                    type="text"
+                    name="role"
+                    placeholder="Digite o tipo de usuario"
+                    handleOnChange={handleChange}
+                    value={user.role || ''}
                 />
 
                 <Input 
-                text="Nome e sobrenome"
-                type="text"
-                name="name"
-                placeholder="Digite o nome"
-                handleOnChange={handleChange}
-                value={user.name || ''}
+                    text="Senha (mínimo 8 caracteres)"
+                    type="password"
+                    name="password"
+                    handleOnChange={handleChange}
+                    value={user.password || ''}
                 />
 
                 <Input 
-                text="Telefone"
-                type="text"
-                name="phone"
-                placeholder="Digite o seu telefone"
-                handleOnChange={handleChange}
-                value={user.phone || ''}
+                    text="Confirmação de senha"
+                    type="password"
+                    name="confirmpassword"
+                    handleOnChange={handleChange}
+                    value={user.confirmpassword || ''}
                 />
 
-                <Input 
-                text="Senha (mínimo 8 caracteres)"
-                type="password"
-                name="password"
-                handleOnChange={handleChange}
-                value={user.password || ''}
+                <Input
+                    text="Senha"
+                    type="password"
+                    name="password"
+                    placeholder="Digite a sua senha"
+                    handleOnChange={handleChange}
                 />
 
-                <Input 
-                text="Confirmação de senha"
-                type="password"
-                name="confirmpassword"
-                handleOnChange={handleChange}
-                value={user.confirmpassword || ''}
+                <Input
+                    text="Confirmação de senha"
+                    type="password"
+                    name="confirmpassword"
+                    placeholder="Confirme sua senha"
+                    handleOnChange={handleChange}
                 />
                 <input type='submit' value="Editar" />
             </form>
