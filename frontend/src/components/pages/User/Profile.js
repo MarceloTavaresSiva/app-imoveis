@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import api from '../../../utils/api'
 
-
 import styles from '../../form/Profile.module.css'
 import formStyles from '../../form/Form.module.css'
 
@@ -34,7 +33,8 @@ function Profile() {
     }
 
     function handleChange (e) {
-        setUser({...user, [e.target.name]: e.target.value})
+        setUser({...user, [e.target.name]: e.target.value
+        })
     }
     
     const handleSubmit = async (e) => {
@@ -44,11 +44,10 @@ function Profile() {
 
         const formData = new FormData()
 
-        const userFormData = await Object.keys(user).forEach((key) => formData.append(key, user[key]),
-        )
+        const userFormData = await Object.keys(user).forEach((key) => formData.append(key, user[key]));
 
         formData.append('user', userFormData)
-
+        console.log(formData)
         const data = await api
         .patch(`/users/edit/${user._id}`, formData, {
             headers: {
@@ -98,7 +97,7 @@ function Profile() {
                 />
 
                 <Input 
-                text="Nome"
+                text="Nome e sobrenome"
                 type="text"
                 name="name"
                 placeholder="Digite o nome"
@@ -116,19 +115,19 @@ function Profile() {
                 />
 
                 <Input 
-                text="Senha"
+                text="Senha (mínimo 8 caracteres)"
                 type="password"
                 name="password"
-                placeholder="Digite a sua senha"
                 handleOnChange={handleChange}
+                value={user.password || ''}
                 />
 
                 <Input 
                 text="Confirmação de senha"
                 type="password"
                 name="confirmpassword"
-                placeholder="Confirme sua senha"
                 handleOnChange={handleChange}
+                value={user.confirmpassword || ''}
                 />
                 <input type='submit' value="Editar" />
             </form>
