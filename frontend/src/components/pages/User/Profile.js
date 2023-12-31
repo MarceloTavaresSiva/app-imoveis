@@ -27,12 +27,12 @@ function Profile() {
         })
     }, [token])
 
-    function onFileChange (e) {
+    function onFileChange(e) {
         setPreview(e.target.files[0])
         setUser({...user, [e.target.name]: e.target.files[0]})
     }
 
-    function handleChange (e) {
+    function handleChange(e) {
         setUser({...user, [e.target.name]: e.target.value })
     }
 
