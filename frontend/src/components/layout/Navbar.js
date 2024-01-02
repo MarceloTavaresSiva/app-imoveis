@@ -19,7 +19,7 @@ function Navbar() {
 
             <ul>
                 <li>
-                    <Link to="/">Alugar</Link>
+                    <Link to="/">Anuncia</Link>
                 </li>
                 
                 {authenticated ? (

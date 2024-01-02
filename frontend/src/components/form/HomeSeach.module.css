@@ -1,0 +1,27 @@
+
+.SearchBar_container {
+    margin: 5rem 0;
+    background-color: #F3F8FF;
+    padding: 5rem;
+    box-shadow: 1px 2px 5px 1px #888888;
+    border-radius: 10px;
+}
+
+.SearchBar_card {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+
+}
+
+.SearchBar_card Input, Select {
+    margin-left: 1rem;
+    padding: 16px 10px;
+    border: none;
+}
+
+.SearchBar_card Select {
+    padding: 15px 0;
+    margin-top: -20px;
+}
