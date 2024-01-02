@@ -38,6 +38,9 @@ function Navbar() {
                         <Link to="/login">Entrar</Link>
                     </li>
                     <li>
+                        <Link to="/sinup-owner">Proprietario</Link>
+                    </li>
+                    <li>
                         <Link to="/register">Criar Conta</Link>
                     </li>
                 </>

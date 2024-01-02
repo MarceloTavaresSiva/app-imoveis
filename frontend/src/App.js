@@ -17,6 +17,7 @@ import { UserProvider } from './context/UserContext';
 import Profile from './components/pages/User/Profile';
 import MyAdmin from './components/pages/Imovel/MyAdmin';
 import AddImovel from './components/pages/Imovel/AddImovel';
+import RegisterOwner from './components/pages/Owner/Register';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/imovel/add" element={<AddImovel/>} />
           <Route path="/" element={<Home />} />
           <Route path="/user/profile" element={<Profile />} />
+          <Route path="/sinup-owner" element={<RegisterOwner />} />
       </Routes>
       </Container>
       <Footer />

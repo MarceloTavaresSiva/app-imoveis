@@ -1,0 +1,44 @@
+.form_principal {
+    max-width: 650px;
+    margin: 0  auto;
+    background: #fff;
+    padding: 1.rem;
+    box-shadow: rgba(100, 100, 111, 0.2) opx 7px 29px 0px
+}
+
+.form_principal form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.inputs_principal {
+    min-height: 320px;
+}
+
+.form_control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+}
+
+/* Actions */
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+.actions button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background-color: #0d4efd;
+    border: none ;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #fff;
+}
