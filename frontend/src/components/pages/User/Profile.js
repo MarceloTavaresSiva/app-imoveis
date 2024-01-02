@@ -8,6 +8,7 @@ import Input from '../../form/Input'
 import useFlashMessage from '../../../hooks/useFlashMessage'
 
 import RoudedImage from '../../layout/RoudedImage'
+import Select from "../../../components/form/Select"
 
 
 function Profile() {
@@ -15,7 +16,7 @@ function Profile() {
     const [preview, setPreview] = useState('');
     const [token] = useState(localStorage.getItem('token') || '')
     const { setFlashMessage } = useFlashMessage()
-
+    const roles = ['owner', 'admin', 'consumer', 'superadmin']
 
     useEffect(() => {
         api.get('/users/checkuser', {
@@ -34,6 +35,10 @@ function Profile() {
 
     function handleChange(e) {
         setUser({...user, [e.target.name]: e.target.value })
+    }
+
+    function handleRole(e) {
+        setmoves({...user, role: e.target.options[e.target.selectedIndex].text})
     }
 
     const handleSubmit = async (e) => {
@@ -95,15 +100,6 @@ function Profile() {
                     value={user.email || ''}
                 />
 
-                <Input
-                    text="Nome"
-                    type="text"
-                    name="name"
-                    placeholder="Digite o nome"
-                    handleOnChange={handleChange}
-                    value={user.name || ''}
-                />
-
                 <Input 
                     text="Nome e sobrenome"
                     type="text"
@@ -117,17 +113,17 @@ function Profile() {
                     text="Telefone"
                     type="text"
                     name="phone"
-                    placeholder="Digite o seu telefone"
+                    // placeholder="Digite o seu telefone"
                     handleOnChange={handleChange}
                     value={user.phone || ''}
                 />
 
-                <Input
+                <Select
                     text="Tipo"
-                    type="text"
+                    options={roles}
                     name="role"
                     placeholder="Digite o tipo de usuario"
-                    handleOnChange={handleChange}
+                    handleOnChange={handleRole}
                     value={user.role || ''}
                 />
 
@@ -145,22 +141,6 @@ function Profile() {
                     name="confirmpassword"
                     handleOnChange={handleChange}
                     value={user.confirmpassword || ''}
-                />
-
-                <Input
-                    text="Senha"
-                    type="password"
-                    name="password"
-                    placeholder="Digite a sua senha"
-                    handleOnChange={handleChange}
-                />
-
-                <Input
-                    text="Confirmação de senha"
-                    type="password"
-                    name="confirmpassword"
-                    placeholder="Confirme sua senha"
-                    handleOnChange={handleChange}
                 />
                 <input type='submit' value="Editar" />
             </form>

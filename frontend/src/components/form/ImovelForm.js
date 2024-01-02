@@ -69,6 +69,7 @@ function ImovelForm({handleSubmit, movesData, btnText}) {
         <Input 
             text="Preço do imovel"
             type="text"
+            id = "preco"
             name="preco"
             placeholder="Preço do imovel"
             handleOnChange={handleChange}
