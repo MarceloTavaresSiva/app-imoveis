@@ -1,18 +1,13 @@
 import api from '../../../utils/api'
-
 import styles from './AddImovel.module.css'
-
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-
 
 /**Components */
 import ImovelForm from '../../form/ImovelForm'
 
-
 /**Hooks */
 import useFlashMessage from '../../../hooks/useFlashMessage'
-
 
 function AddImovel() {
     const [token] = useState(localStorage.getItem('token') || '')
@@ -30,13 +25,12 @@ function AddImovel() {
                 for(let i = 0; i < moves[key].length; i++) {
                     formData.append("images", moves[key][i])
                 }
-
             } else {
                 formData.append(key, moves[key])
             }
         })
 
-        const data = await api.post(`moves/create`, formData, {
+        await api.post(`moves/create`, formData, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`,
                 'Content-Type': 'multipart/form-data',
@@ -55,7 +49,6 @@ function AddImovel() {
         setFlashMessage(data.message, msgType)
         navigate('/mymoves')
     }
-
     return (
         <section className={styles.addimovel_header}>
             <div>
@@ -68,5 +61,3 @@ function AddImovel() {
 }
 
 export default AddImovel
-
-

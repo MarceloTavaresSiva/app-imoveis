@@ -10,7 +10,7 @@ const {imageUpload} = require('../helpers/image-upload')
 
 
 router.post('/create',verifyToken, checkRole(['admin']), imageUpload.array('images'), MoveController.create)
-router.get('/',  MoveController.getAll)
+router.get('/all',  MoveController.getAll)
 router.get('/mymoves', verifyToken, checkRole(['admin']), MoveController.getAllUserMoves)
 router.get('/myimoveloptions', verifyToken, MoveController.getAllImoveloptions)
 router.get('/:id', MoveController.getMoveById)

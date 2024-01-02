@@ -30,7 +30,6 @@ function ImovelForm({handleSubmit, movesData, btnText}) {
         handleSubmit(moves)
     }
 
-
     return (
         <form onSubmit={submit} className={formStyles.form_container}>
             <div className={formStyles.preview_pet_images}>
@@ -98,6 +97,3 @@ function ImovelForm({handleSubmit, movesData, btnText}) {
 }
 
 export default ImovelForm
-
-
-
