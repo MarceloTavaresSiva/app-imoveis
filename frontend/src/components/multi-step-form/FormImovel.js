@@ -56,7 +56,6 @@ function FormImovel({ formData, setFormData }) {
                     <img src={url} alt="..." key={index} />
                 ))}
 
-         
             </div>
 
             <Input
