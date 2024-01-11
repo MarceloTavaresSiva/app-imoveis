@@ -3,11 +3,9 @@ const { checkRole, requireAuth } = require("../middleware/auth");
 
 const MoveController = require('../controllers/MoveController')
 
-
 //Middlewares
 const verifyToken = require('../helpers/verify-token')
 const {imageUpload} = require('../helpers/image-upload')
-
 
 router.post('/create',verifyToken, checkRole(['admin']), imageUpload.array('images'), MoveController.create)
 router.get('/all',  MoveController.getAll)
