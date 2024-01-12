@@ -1,12 +1,11 @@
-
 import styles from "../form/HomeSeach.module.css";
 import { useState, useEffect } from "react";
 import api from "../../utils/api";
 
-import {Card, Nav, Alert, Row, Col } from 'react-bootstrap';
+/**Cards Bootstrap */
+import { Card, Nav, Alert, Row, Col } from "react-bootstrap";
 
-
-function Home({}) {
+function Home() {
   const [imoves, setImoves] = useState([]);
   const [searchItem, setItem] = useState("");
   const [searchTipo, setTipo] = useState("");
@@ -15,15 +14,13 @@ function Home({}) {
   const [noResults, setNoResults] = useState(false);
   // const [token] = useState(localStorage.getItem("token") || "");
 
-
   useEffect(() => {
     getAllImoveis();
   }, []);
 
-
   const handleReset = () => {
-    setItem('');
-    setTipo('');
+    setItem("");
+    setTipo("");
     setFilterData(imoves);
     setNoResults(false);
   };
@@ -65,93 +62,86 @@ function Home({}) {
       return matcheSearch && matcheTipo;
     });
 
-    if(filterResults.length > 0) {
+    if (filterResults.length > 0) {
       setFilterData(filterResults);
       setNoResults(false);
     } else {
-      setNoResults(true)
+      setNoResults(true);
     }
     setFilterData(filterResults);
   };
 
   return (
+    <>
+
+    <div className={styles.container_searh}>
     <form onSubmit={handleSubmit}>
-      <div className={styles.SearchBar_card}>
-        <label htmlFor="search-form">Preço</label>
+        <label htmlFor="search-form"><span>Preço:</span></label>
         <input
-          value={searchItem}
-          type="text"
-          name="preco"
-          placeholder="Preço do imovel"
-          onChange={handleChange}
-        />
-
-        <label htmlFor="tipos">Tipo:</label>
-        <select id="tipos" onChange={handleTipos} value={searchTipo}>
-          <option> selecione uma opcao</option>
+          value={searchItem} type="text" name="preco" placeholder="Digite o preço (R$)" onChange={handleChange} />
+        <label htmlFor="tipoImovel"> <span>Tipo de Imóvel:</span></label>
+        <select id="tipoImovel" name="tipoImovel" onChange={handleTipos} value={searchTipo}>
+          <option> selecione uma opcão</option>
           {tipos.map((item, index) => (
-            <option key={index} value={item}>
-              {item}
-            </option>
-          ))}
+            <option key={index} value={item}>{item}</option>))}
         </select>
+        <button className={styles.btn_search} type="submit">Buscar</button>
+    </form>
+    </div>
 
+<Row xs={1} md={3} className="g-4">
+<Col>
+<div className={styles.container_card}>
+    {noResults ? (
+      <div
+        style={{
+          width: "100%",
+          textAlign: "center",
+          marginTop: "20px",
+        }}
+      >
+        <Alert variant="warning">Nenhum resultado encontrado.</Alert>
         <button
-          style={{
-            padding: "1rem",
-            marginLeft: "1rem",
-            color: "#fff",
-            background: "#0d6efd",
-            cursor: "pointer",
-            border: "none",
-            padding: "15px 32px",
-          }}
-          type="submit"
+          type="button"
+          onClick={handleReset}
+          style={{ marginTop: "10px" }}
         >
-          Buscar
+          ok
         </button>
       </div>
+    ) : (
+      filterData.map((item, index) => (
+        <Card  className={styles.card_flex}  key={index}>
+          <Card.Img
+            variant="top"
+            style={{
+              width: "100%",
+              height: "26vh",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundImage: `url(${process.env.REACT_APP_API}/images/imoveis/${item.images[0]})`,
+            }}
+          />
+          <div className={styles.card_text}>
+            <Card.Body>
+            <Card.Text><span>{item.tipo}</span></Card.Text>
+              <Card.Title><span className={styles.container_desc}>{item.name}</span></Card.Title>
+              <Card.Text> <span className={styles.container_desc}> {item.descricao}</span> </Card.Text>
+              <Card.Title><span>R$ {item.preco} /mêS</span> </Card.Title>
 
-      <Row xs={1} md={2} className="g-4">
-        <Col>
-          <div style={{ display: "flex", flexWrap: "wrap", textAlign: "center" }}>
-
-          { noResults ? (
-          <div style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}>
-            <Alert variant="warning">Nenhum resultado encontrado.</Alert>
-            <button type="button" onClick={handleReset} style={{ marginTop: '10px' }}>
-                ok
-            </button>
+            </Card.Body>
+            <Nav.Item>
+              <button className={styles.bnt_desc} href="#link">Mais Detalhes</button>
+            </Nav.Item>
           </div>
+        </Card>
+      ))
+    )}
+  </div>
+</Col>
+</Row>
 
-            ):(
-             filterData.map((item, index) => (
-                  <Card style={{ flex: "22rem", padding: "1rem" }} key={index}>
-                    <Card.Img
-                      variant="top"
-                      style={{
-                        width: "100%",
-                        height: "25vh",
-                        backgroundSize: "cover",
-                        backgroundImage: `url(${process.env.REACT_APP_API}/images/imoveis/${item.images[0]})`,
-                      }}
-                    />
-                    <Card.Body>
-                      <Card.Title>{item.name}</Card.Title>
-                      <Card.Title>{item.preco}</Card.Title>
-                      <Card.Text>{item.descricao}</Card.Text>
-                      <Card.Text>{item.tipo}</Card.Text>
-                    </Card.Body>
-                    <Nav.Item>
-                      <Nav.Link href="#link">Detalhes</Nav.Link>
-                    </Nav.Item>
-                  </Card>
-                ))
-            )}
-          </div>
-        </Col>
-      </Row>
-    </form>
+</>
   );
 }
 
