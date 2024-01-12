@@ -89,8 +89,8 @@ const FormReview = ({ data, updateFieldHandler }) => {
         <div className={styleStep.form_container }>
           <span><strong>Imagens do Imovel :</strong></span>
           </div>
-            {  data.imagesImovel &&
-            data.imagesImovel.map((image, index) => (
+            {  data.images &&
+            data.images.map((image, index) => (
               <img key={index} src={URL.createObjectURL(image)} alt={`Dog ${index + 1} Preview`} style={{ maxWidth: '100px' }} />
             ))}
         </div>

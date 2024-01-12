@@ -1,7 +1,8 @@
 const getToken = require("../helpers/get-token")
 const getUserByToken = require("../helpers/get-user-by-token")
 const ObjectId = require('mongoose').Types.ObjectId
-
+const bcrypt = require('bcrypt')
+const User = require('../models/User')
 const Move = require("../models/Move")
 
 module.exports = class MoveController {
@@ -9,15 +10,16 @@ module.exports = class MoveController {
     
 
     static async create(req, res) {
-        console.log("Cheguei no controler");
-        const {name, tipo, preco, descricao } = req.body
+        
+        const {nameImovel, tipo, preco, descricao } = req.body
+        const {name, email, phone, password } = req.body
         const images = req.files
         const available = true
 
         //images upload
         
         //validation
-        if(!name) {
+        if(!nameImovel) {
             res.status(422).json({message: "O nome do imovel e obrigatorio!" })
             return
         }
@@ -43,8 +45,20 @@ module.exports = class MoveController {
         }
 
         //get move owner
-        const token = getToken(req)
-        const user = await getUserByToken(token)
+        // const token = getToken(req)
+        // const user = await getUserByToken(token)
+
+    // create password
+    const salt = await bcrypt.genSalt(12)
+    const passwordHash = await bcrypt.hash(password, salt)
+
+    // create user
+    const user = new User({
+      name: name,
+      email: email,
+      phone: phone,
+      password: passwordHash,
+    })
 
         //create move
         const move = new Move({
@@ -62,7 +76,7 @@ module.exports = class MoveController {
             }
         })
 
-        images.map((image) => {
+        images.images.map((image) => {
             move.images.push(image.filename)
         })
 
