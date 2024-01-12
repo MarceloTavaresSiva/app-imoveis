@@ -1,14 +1,15 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nunito:wght@400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,500;6..12,700;6..12,800&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,300&display=swap');
 
 
 *{
+  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   padding: 0;
   margin: 0;
-  font-family: 'Nunito', sans-serif;
-  font-family: 'Lato', sans-serif;
   box-sizing: border-box;
 }
+
 
 
 h1 {

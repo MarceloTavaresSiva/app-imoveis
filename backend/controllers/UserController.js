@@ -222,6 +222,6 @@ module.exports = class UserController {
       return
     }
   }
-
 }
+
 

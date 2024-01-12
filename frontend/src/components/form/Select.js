@@ -1,6 +1,8 @@
 import styles from './Select.module.css'
+import { useState, useEffect } from "react";
 
 function Select({text, name, options, handleOnChange, value}) {
+
 
     return (
         <div className={styles.form_control}>
@@ -21,5 +23,3 @@ function Select({text, name, options, handleOnChange, value}) {
 }
 
 export default Select
-
-

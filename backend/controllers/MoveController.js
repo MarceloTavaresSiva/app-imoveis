@@ -42,11 +42,11 @@ module.exports = class MoveController {
             return
         }
 
-        get move owner
+        //get move owner
         const token = getToken(req)
         const user = await getUserByToken(token)
 
-        create move
+        //create move
         const move = new Move({
             name,
             tipo,
