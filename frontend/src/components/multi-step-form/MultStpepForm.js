@@ -18,7 +18,7 @@ const formTemplate = {
   phone: '',
   role: '',
   password: '',
-  imagesImovel: [],
+  images: [],
   nameImovel: '',
   preco: '',
   descricao: '',
@@ -47,7 +47,7 @@ const MainForm = () => {
     const formData = new FormData()
     
     await Object.keys(data).forEach((key) => {
-        if(key === 'imagesImovel') {
+        if(key === 'images') {
             for(let i = 0; i < data[key].length; i++) {
                 formData.append("images", data[key][i])
                 console.log("log do for ",  formData);
@@ -57,26 +57,20 @@ const MainForm = () => {
             formData.append(key, data[key])
         }
     })
-    
-    
+   
+    await api.post(`moves/create`, formData)
+  .then((response) => {
+      console.log(response.data)
+      return response.data
+  })
+  .catch((err) => {
+      console.log(err)
+      msgType = 'error'
+      return err.response
+  })
 
-    await api.post(`moves/create`, formData,{
-      headers: {
-        'Content-Type': 'multipart/form-data',
-    },
-    })
-    .then((response) => {
-        // console.log(response.data)
-        return response.data
-    })
-    .catch((err) => {
-        console.log(err)
-        msgType = 'error'
-        return err.response.data
-    })
-
-    setFlashMessage(data.message, msgType)
-    // navigate('/')
+  setFlashMessage(data.message, msgType)
+  navigate('/')
 }
 
 
@@ -119,9 +113,9 @@ const MainForm = () => {
   function onFileChange(e) {
     const { name, value, files } = e.target;
 
-    if (name === 'imagesImovel') {
+    if (name === 'images') {
       const selectedImages = Array.from(files).slice(0, 3);
-      setData({ ...data, imagesImovel: selectedImages})
+      setData({ ...data, images: selectedImages})
     }
     else {
       setData({ ...data, [name]: name.includes('image') ? files[0] : value });

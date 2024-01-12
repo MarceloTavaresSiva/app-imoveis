@@ -7,7 +7,6 @@ import Select from "../form/Select"
 
 const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
 
-    const [preview, setPreview] = useState([])
     const tipos = ['Casa', 'Apartamento', 'Kitnet']
 
     return (
@@ -18,27 +17,15 @@ const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
             </div>
 
             <div className={formStyles.preview_pet_images}>
-                {/* {preview.length > 0
-                    ? moves.images &&
-                    moves.images.map((image, index) => (
-                        <img
-                            src={`${process.env.REACT_APP_API}/images/imoveis/${image}`}
-                            alt={moves.name}
-                            key={`${moves.name}+${index}`}
-                        />
-                    )) 
-                    : preview.map((image, index) => (
+                {console.log(data)}
+                {data.images.map((image, index) => (
                         <img
                             src={URL.createObjectURL(image)}
-                            alt={moves.name}
-                            key={`${moves.name}+${index}`}
+                            alt={data.nameImovel}
+                            key={`${data.nameImovel}+${index}`}
                         />
                     ))
-                    } */}
-
-                {(preview || []).map((url, index) => (
-                    <img src={url} alt="..." key={index} />
-                ))}
+                    }
 
             </div>
 
@@ -55,8 +42,8 @@ const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
                 name="nameImovel"
                 id="nameImovel"
                 placeholder="Digite o nome"
-                handleOnChange={handleChange}
-                value={formData.nameImovel}
+                value={data.nameImovel || ''}  
+                handleOnChange={(e) => updateFieldHandler("nameImovel", e.target.value)}
             />
             <Input
                 text="Preço do imovel"
@@ -64,8 +51,8 @@ const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
                 id="preco"
                 name="preco"
                 placeholder="Preço do imovel"
-                handleOnChange={handleChange}
-                value={formData.preco}
+                value={data.preco || ''}  
+                handleOnChange={(e) => updateFieldHandler("preco", e.target.value)}
             />
             <Input
                 text="descricão do imovel"
@@ -73,16 +60,16 @@ const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
                 name="descricao"
                 id= "descricao"
                 placeholder="Digite a descrição do Imovel"
-                handleOnChange={handleChange}
-                value={formData.descricao}
+                value={data.descricao || ''}  
+                handleOnChange={(e) => updateFieldHandler("descricao", e.target.value)}
             />
             <Select
                 name="tipo"
                 id= "tipo"
                 text="Selecione o tipo de imovel"
                 options={tipos}
-                handleOnChange={handleTipos}
-                value={formData.tipo}
+                value={data.tipo || ''}  
+                handleOnChange={(e) => updateFieldHandler("tipo", e.target.value)}
             />
         </div>
     )
