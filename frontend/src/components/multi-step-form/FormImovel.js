@@ -3,28 +3,12 @@ import formStyles from '../form/Form.module.css'
 import styleStep from './MultStep.module.css'
 import Input from '../form/Input'
 import Select from "../form/Select"
-import RoudedImage from '../layout/RoudedImage'
 
 
-function FormImovel({ formData, setFormData }) {
+const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
 
-    const [moves, setmoves] = useState({})
     const [preview, setPreview] = useState([])
     const tipos = ['Casa', 'Apartamento', 'Kitnet']
-
-    function onFileChange(e) {
-        console.log(e.target.files)
-        setPreview(Array.from(e.target.files))
-        setmoves({ ...moves, images: [...e.target.files] })
-    }
-
-    function handleChange(e) {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
-
-    function handleTipos(e) {
-        setFormData({ ...formData, tipo: e.target.options[e.target.selectedIndex].text })
-    }
 
     return (
         <div className={styleStep.form_principal}>
