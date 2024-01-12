@@ -6,7 +6,10 @@ const Move = require("../models/Move")
 
 module.exports = class MoveController {
     //create a move
+    
+
     static async create(req, res) {
+        console.log("Cheguei no controler");
         const {name, tipo, preco, descricao } = req.body
         const images = req.files
         const available = true
@@ -39,11 +42,11 @@ module.exports = class MoveController {
             return
         }
 
-        //get move owner
+        get move owner
         const token = getToken(req)
         const user = await getUserByToken(token)
 
-        //create move
+        create move
         const move = new Move({
             name,
             tipo,

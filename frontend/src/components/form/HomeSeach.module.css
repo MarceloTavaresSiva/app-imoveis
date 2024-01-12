@@ -15,7 +15,7 @@
 
 }
 
-.SearchBar_card Input, Select {
+.SearchBar_card Input Select {
     margin-left: 1rem;
     padding: 16px 10px;
     border: none;

@@ -6,8 +6,9 @@
 }
 
 .form_control label {
-    margin-bottom: 0.6em;
+    margin-bottom: 0.3em;
     font-weight: bold;
+    font-size: 0.8em;
 }
 
 
