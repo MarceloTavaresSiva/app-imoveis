@@ -13,7 +13,7 @@
     align-items: center;
 }
   
-label {
+.container_searh label {
     text-align: center;
     margin-right: 10px;
     margin-left: 10px;

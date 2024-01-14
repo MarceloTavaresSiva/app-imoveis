@@ -1,18 +1,18 @@
 import React from 'react'
-import "./MultStep.module.css";
+import "./Steps.css"
 
 const  Steps = ({currentStep}) =>  {
 
     return (
-        <div className='steps '> Steps 
+        <div className='steps '>
         <div className={`steps active`}>
-            <p> 1 </p>
+            <p> Usuário </p>
         </div>
         <div className={`steps ${currentStep >= 1 ? "active" : ""}`}>
-            <p> 2 </p>
+            <p> Imóvel </p>
         </div>
         <div className={`steps ${currentStep >= 2 ? "active" : ""}`}>
-            <p> 3 </p>
+            <p> Revisão </p>
         </div>
         </div>
     )
