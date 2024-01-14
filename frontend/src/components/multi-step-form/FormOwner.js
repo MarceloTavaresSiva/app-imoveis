@@ -1,8 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import formStyles from '../form/Form.module.css'
 import styles from '../form/Profile.module.css'
-import useFlashMessage from '../../hooks/useFlashMessage'
-import api from '../../utils/api'
 import styleStep from './MultStep.module.css'
 import Input from '../form/Input'
 
@@ -14,7 +11,7 @@ const FormOwner = ({data, updateFieldHandler, onFileChange}) => {
 
     return (
 
-        <div className={formStyles.inputs_container}>
+        <div className={styleStep.inputs_container}>
 
         <div className={styles.profile_header}>
             <h1>Perfil Proprietario</h1>
