@@ -7,7 +7,7 @@
 }
 
 .form_principal form {
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .form_control {
-    display: flex;
+
     flex-direction: column;
     gap: 0.6rem;
     margin-bottom: 2rem;
@@ -42,21 +42,12 @@
     transition: 0.3s;
     color: #fff;
 }
-.steps {
-    display: flex;
-    gap: 4rem;
-    justify-content: center;
-    align-items: center;
-    max-width: 400px;
-    margin: 0 auto;
-    position: relative;
-    margin-bottom: 2rem;
-}
 
-.step {
-    text-align: center;
-    background-color: #fff;
-    z-index: 1;
-    width: 120px;
-    padding: 0.5rem;
+.inputs_container {
+    font-weight: bold;
+}
+.inputs_container label {
+    margin-bottom: 0.3em;
+    font-weight: bold;
+    font-size: 0.8em;
 }
