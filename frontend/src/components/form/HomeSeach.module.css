@@ -70,7 +70,6 @@ button {
     justify-content: center;
 }
 
-
 .card_flex:hover {
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
 }
@@ -80,7 +79,7 @@ button {
 }
 
 .card_text {
-    line-height: 28px;
+    line-height: 30px;
     padding: 10px;
 }
 
@@ -91,5 +90,16 @@ button {
 
 .bnt_desc, button {
     font-size: 15px;
+}
+
+.bnt_desc {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 10px;
+    text-decoration: none;
 }
 

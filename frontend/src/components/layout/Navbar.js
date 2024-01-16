@@ -14,12 +14,11 @@ function Navbar() {
                 <h2>            
                     <Link to="/">AppMoveis</Link>
                 </h2>
-
             </div>
-
+            
             <ul>
                 <li>
-                    <Link to="/">Anuncia</Link>
+                    <Link to="/">Anunciar</Link>
                 </li>
                 
                 {authenticated ? (
