@@ -16,7 +16,7 @@ function Profile() {
     const [preview, setPreview] = useState('');
     const [token] = useState(localStorage.getItem('token') || '')
     const { setFlashMessage } = useFlashMessage()
-    const roles = ['owner', 'admin', 'consumer', 'superadmin']
+    const roles = ['owner', 'admin', 'customer', 'superadmin']
 
     useEffect(() => {
         api.get('/users/checkuser', {
@@ -116,15 +116,15 @@ function Profile() {
                     handleOnChange={handleChange}
                     value={user.phone || ''}
                 />
-
-                <Select
+                { user.role === "admin" ? <Select
                     text="Tipo"
                     options={roles}
                     name="role"
                     placeholder="Digite o tipo de usuario"
                     handleOnChange={handleRole}
                     value={user.role || ''}
-                />
+                /> : '' }
+
 
                 <Input 
                     text="Senha (mínimo 8 caracteres)"
