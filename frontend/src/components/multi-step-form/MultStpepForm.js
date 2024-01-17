@@ -38,6 +38,7 @@ const MainForm = () => {
   };
 
   const registerImovel = async () => {
+    let msgText = 'Registro realizado com sucesso!'
     let msgType = 'success'
 
 
@@ -47,7 +48,6 @@ const MainForm = () => {
       if (key === 'images') {
         for (let i = 0; i < data[key].length; i++) {
           formData.append("images", data[key][i])
-          console.log("log do for ", formData);
         }
 
       } else {
@@ -57,16 +57,16 @@ const MainForm = () => {
 
     await api.post(`moves/create`, formData)
       .then((response) => {
-        console.log(response.data)
         return response.data
       })
       .catch((err) => {
         console.log(err)
+        msgText = error.response.data.message
         msgType = 'error'
         return err.response
       })
 
-    setFlashMessage(data.message, msgType)
+    setFlashMessage(msgText, msgType)
     navigate('/')
   }
 

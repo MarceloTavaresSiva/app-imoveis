@@ -51,7 +51,6 @@ function Profile() {
         const userFormData = await Object.keys(user).forEach((key) => formData.append(key, user[key]));
 
         formData.append('user', userFormData)
-        console.log(formData)
         const data = await api
             .patch(`/users/edit/${user._id}`, formData, {
                 headers: {

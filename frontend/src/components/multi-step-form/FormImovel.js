@@ -17,7 +17,6 @@ const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
             </div>
 
             <div className={formStyles.preview_pet_images}>
-                {console.log(data)}
                 {data.images.map((image, index) => (
                         <img
                             src={URL.createObjectURL(image)}

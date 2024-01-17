@@ -10,12 +10,17 @@ const imageStore = multer.diskStorage({
 
         if(req.baseUrl.includes("users")) {
             folder = "users"
+            cb(null, `public/images/${folder}`)
 
-        } else if(req.baseUrl.includes("uimoveis")) {
+        } else if(req.baseUrl.includes("moves") && file.fieldname === "images") {
             folder = "imoveis"
+            cb(null, `public/images/${folder}`)
         }
-
-        cb(null, `public/images/${folder}`)
+        else if(req.baseUrl.includes("moves") && file.fieldname === "image" ) {
+            folder = "users"
+            cb(null, `public/images/${folder}`)
+        }
+        
 
     },
     filename: function (req, file, cb) {
