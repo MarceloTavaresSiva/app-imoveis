@@ -65,6 +65,7 @@ module.exports = class UserController {
       email: email,
       phone: phone,
       password: passwordHash,
+      role: "customer"
     })
 
     try {

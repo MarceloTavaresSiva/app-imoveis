@@ -14,7 +14,7 @@ router.post('/register', UserController.register)
 router.post('/login', UserController.login)
 router.get('/checkuser', UserController.checkUser)
 router.get('/:id', verifyToken, checkRole(['admin']), UserController.getUserById)
-router.patch('/edit/:id', verifyToken, checkRole(['admin', 'owner']), imageUpload.single("image"), UserController.editUser)
+router.patch('/edit/:id', verifyToken, checkRole(['admin', 'owner', 'customer']), imageUpload.single("image"), UserController.editUser)
 
 //User - Owner routes
 router.get('/register-owner', OwnerController.registerOwner)
