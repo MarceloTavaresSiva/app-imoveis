@@ -15,8 +15,6 @@ module.exports = class MoveController {
         const {name, email, phone, password } = req.body
         const images = req.files
         const available = true
-
-        //images upload
         
         //validation
         if(!nameImovel) {
@@ -58,8 +56,13 @@ module.exports = class MoveController {
       email: email,
       phone: phone,
       password: passwordHash,
+      role: "owner",
+      image: ''
     })
 
+    images.image.map((item) => {
+        user.image= item.filename
+    })
         //create move
         const move = new Move({
             name,
@@ -82,6 +85,7 @@ module.exports = class MoveController {
 
         try {
             const newMove = await move.save()
+            const newUser = await user.save()
             res.status(201).json({
                 message: 'imoveis cadastro',
                 newMove,
