@@ -37,7 +37,6 @@ function Home() {
         console.log(err);
       });
 
-    //console.log(data.moves);
   };
 
   const handleTipos = (e) => {

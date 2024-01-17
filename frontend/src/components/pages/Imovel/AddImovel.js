@@ -16,7 +16,6 @@ function AddImovel() {
 
     async function registerImovel(moves) {
         let msgType = 'success'
-        console.log(moves)
 
         const formData = new FormData()
 
@@ -37,7 +36,6 @@ function AddImovel() {
             },
         })
         .then((response) => {
-            console.log(response.data)
             return response.data
         })
         .catch((err) => {

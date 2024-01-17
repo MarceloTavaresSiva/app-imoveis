@@ -11,7 +11,6 @@ function ImovelForm({handleSubmit, movesData, btnText}) {
     const tipos = ['Casa', 'Apartamento', 'Kitnet']
 
     function onFileChange(e) {
-        console.log(e.target.files)
         setPreview(Array.from(e.target.files))
         setmoves({...moves, images: [...e.target.files]})
     }
@@ -26,7 +25,6 @@ function ImovelForm({handleSubmit, movesData, btnText}) {
 
     function submit(e) {
         e.preventDefault()
-        console.log(moves)
         handleSubmit(moves)
     }
 
