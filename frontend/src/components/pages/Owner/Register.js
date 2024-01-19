@@ -25,7 +25,6 @@ function Register() {
     <div className="App">
         <MultiStepForm />
       </div>
-
     )
 }
 

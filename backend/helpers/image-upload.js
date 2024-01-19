@@ -23,7 +23,6 @@ const imageStore = multer.diskStorage({
     },
 })
 
-
 const imageUpload = multer({
     storage: imageStore,
     fileFilter(req, file, cb) {
@@ -32,7 +31,6 @@ const imageUpload = multer({
         }
         cb(undefined, true)
     },
-
 })
 
 module.exports = {imageUpload}
