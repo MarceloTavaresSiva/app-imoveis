@@ -25,5 +25,6 @@ router.patch('/:id', verifyToken, imageUpload.array('images'), MoveController.up
 router.patch('/schedule/:id', verifyToken, MoveController.schedule)
 router.patch('/conclude/:id', verifyToken, MoveController.concludeVisit)
 
-
 module.exports = router
+
+

@@ -7,7 +7,6 @@ const Move = require("../models/Move")
 
 module.exports = class MoveController {
     //create a move
-    
 
     static async create(req, res) {
         

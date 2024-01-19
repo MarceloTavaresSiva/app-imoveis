@@ -1,4 +1,23 @@
 
+.card_img {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    display: flex;
+}
+
+.card_img img {
+    border-radius: 5px;
+    margin: 5px;
+    width: 500px;
+    height: 300px;
+}
+
+.card {
+    flex: 0 1 400px;
+}
+
+
 .details_imovel {
     margin-top: 2rem;
     text-align: center;
@@ -22,4 +41,8 @@
     font-weight: bold;
     color: #282828;
 }
+
+
+
+
 
