@@ -17,9 +17,7 @@ function Navbar() {
             </div>
             
             <ul>
-                <li>
-                    <Link to="/">Anunciar</Link>
-                </li>
+
                 
                 {authenticated ? (
                 <>
@@ -33,11 +31,12 @@ function Navbar() {
                 </>
                 ) :(  
                 <>
+
                     <li>
-                        <Link to="/login">Entrar</Link>
+                        <Link to="anunciar/sinup-owner">Anunciar</Link>
                     </li>
                     <li>
-                        <Link to="/sinup-owner">Proprietario</Link>
+                        <Link to="/login">Entrar</Link>
                     </li>
                     <li>
                         <Link to="/register">Criar Conta</Link>
