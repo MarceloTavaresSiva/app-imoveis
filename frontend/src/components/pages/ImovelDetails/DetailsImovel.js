@@ -15,7 +15,6 @@ function DetailsImovel() {
   const {setFlashMessage} = useFlashMessage()
   const [token] = useState(localStorage.getItem("token") || "");
 
-  
   useEffect(() => {
     const getImovelDetails = async () => {
       try {

@@ -35,7 +35,7 @@ function App() {
           <Route path="/imovel/myadmin" element={<MyAdmin />} />
           <Route path="/imovel/add" element={<AddImovel/>} />
           <Route path="/user/profile" element={<Profile />} />
-          <Route path="/sinup-owner" element={<RegisterOwner />} />
+          <Route path="anunciar/sinup-owner" element={<RegisterOwner />} />
           <Route path="/imoveldetails/:id" element={< DetailsImovel/>} />
           <Route path="/" element={<Home />} />
       </Routes>
