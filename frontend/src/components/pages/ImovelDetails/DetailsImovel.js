@@ -34,10 +34,10 @@ function DetailsImovel() {
 
   async function schedule() {
     let msgType = 'success'
-
     const data = await api.patch(`moves/schedule/${imovel._id}`, {
       Authorization: `Bearer ${JSON.parse(token)}`
     })
+   
     .then((response) => {
       return response.data
     })
@@ -45,6 +45,7 @@ function DetailsImovel() {
       msgType = 'error'
       return err.response.data
     })
+    console.log(data)
 
     setFlashMessage(data.message, msgType)
   }

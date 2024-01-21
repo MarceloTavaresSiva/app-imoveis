@@ -13,6 +13,8 @@ function Home() {
   const [filterData, setFilterData] = useState([]);
   const tipos = ["Casa", "Apartamento", "Kitnet"];
   const [noResults, setNoResults] = useState(false);
+  const [showEmpty, setShowEmpty] = useState(false);
+
   // const [token] = useState(localStorage.getItem("token") || "");
 
   useEffect(() => {
@@ -24,6 +26,7 @@ function Home() {
     setTipo("");
     setFilterData(imoves);
     setNoResults(false);
+    setShowEmpty(false); 
   };
 
   const getAllImoveis = async () => {
@@ -52,6 +55,13 @@ function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    //Verificar se ambos os campos estão preenchidos
+    if(!searchItem || !searchTipo || searchTipo === "Selecione uma opção!") {
+      setShowEmpty(true);
+      return;
+    }
+
+
     const filterResults = imoves.filter((item) => {
       const matcheSearch = item.preco
         .toString()
@@ -69,6 +79,7 @@ function Home() {
       setNoResults(true);
     }
     setFilterData(filterResults);
+    setShowEmpty(false);
   };
 
   return (
@@ -86,6 +97,11 @@ function Home() {
           </select>
           <button className={styles.btn_search} type="submit">Buscar</button>
       </form>
+      {showEmpty && (
+        <div>Preencha todos os campos antes de bsucar.</div>
+      )}
+
+
       </div>
 
   <Row xs={1} md={3} className="g-4">

@@ -24,7 +24,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
                             key={`${data.nameImovel}+${index}`}
                         />
                     ))
-                    }
+                }
 
             </div>
 

@@ -40,6 +40,7 @@ function Login() {
                     placeholder="Digite a sua senha"
                     handleOnChange={handleChange}
                 />
+
                 <input type="submit" value="Entrar" />
             </form>
             <p>

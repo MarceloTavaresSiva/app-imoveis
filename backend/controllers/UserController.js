@@ -36,9 +36,15 @@ module.exports = class UserController {
       res.status(422).json({ message: 'A senha é obrigatória!' })
       return
     }
-
+    
     if (!confirmpassword) {
       res.status(422).json({ message: 'A confirmação de senha é obrigatória!' })
+      return
+    }
+
+
+    if(password.length <6) {
+      res.status(422).json({ message: 'A senha deve ter no minimo 6 caracteres!' })
       return
     }
 
@@ -89,6 +95,8 @@ module.exports = class UserController {
       res.status(422).json({ message: 'A senha é obrigatorio' })
       return
     }
+
+
 
     // Check if user exists
     const user = await User.findOne({ email: email })
@@ -192,6 +200,12 @@ module.exports = class UserController {
       res.status(422).json({ message: 'Senha nao pode ser vazia!' })
       return
     }
+
+    if(password.length <6) {
+      res.status(422).json({ message: 'A senha deve ter no minimo 6 caracteres!' })
+      return
+    }
+
 
     if (password != confirmpassword) {
       res.status(422).json({ message: 'As senhas não conferem!' })

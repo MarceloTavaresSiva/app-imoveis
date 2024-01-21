@@ -17,8 +17,6 @@ function Navbar() {
             </div>
             
             <ul>
-
-                
                 {authenticated ? (
                 <>
                 <li>
@@ -31,7 +29,6 @@ function Navbar() {
                 </>
                 ) :(  
                 <>
-
                     <li>
                         <Link to="anunciar/sinup-owner">Anunciar</Link>
                     </li>
