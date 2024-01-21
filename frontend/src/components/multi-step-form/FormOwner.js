@@ -40,6 +40,7 @@ const FormOwner = ({data, updateFieldHandler, onFileChange}) => {
             type="text"
             name="email"
             placeholder="Digite seu e-mail"
+            required
             value={data.email || ''}  
             handleOnChange={(e) => updateFieldHandler("email", e.target.value)}
         />
