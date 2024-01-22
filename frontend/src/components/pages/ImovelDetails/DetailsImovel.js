@@ -8,6 +8,7 @@ import styles from "../ImovelDetails/DetailsImovel.module.css";
 
 /** Hooks */
 import useFlashMessage from '../../../hooks/useFlashMessage'
+import Home from '../Home';
 
 function DetailsImovel() {
   const [imovel, setImovel] = useState({});
@@ -34,8 +35,10 @@ function DetailsImovel() {
 
   async function schedule() {
     let msgType = 'success'
-    const data = await api.patch(`moves/schedule/${imovel._id}`, {
-      Authorization: `Bearer ${JSON.parse(token)}`
+    const data = await api.patch(`moves/schedule/${imovel._id}`, null, {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(token)}`
+      }
     })
    
     .then((response) => {
