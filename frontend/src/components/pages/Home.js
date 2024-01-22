@@ -100,8 +100,6 @@ function Home() {
       {showEmpty && (
         <div>Preencha todos os campos antes de bsucar.</div>
       )}
-
-
       </div>
 
   <Row xs={1} md={3} className="g-4">
