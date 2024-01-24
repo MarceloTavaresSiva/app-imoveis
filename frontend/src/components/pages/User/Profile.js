@@ -127,7 +127,7 @@ function Profile() {
 
 
                 <Input 
-                    text="Senha (mínimo 8 caracteres)"
+                    text="Senha (mínimo 6 caracteres)"
                     type="password"
                     name="password"
                     handleOnChange={handleChange}

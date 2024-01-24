@@ -6,7 +6,7 @@ import api from "../../utils/api";
 import { Card, Nav, Alert, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Home({excludeId}) {
   const [imoves, setImoves] = useState([]);
   const [searchItem, setItem] = useState("");
   const [searchTipo, setTipo] = useState("");
@@ -20,7 +20,6 @@ function Home() {
   useEffect(() => {
     getAllImoveis();
   }, []);
-
   const handleReset = () => {
     setItem("");
     setTipo("");
@@ -34,12 +33,18 @@ function Home() {
       .get(`/moves/all/`)
       .then((response) => {
         setImoves(response.data.moves);
-        setFilterData(response.data.moves);
+        // exclua o imovel atual da lista
+        if(excludeId) {
+          const filteredMoves = response.data.moves.filter((move) => move._id !== excludeId);
+          setFilterData(filteredMoves);
+        } else {
+          setFilterData(response.data.moves);
+        }
+        //setFilterData(response.data.moves);
       })
       .catch((err) => {
         console.log(err);
-      });
-
+    });
   };
 
   const handleTipos = (e) => {
