@@ -20,6 +20,9 @@ function Navbar() {
                 {authenticated ? (
                 <>
                 <li>
+                    <Link to="imovel/listaimoveis">Lista de Imoveis</Link>
+                </li>
+                <li>
                     <Link to="imovel/myadmin">Imoveis</Link>
                 </li>
                 <li>
