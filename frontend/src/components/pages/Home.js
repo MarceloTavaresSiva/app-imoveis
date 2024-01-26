@@ -66,7 +66,6 @@ function Home({excludeId}) {
       return;
     }
 
-
     const filterResults = imoves.filter((item) => {
       const matcheSearch = item.preco
         .toString()
