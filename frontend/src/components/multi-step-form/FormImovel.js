@@ -5,7 +5,12 @@ import Input from '../form/Input'
 import Select from "../form/Select"
 
 
+import RoudedImage from '../layout/RoudedImage'
+
+
 const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
+
+    const [preview, setPreview] = useState('');
 
     const tipos = ['Casa', 'Apartamento', 'Kitnet']
 
@@ -17,15 +22,18 @@ const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
             </div>
 
             <div className={formStyles.preview_pet_images}>
-                {data.images.map((image, index) => (
-                        <img
-                            src={URL.createObjectURL(image)}
-                            alt={data.nameImovel}
-                            key={`${data.nameImovel}+${index}`}
-                        />
-                    ))
-                }
 
+
+            {(data.images || preview) && (
+                data.images.map((image, index) => (
+                <RoudedImage
+                src={
+                    preview ? URL.createObjectURL(image)
+                            : `${process.env.REACT_APP_API}/images/imoveis/${image[0]}`
+                }
+                alt={`Dog ${index + 1}`}
+                />
+            )))}
             </div>
 
             <Input
