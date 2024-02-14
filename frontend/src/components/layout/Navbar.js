@@ -6,33 +6,45 @@ import { Context } from "../../context/UserContext"
 import { useContext } from "react"
 
 function Navbar() {
-    const {authenticated, logout} = useContext(Context)
+    const {authenticated, userInfo, logout} = useContext(Context)
 
     return (
         <nav className={styles.navbar}>
             <div>
                 <h2>            
-                    <Link to="/">AppMoveis</Link>
+                    <Link to="/">Ita-ALuga</Link>
                 </h2>
             </div>
             
             <ul>
-                {authenticated ? (
-                <>
-                <li>
-                    <Link to="imovel/listaimoveis">Lista de Imoveis</Link>
-                </li>
-                <li>
-                    <Link to="imovel/myadmin">Imoveis</Link>
-                </li>
-                <li>
-                    <Link to="/user/profile">Editar Perfil</Link>
-                </li>
-                <li onClick={logout}>Sair</li>
-                </>
-                ) :(  
+                {authenticated && userInfo.roles === 'customer' ?  (
                 <>
                     <li>
+                        <Link to="/">Imovel</Link>
+                    </li>
+                    <li>
+                        <Link to="imovel/listaimoveis">Agendamento</Link>
+                    </li>
+                    <li>
+                        <Link to="/user/profile">Editar Perfil</Link>
+                    </li>
+                    <li onClick={logout}>Sair</li>
+                </>
+
+                ) : authenticated && userInfo.roles === 'owner' ? (
+                    <>
+                    <li>
+                        <Link to="imovel/myadmin">Meus Imóveis</Link>
+                    </li>
+                    <li>
+                        <Link to="/user/profile">Editar Perfil</Link>
+                    </li>
+                    <li onClick={logout}>Sair</li>
+                </>
+                
+                ) : (
+                    <>
+                     <li>
                         <Link to="anunciar/sinup-owner">Anunciar</Link>
                     </li>
                     <li>
@@ -42,10 +54,11 @@ function Navbar() {
                         <Link to="/register">Criar Conta</Link>
                     </li>
                 </>
-                )}
+                ) }
             </ul>
         </nav>
     )
 }
+
 
 export default Navbar

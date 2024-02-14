@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FormImovel from './FormImovel';
 import FormOwner from './FormOwner';
 import FormReview from './FormReview';
 import styleStep from './MultStep.module.css'
 import Steps from './Steps';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import api from '../../utils/api'
 import useFlashMessage from '../../hooks/useFlashMessage'
+
+
 
 import { userForm } from '../../hooks/userForm';
 
@@ -27,9 +29,11 @@ const formTemplate = {
 const MainForm = () => {
 
 
+  const [token] = useState(localStorage.getItem("token") || "");
   const [data, setData] = useState(formTemplate);
   const navigate = useNavigate()
   const { setFlashMessage } = useFlashMessage();
+  const { id } = useParams();
 
   const updateFieldHandler = (key, value) => {
     setData((prev) => {
@@ -67,8 +71,19 @@ const MainForm = () => {
       })
 
     setFlashMessage(msgText, msgType)
-    navigate('/')
+    navigate('/imovel/myadmin')
+
   }
+
+  useEffect(() => {
+    const getUserDetails = async () => {
+        const response = await api.get(`/users/checkuser`);
+        setData(response.data);
+    };
+
+    getUserDetails();
+  },);
+
 
   const formComponents = [
     <FormOwner data={data} updateFieldHandler={updateFieldHandler} onFileChange={onFileChange} />,
@@ -88,8 +103,6 @@ const MainForm = () => {
     else {
       setData({ ...data, [name]: name.includes('image') ? files[0] : value });
     }
-
-
   }
 
   return (

@@ -3,6 +3,8 @@ import styleStep from './MultStep.module.css';
 import formStyles from '../form/Form.module.css'
 import Input from '../form/Input'
 
+import RoudedImage from '../layout/RoudedImage'
+
 const FormReview = ({ data, updateFieldHandler }) => {
 
   const [preview, setPreview] = useState([])
@@ -15,11 +17,15 @@ const FormReview = ({ data, updateFieldHandler }) => {
       <hr />
       <div className={formStyles.preview_pet_images}>
 
-        <img
-          src={data.image ? URL.createObjectURL(data.image) : `${process.env.REACT_APP_API}/images/users/${data.image}`}
-          alt={data.nameImovel}
-          key={`${data.nameImovel}`}
+      {(data.image || preview) && (
+          <RoudedImage
+            src={
+              preview ? URL.createObjectURL(data.image)
+                : `${process.env.REACT_APP_API}/images/users/${data.image}`
+            }
+              alt={data.name}
         />
+      )}
 
       </div>
       <div className={styleStep.form_principal}>

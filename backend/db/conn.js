@@ -8,7 +8,6 @@ async function main() {
 
    await mongoose.connect(process.env.DATABASE_URI);
    console.log("Conexão ao mongo!");
-
 }
 
 

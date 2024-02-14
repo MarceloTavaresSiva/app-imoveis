@@ -96,8 +96,6 @@ module.exports = class UserController {
       return
     }
 
-
-
     // Check if user exists
     const user = await User.findOne({ email: email })
 
@@ -237,6 +235,24 @@ module.exports = class UserController {
       return
     }
   }
-}
 
+
+  /***  static async getUserRole(req, res) {
+console.log("no metodo");
+    if (req.headers.authorization) {
+
+      const token = getToken(req)
+      const decoded = jwt.verify(token, 'nossosecret')
+
+      currentUser = await User.findById(decoded.id)
+
+    } else {
+      currentUser = null
+    }
+    res.status(200).send(currentUser)
+  } 
+   *  
+   */
+
+}
 

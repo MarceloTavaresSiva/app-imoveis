@@ -10,21 +10,19 @@ const FormOwner = ({data, updateFieldHandler, onFileChange}) => {
     const [preview, setPreview] = useState('');
 
     return (
-
         <div className={styleStep.inputs_container}>
 
         <div className={styles.profile_header}>
             <h1>Perfil Proprietario</h1>
-            {
-            data.image  && (
+            {(data.image || preview) && (
                 <RoudedImage
                     src={
-                        data.image ? URL.createObjectURL(data.image) : `${process.env.REACT_APP_API}/images/users/${data.image}`
+                        preview ? URL.createObjectURL(preview)
+                            : `${process.env.REACT_APP_API}/images/users/${data.image}`
                     }
-                    alt={data.image}
+                    alt={data.name}
                 />
-            )
-            }
+            )}
         </div>
      
         <Input
@@ -91,8 +89,6 @@ const FormOwner = ({data, updateFieldHandler, onFileChange}) => {
             handleOnChange={(e) => updateFieldHandler("confirmpassword", e.target.value)}
         />
     </div>
-
-          
     );
 }
 

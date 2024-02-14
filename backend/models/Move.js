@@ -29,7 +29,7 @@ const Move = mongoose.model(
             type: Boolean
         },
         user: Object,
-        info: Object
+        renter: Object
     }, 
     {timestamps: true},
     ),

@@ -104,7 +104,6 @@ module.exports = class MoveController {
     }
 
     static async getAllUserMoves(req, res) {
-
         //get user from token
         const token = getToken(req)
         const user  = await getUserByToken(token)
@@ -122,12 +121,24 @@ module.exports = class MoveController {
         const token = getToken(req)
         const user  = await getUserByToken(token)
         
-        const moves = await Move.find({'adopter._id': user._id}).sort('-createdAt')
-
+        const moves = await Move.find({'renter._id': user._id}).sort('-createdAt')
         res.status(200).json({
             moves,
         })
     }
+
+    static async getAdminImoveis(req, res) {
+
+        //get user from token
+        const token = getToken(req)
+        const user  = await getUserByToken(token)
+        
+        const moves = await Move.find({'user._id': user._id}).sort('-createdAt')
+        res.status(200).json({
+            moves,
+        })
+    }
+
 
     static async getMoveById(req, res) {
         const id = req.params.id
@@ -149,7 +160,7 @@ module.exports = class MoveController {
             move: move,
         })
     }
-
+    
     static async removeMoveById(req, res) {
         const id = req.params.id
 
@@ -232,10 +243,7 @@ module.exports = class MoveController {
             updatedData.descricao = descricao
         }
         
-        if(images.length === 0) {
-            res.status(422).json({message: "A imagem e obrigatorio!" })
-            return
-        } else {
+        if(images.length > 0) {
             updatedData.images = []
             images.map((image) => {
                 updatedData.images.push(image.filename)
@@ -267,8 +275,8 @@ module.exports = class MoveController {
         }
 
         //check if user has already schedule a visit imovel
-        if(move.adopter) {
-            if(move.adopter._id.equals(user._id)) { 
+        if(move.renter) {
+            if(move.renter._id.equals(user._id)) { 
             res.status(422).json({message: 'Vocẽ já agendou uma visita para esse imovel!',
             })
             return
@@ -276,17 +284,28 @@ module.exports = class MoveController {
         }
 
         //add user to imovel
-        move.adopter = {
+        move.renter = {
             _id: user._id,
             name: user.name,
-            image: user.image
+            phone: user.phone
         }
+
+        // Recupera informações do proprietário
+        //const owner = await User.findOne({ _id: move.user._id });
 
         await Move.findByIdAndUpdate(id, move)
 
-        res.status(200).json({
-            message: `A visita foi agendada com sucesso, entre em contato com ${move.user.name} pelo telefone ${move.user.phone} `
-        })
+      // res.status(200).json({
+          //  message: `A visita foi agendada com sucesso, entre em contato com ${owner.name} pelo telefone ${owner.phone} `,
+          //  ownerInfo: {
+              //  name: owner.name,
+               // phone: owner.phone,
+            //},
+           //  Retorna as informações do proprietário
+            res.status(200).json({
+                message: `A visita foi agendada com sucesso, entre em contato com ${move.user.name} pelo telefone ${move.user.phone} `
+       //})
+        });
     }
 
     static async concludeVisit(req, res) {

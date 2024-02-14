@@ -6,10 +6,8 @@ import { Link, useParams } from 'react-router-dom';
   
 import styles from "../ImovelDetails/DetailsImovel.module.css";
 
-
 /** Hooks */
 import useFlashMessage from '../../../hooks/useFlashMessage'
-import Home from '../Home';
 
 import { Card, Nav, Alert, Row, Col } from "react-bootstrap";
 
@@ -64,6 +62,10 @@ function DetailsImovel() {
     console.log(data)
 
     setFlashMessage(data.message, msgType)
+
+    //if (data.ownerInfo) {
+     // navigate('/imovel/listaimoveis', { state: { ownerInfo: data.ownerInfo } });
+    //}
   }
 
   return (
@@ -87,7 +89,7 @@ function DetailsImovel() {
             <p className={styles.desc_preco}>Preço: R$ {imovel.preco} /mês</p>
           </div>
           {token ? (
-              <button onClick={schedule}>Solicitar uma visitar</button>
+              <button onClick={schedule}>Solicitar uma visita</button>
             ) : (
               <p>
                 Você precisa <Link to="/register">criar uma conta</Link> para solicitar a visita
