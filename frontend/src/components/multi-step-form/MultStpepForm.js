@@ -8,7 +8,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import api from '../../utils/api'
 import useFlashMessage from '../../hooks/useFlashMessage'
 
-
+/** Context */
+import { Context } from "../../context/UserContext"
+import { useContext } from "react"
 
 import { userForm } from '../../hooks/userForm';
 
@@ -26,8 +28,9 @@ const formTemplate = {
   tipo: ''
 }
 
-const MainForm = () => {
 
+const MainForm = () => {
+  const {authenticated} = useContext(Context)
 
   const [token] = useState(localStorage.getItem("token") || "");
   const [data, setData] = useState(formTemplate);
@@ -44,7 +47,6 @@ const MainForm = () => {
   const registerImovel = async () => {
     let msgText = 'Registro realizado com sucesso!'
     let msgType = 'success'
-
 
     const formData = new FormData()
 
@@ -74,21 +76,19 @@ const MainForm = () => {
     navigate('/imovel/myadmin')
 
   }
-
+  const getUserDetails = async () => {
+    const response = await api.get(`/users/checkuser`);
+    setData(response.data);
+}
   useEffect(() => {
-    const getUserDetails = async () => {
-        const response = await api.get(`/users/checkuser`);
-        setData(response.data);
-    };
-
     getUserDetails();
-  },);
+  }, []);
 
 
   const formComponents = [
-    <FormOwner data={data} updateFieldHandler={updateFieldHandler} onFileChange={onFileChange} />,
-    <FormImovel data={data} updateFieldHandler={updateFieldHandler} onFileChange={onFileChange} />,
-    <FormReview data={data} />,
+    <FormOwner data={data} updateFieldHandler={updateFieldHandler} onFileChange={onFileChange} authenticated={authenticated} />,
+    <FormImovel data={data} updateFieldHandler={updateFieldHandler} onFileChange={onFileChange} authenticated={authenticated} />,
+    <FormReview data={data} authenticated={authenticated}/>,
   ];
 
   const { currentStep, currentComponent, changeStep, isLastStep } = userForm(formComponents);
@@ -98,7 +98,7 @@ const MainForm = () => {
 
     if (name === 'images') {
       const selectedImages = Array.from(files).slice(0, 3);
-      setData({ ...data, images: selectedImages })
+      setData({ ...data, [name]: name.includes('images') ? selectedImages : value })
     }
     else {
       setData({ ...data, [name]: name.includes('image') ? files[0] : value });

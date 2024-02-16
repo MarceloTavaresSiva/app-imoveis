@@ -4,13 +4,10 @@ import styleStep from './MultStep.module.css'
 import Input from '../form/Input'
 import Select from "../form/Select"
 
-
 import RoudedImage from '../layout/RoudedImage'
 
 
-const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
-
-    const [preview, setPreview] = useState('');
+const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => {
 
     const tipos = ['Casa', 'Apartamento', 'Kitnet']
 
@@ -23,15 +20,16 @@ const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
             <div className={formStyles.preview_pet_images}>
 
             {(data.images || preview) && (
+            {/* {  data.images &&
+            data.images.map((image, index) => (
+              <RoudedImage key={index} src={URL.createObjectURL(image)} />
+            ))} */}
+            {data.images  &&
                 data.images.map((image, index) => (
-                <RoudedImage
-                src={
-                    preview ? URL.createObjectURL(image)
-                            : `${process.env.REACT_APP_API}/images/imoveis/${image[0]}`
-                }
-                alt={`Dog ${index + 1}`}
+                <RoudedImage key={index}
+                src={ image ? URL.createObjectURL(image): `${process.env.REACT_APP_API}/images/imoveis/${image}`}
                 />
-            )))}
+            ))}
             </div>
 
             <Input
