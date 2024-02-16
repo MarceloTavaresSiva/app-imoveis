@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer className= {styles.footer}>
             <p>
-                <span className="bold">App Moveis</span> &copy; 2023
+                <span className="bold">Ita-Alugar</span> &copy; 2024
             </p>
         </footer>
     )

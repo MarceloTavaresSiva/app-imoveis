@@ -18,10 +18,8 @@ function Message() {
 
             setTimeout(() => {
                 setVisibility(false)
-
-            }, 4000)
+            },  4000)
         });
- 
     }, [])
 
     return (

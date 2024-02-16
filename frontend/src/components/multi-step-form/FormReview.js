@@ -18,12 +18,19 @@ console.log(data);
       <div className={formStyles.preview_pet_images}>
 
       {(data.image || preview) && (
+          <RoudedImage
+            src={
+              preview ? URL.createObjectURL(data.image)
+                : `${process.env.REACT_APP_API}/images/users/${data.image}`
+            }
+              alt={data.name}
+          />
+      )}
                 <RoudedImage
                     src={
                         preview ? URL.createObjectURL(data.image)
                             : `${process.env.REACT_APP_API}/images/users/${data.image}`
                     }
-                   
                 />
             )}
 
@@ -89,7 +96,6 @@ console.log(data);
             value={data.tipo}
             readOnly={true}
         />
-
       </div>
       <div className={styleStep.form_principal}>
         <div className={styleStep.form_container }>
