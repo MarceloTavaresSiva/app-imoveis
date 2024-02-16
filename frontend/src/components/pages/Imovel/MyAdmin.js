@@ -9,8 +9,6 @@ import RoudedImage from '../../layout/RoudedImage';
 /** Hooks */
 import useFlashMessage from '../../../hooks/useFlashMessage'
 
-
-
 function MyAdmin() {
 
     const [moves, setmoves] = useState([])

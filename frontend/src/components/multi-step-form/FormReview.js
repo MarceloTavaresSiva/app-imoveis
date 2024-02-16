@@ -24,7 +24,7 @@ const FormReview = ({ data, updateFieldHandler }) => {
                 : `${process.env.REACT_APP_API}/images/users/${data.image}`
             }
               alt={data.name}
-        />
+          />
       )}
 
       </div>

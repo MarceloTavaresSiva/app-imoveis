@@ -20,9 +20,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange}) => {
                 <h1>Cadastre um Imovel</h1>
                 {/* <p>Disponivel para alugar</p> */}
             </div>
-
             <div className={formStyles.preview_pet_images}>
-
 
             {(data.images || preview) && (
                 data.images.map((image, index) => (
