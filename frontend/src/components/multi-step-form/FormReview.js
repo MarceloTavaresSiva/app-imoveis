@@ -5,10 +5,10 @@ import Input from '../form/Input'
 
 import RoudedImage from '../layout/RoudedImage'
 
-const FormReview = ({ data, updateFieldHandler }) => {
+const FormReview = ({ data, updateFieldHandler,authenticated }) => {
 
   const [preview, setPreview] = useState([])
-
+console.log(data);
   return (
     <>
       <div className={styleStep.form_principal}>
@@ -18,14 +18,14 @@ const FormReview = ({ data, updateFieldHandler }) => {
       <div className={formStyles.preview_pet_images}>
 
       {(data.image || preview) && (
-          <RoudedImage
-            src={
-              preview ? URL.createObjectURL(data.image)
-                : `${process.env.REACT_APP_API}/images/users/${data.image}`
-            }
-              alt={data.name}
-        />
-      )}
+                <RoudedImage
+                    src={
+                        preview ? URL.createObjectURL(data.image)
+                            : `${process.env.REACT_APP_API}/images/users/${data.image}`
+                    }
+                   
+                />
+            )}
 
       </div>
       <div className={styleStep.form_principal}>
