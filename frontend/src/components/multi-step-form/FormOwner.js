@@ -5,7 +5,7 @@ import Input from '../form/Input'
 
 import RoudedImage from '../layout/RoudedImage'
 
-const FormOwner = ({data, updateFieldHandler, onFileChange}) => {
+const FormOwner = ({data, updateFieldHandler, authenticated, onFileChange}) => {
 
     const [preview, setPreview] = useState('');
 
@@ -70,24 +70,26 @@ const FormOwner = ({data, updateFieldHandler, onFileChange}) => {
             handleOnChange={(e) => updateFieldHandler("role", e.target.value)}
             value={data.phone || ''}
         />
-
+        { !authenticated ?
+        <>
         <Input
-            text="Senha (mínimo 8 caracteres)"
-            type="password"
-            name="password"
-            id="password"
-            value={data.password || ''}
-            handleOnChange={(e) => updateFieldHandler("password", e.target.value)}
-        />
+        text="Senha (mínimo 8 caracteres)"
+        type="password"
+        name="password"
+        id="password"
+        value={data.password || ''}
+        handleOnChange={(e) => updateFieldHandler("password", e.target.value)}
+    />
 
-        <Input
-            text="Confirmação de senha"
-            type="password"
-            id="confirmpassword"
-            name="confirmpassword"
-            value={data.confirmpassword || ''}
-            handleOnChange={(e) => updateFieldHandler("confirmpassword", e.target.value)}
-        />
+    <Input
+        text="Confirmação de senha"
+        type="password"
+        id="confirmpassword"
+        name="confirmpassword"
+        value={data.confirmpassword || ''}
+        handleOnChange={(e) => updateFieldHandler("confirmpassword", e.target.value)}
+    /></> :'' }
+       
     </div>
     );
 }
