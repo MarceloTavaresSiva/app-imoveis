@@ -19,11 +19,6 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
             </div>
             <div className={formStyles.preview_pet_images}>
 
-            {(data.images || preview) && (
-            {/* {  data.images &&
-            data.images.map((image, index) => (
-              <RoudedImage key={index} src={URL.createObjectURL(image)} />
-            ))} */}
             {data.images  &&
                 data.images.map((image, index) => (
                 <RoudedImage key={index}

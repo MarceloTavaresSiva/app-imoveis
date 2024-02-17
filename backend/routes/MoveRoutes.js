@@ -12,6 +12,8 @@ const {imageUpload} = require('../helpers/image-upload')
 
 
 router.post('/create', imageUpload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 3 }]), MoveController.create)
+router.post('/addimovel', imageUpload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 3 }]), MoveController.addImovel)
+
 // router.post('/create', upload.fields([
 //     { name: 'image', maxCount: 1 },
 //     { name: 'images', maxCount: 3 },

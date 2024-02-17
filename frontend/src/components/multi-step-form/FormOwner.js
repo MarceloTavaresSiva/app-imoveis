@@ -9,6 +9,9 @@ const FormOwner = ({data, updateFieldHandler, authenticated, onFileChange}) => {
 
     const [preview, setPreview] = useState('');
 
+    const handleFileChange = (event) => {
+        setPreview(event.target.files[0]);
+    };
     return (
         <div className={styleStep.inputs_container}>
 
@@ -17,21 +20,13 @@ const FormOwner = ({data, updateFieldHandler, authenticated, onFileChange}) => {
             {(data.image || preview) && (
                 <RoudedImage
                     src={
-                        preview ? URL.createObjectURL(preview)
-                            : `${process.env.REACT_APP_API}/images/users/${data.image}`
+                        `${process.env.REACT_APP_API}/images/users/${data.image}`
                     }
                     alt={data.name}
                 />
             )}
         </div>
      
-        <Input
-            text="Image"
-            type="file"
-            name="image"
-            handleOnChange={onFileChange}
-        />
-
         <Input
             text="E-mail"
             id="email"
@@ -72,6 +67,12 @@ const FormOwner = ({data, updateFieldHandler, authenticated, onFileChange}) => {
         />
         { !authenticated ?
         <>
+    <Input
+            text="Image"
+            type="file"
+            name="image"
+            handleOnChange={onFileChange}
+        />
         <Input
         text="Senha (mínimo 8 caracteres)"
         type="password"
