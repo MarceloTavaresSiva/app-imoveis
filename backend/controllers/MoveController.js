@@ -335,6 +335,78 @@ module.exports = class MoveController {
             message: 'Parabéns! o agendamento foi finalizado com sucesso!',
         })
     }
+
+    static async addImovel(req, res) {
+
+        const {nameImovel, tipo, preco, descricao } = req.body
+        const images = req.files
+        const available = true
+
+        //validation
+        if(!nameImovel) {
+            res.status(422).json({message: "O nome do imovel e obrigatorio!" })
+            return
+        }
+
+        if(!tipo) {
+            res.status(422).json({message: "O tipo e obrigatorio!" })
+            return
+        }
+
+        if(!preco) {
+            res.status(422).json({message: "O preço e obrigatorio!" })
+            return
+        }
+
+        if(!descricao) {
+            res.status(422).json({message: "A descrição e obrigatorio!" })
+            return
+        }
+
+        if(images.length === 0) {
+            res.status(422).json({message: "A imagem e obrigatorio!" })
+            return
+        }
+
+        // images.map((item) => {
+        //     user.image= item.filename
+        // })
+
+        const token = getToken(req)
+        const user  = await getUserByToken(token)
+
+        //create move
+        const move = new Move({
+            name: nameImovel,
+            tipo,
+            preco,
+            descricao,
+            available,
+            images:[],
+            user: {
+                _id: user._id,
+                name: user.name,
+                image: user.image,
+                phone: user.phone,
+            }
+        })
+
+
+        images.images.map((image) => {
+            move.images.push(image.filename)
+        })
+
+        try {
+            const newMove = await move.save()
+            res.status(201).json({
+                message: 'imovel cadastrado',
+                newMove,
+            })
+
+        } catch(error) {
+            res.status(500).json({message: error})
+        }
+    }
 }
 
 

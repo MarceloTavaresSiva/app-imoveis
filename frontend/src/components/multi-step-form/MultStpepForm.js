@@ -61,7 +61,7 @@ const MainForm = () => {
       }
     })
 
-    await api.post(`moves/create`, formData)
+    await api.post(`moves/addimovel`, formData)
       .then((response) => {
         return response.data
       })

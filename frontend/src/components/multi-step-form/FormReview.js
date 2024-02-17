@@ -7,8 +7,8 @@ import RoudedImage from '../layout/RoudedImage'
 
 const FormReview = ({ data, updateFieldHandler,authenticated }) => {
 
-  const [preview, setPreview] = useState([])
-console.log(data);
+console.log(data.image);
+const image = data.image
   return (
     <>
       <div className={styleStep.form_principal}>
@@ -17,22 +17,13 @@ console.log(data);
       <hr />
       <div className={formStyles.preview_pet_images}>
 
-      {(data.image || preview) && (
-          <RoudedImage
-            src={
-              preview ? URL.createObjectURL(data.image)
-                : `${process.env.REACT_APP_API}/images/users/${data.image}`
-            }
-              alt={data.name}
-          />
-      )}
+             {data.image ?
                 <RoudedImage
-                    src={
-                        preview ? URL.createObjectURL(data.image)
-                            : `${process.env.REACT_APP_API}/images/users/${data.image}`
-                    }
-                />
-            )}
+                    src={`${process.env.REACT_APP_API}/images/users/${data.image}`}
+                    alt={data.name}
+                />: 
+                ''
+            }
 
       </div>
       <div className={styleStep.form_principal}>
@@ -103,7 +94,7 @@ console.log(data);
           </div>
             {  data.images &&
             data.images.map((image, index) => (
-              <img key={index} src={URL.createObjectURL(image)} alt={`Dog ${index + 1} Preview`} style={{ maxWidth: '100px' }} />
+              <RoudedImage key={index} src={URL.createObjectURL(image)} alt={`${index + 1} Preview`} style={{ maxWidth: '100px' }} />
             ))}
         </div>
     </>

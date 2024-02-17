@@ -86,22 +86,33 @@ function MyAdmin() {
                             <span>{imovel.tipo}</span>
                             <span>{imovel.preco}</span>
                             <div>
-                                {imovel.available ? 
+                                {imovel.available && imovel.renter? 
                                     (<>
                                         {imovel.renter && (
                                             <button onClick={() => {
-                                                concludeAgendamento(imovel.renter._id) 
+                                                concludeAgendamento(imovel._id) 
                                         }}>
                                             Concluir agendamento
                                             </button>
                                         )}
-                                        <Link to={`/imovel/edit/${imovel.renter._id}`}>Editar</Link>
+                                        
                                         <button onClick={() => {
                                             removeImovel(imovel.renter._id)
                                         }}>Excluir</button>
                                     </>
-                                    ) : (
-                                    <p>Imovel Agendado</p>
+                                    ) :
+                                    (imovel.available && (!imovel.renter)) ? 
+                                    <>
+                                    <Link to={`/imovel/edit/${imovel._id}`}><button>Editar</button></Link>
+                                    <span>disponivel para lauguel</span>
+                                    </>
+                                    
+                                    : (
+                                    <>
+                                    <Link to={`/imovel/edit/${imovel._id}`}><button>Editar</button></Link>
+                                    <span>Imovel Agendado</span>
+                                    </>
+                                        
                                 )}
                             </div>
                         </div>
