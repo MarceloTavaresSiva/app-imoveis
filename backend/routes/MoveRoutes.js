@@ -24,7 +24,7 @@ router.get('/myimoveloptions', verifyToken, MoveController.getAllImoveloptions)
 router.get('/admin/imoveis', verifyToken, MoveController.getAdminImoveis)
 router.get('/:id', MoveController.getMoveById)
 router.delete('/:id', verifyToken, MoveController.removeMoveById)
-router.patch('/:id', verifyToken, imageUpload.array('images'), MoveController.updateMove)
+router.patch('/:id', verifyToken, imageUpload.fields([{ name: 'images', maxCount: 3 }]), MoveController.updateMove)
 
 router.patch('/schedule/:id', verifyToken, MoveController.schedule)
 router.patch('/conclude/:id', verifyToken, MoveController.concludeVisit)
