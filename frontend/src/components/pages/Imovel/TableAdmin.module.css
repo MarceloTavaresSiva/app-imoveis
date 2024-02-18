@@ -1,0 +1,45 @@
+th,
+td {
+  padding: 1rem 2rem;
+}
+
+th[scope='col'] {
+  background-color: #0658f1;
+  color: #fff;
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-of-type(even) {
+  background-color: #eee;
+}
+
+table {
+
+  font-size: 0.8rem;
+
+}
+
+caption {
+  caption-side: bottom;
+  padding: 12px;
+}
+
+.button_danger{
+  width: auto;
+  background-color: red;
+}
+
+.button_blue{
+  width: auto;
+  background-color:blue;
+}
+
+.container{
+  min-height: 60vh;
+
+  max-width: auto;
+  margin: 0;
+}

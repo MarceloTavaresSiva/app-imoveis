@@ -33,14 +33,14 @@ function EditImovel () {
         await Object.keys(moves).forEach((key) => {
             if(key === 'images') {
                 for(let i = 0; i < moves[key].length;  i++) {
-                    formData.append('images', moves[key][i])
+                    formData.append("images", moves[key][i])
                 }
             } else {
                 formData.append(key, moves[key])
             }
         })
-
-        const data = await api.patch(`moves/${moves.renter._id}`, formData, {
+        console.log(formData.entries());
+        const data = await api.patch(`moves/${moves._id}`, formData, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`,
                 'Content-Type': 'multipart/form-data'
