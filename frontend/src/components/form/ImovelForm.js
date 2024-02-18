@@ -59,6 +59,7 @@ function ImovelForm({handleSubmit, movesData, btnText}) {
         <Input 
             text="Nome do Imovel"
             type="text"
+            id="name"
             name="name"
             placeholder="Digite o nome"
             handleOnChange={handleChange}

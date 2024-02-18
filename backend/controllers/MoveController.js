@@ -192,8 +192,9 @@ module.exports = class MoveController {
     }
 
     static async updateMove (req, res) {
+        console.log(req.body);
         const id = req.params.id
-        const {imovel, tipo, preco, descricao, available } = req.body
+        const {name, tipo, preco, descricao, available } = req.body
         const images = req.files
         const updatedData = {}
 
@@ -215,11 +216,11 @@ module.exports = class MoveController {
         }
 
         //validation
-        if(!imovel) {
+        if(!name) {
             res.status(422).json({message: "O nome do imovel e obrigatorio!" })
             return
         } else {
-            updatedData.imovel = imovel
+            updatedData.name = name
         }
         
         if(!tipo) {
