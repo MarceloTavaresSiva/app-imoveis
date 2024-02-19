@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import styles from './Navbar.module.css'
 
+import nome from '../../img/nome.png'
+
 /** Context */
 import { Context } from "../../context/UserContext"
 import { useContext } from "react"
@@ -11,9 +13,9 @@ function Navbar() {
     return (
         <nav className={styles.navbar}>
             <div>
-                <h2>            
-                    <Link to="/">Ita-ALuga</Link>
-                </h2>
+            <Link to="/">
+                <img className={styles.img_logo} src={nome} alt="logoIta" />
+            </Link>
             </div>
             
             <ul>
@@ -50,8 +52,8 @@ function Navbar() {
                     <li>
                         <Link to="/login">Entrar</Link>
                     </li>
-                    <li>
-                        <Link to="/register">Criar Conta</Link>
+                    <li className={styles.active_create}>
+                        <Link to="/register"> Criar Conta</Link>
                     </li>
                 </>
                 ) }

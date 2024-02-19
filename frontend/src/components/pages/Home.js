@@ -88,23 +88,31 @@ function Home({excludeId}) {
 
   return (
     <>
+    <section className={styles.main_banner_img}>
       <div className={styles.container_searh}>
-      <form onSubmit={handleSubmit}>
-          <label htmlFor="search-form"><span>Preço:</span></label>
-          <input
-            value={searchItem} type="text" name="preco" placeholder="Digite o preço (R$)" onChange={handleChange} />
-          <label htmlFor="tipoImovel"> <span>Tipo de Imóvel:</span></label>
-          <select id="tipoImovel" name="tipoImovel" onChange={handleTipos} value={searchTipo}>
-            <option> selecione uma opcão</option>
-            {tipos.map((item, index) => (
-              <option key={index} value={item}>{item}</option>))}
-          </select>
-          <button className={styles.btn_search} type="submit">Buscar</button>
-      </form>
-      {showEmpty && (
-        <div>Preencha todos os campos antes de bsucar.</div>
-      )}
-      </div>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.box}>
+            <span>Preço:</span>
+            <input value={searchItem} type="text" name="preco" placeholder="Digite o preço (R$)" onChange={handleChange} />
+          </div>
+          <div className={styles.box}>
+          <span>Tipo de Imóvel:</span>
+            <select id="tipoImovel" name="tipoImovel" onChange={handleTipos} value={searchTipo}>
+              <option> selecione uma opcão</option>
+              {tipos.map((item, index) => (
+                <option key={index} value={item}>{item}</option>))}
+            </select>
+          </div>
+          <div className={styles.box}>
+            <button className={styles.btn_search} type="submit">Buscar</button>
+          </div>
+        </form>
+        {showEmpty && (
+          <div className={styles.menssage}>Preencha todos os campos antes de bsucar.</div>
+        )}
+        </div>
+    </section>
+
 
   <Row xs={1} md={3} className="g-4">
   <Col>
