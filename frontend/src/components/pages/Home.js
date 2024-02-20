@@ -6,7 +6,7 @@ import api from "../../utils/api";
 import { Card, Nav, Alert, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Home({excludeId}) {
+function Home({ excludeId }) {
   const [imoves, setImoves] = useState([]);
   const [searchItem, setItem] = useState("");
   const [searchTipo, setTipo] = useState("");
@@ -25,7 +25,7 @@ function Home({excludeId}) {
     setTipo("");
     setFilterData(imoves);
     setNoResults(false);
-    setShowEmpty(false); 
+    setShowEmpty(false);
   };
 
   const getAllImoveis = async () => {
@@ -34,8 +34,10 @@ function Home({excludeId}) {
       .then((response) => {
         setImoves(response.data.moves);
         // exclua o imovel atual da lista
-        if(excludeId) {
-          const filteredMoves = response.data.moves.filter((move) => move._id !== excludeId);
+        if (excludeId) {
+          const filteredMoves = response.data.moves.filter(
+            (move) => move._id !== excludeId
+          );
           setFilterData(filteredMoves);
         } else {
           setFilterData(response.data.moves);
@@ -44,7 +46,7 @@ function Home({excludeId}) {
       })
       .catch((err) => {
         console.log(err);
-    });
+      });
   };
 
   const handleTipos = (e) => {
@@ -61,7 +63,7 @@ function Home({excludeId}) {
     e.preventDefault();
 
     //Verificar se ambos os campos estão preenchidos
-    if(!searchItem || !searchTipo || searchTipo === "Selecione uma opção!") {
+    if (!searchItem || !searchTipo || searchTipo === "Selecione uma opção!") {
       setShowEmpty(true);
       return;
     }
@@ -88,84 +90,78 @@ function Home({excludeId}) {
 
   return (
     <>
-    <section className={styles.main_banner_img}>
-      <div className={styles.container_searh}>
-        <form onSubmit={handleSubmit}>
-          <div className={styles.box}>
-            <span>Preço:</span>
-            <input value={searchItem} type="text" name="preco" placeholder="Digite o preço (R$)" onChange={handleChange} />
+      <section className={styles.main_banner_img}>
+        <div className={styles.container_searh}>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.box}>
+              <span>Preço:</span>
+              <input
+                value={searchItem}
+                type="text"
+                name="preco"
+                placeholder="Digite o preço (R$)"
+                onChange={handleChange}
+              />
+            </div>
+            <div className={styles.box}>
+              <span>Tipo de Imóvel:</span>
+              <select
+                id="tipoImovel"
+                name="tipoImovel"
+                onChange={handleTipos}
+                value={searchTipo}
+              >
+                <option> selecione uma opcão</option>
+                {tipos.map((item, index) => (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={styles.box}>
+              <button className={styles.btn_search} type="submit">
+                Buscar
+              </button>
+            </div>
+          </form>
+          {showEmpty && (
+            <div className={styles.menssage}>
+              Preencha todos os campos antes de bsucar.
+            </div>
+          )}
+        </div>
+      </section>
+
+      <div className={styles.container_card}>
+        <div className={styles.card}>
+        {noResults ? (
+          <div>
+            <div>Nenhum resultado encontrado.</div>
+            <button type="button" onClick={handleReset} >ok</button>
           </div>
-          <div className={styles.box}>
-          <span>Tipo de Imóvel:</span>
-            <select id="tipoImovel" name="tipoImovel" onChange={handleTipos} value={searchTipo}>
-              <option> selecione uma opcão</option>
-              {tipos.map((item, index) => (
-                <option key={index} value={item}>{item}</option>))}
-            </select>
-          </div>
-          <div className={styles.box}>
-            <button className={styles.btn_search} type="submit">Buscar</button>
-          </div>
-        </form>
-        {showEmpty && (
-          <div className={styles.menssage}>Preencha todos os campos antes de bsucar.</div>
+        ) : (
+          filterData.map((item, index) => (
+            <div className={styles.card_flex} key={index}>
+              <div className={styles.img_flex}>
+                <img
+                    src={`${process.env.REACT_APP_API}/images/imoveis/${item.images[0]}`}
+                    alt={index} />
+              </div>
+
+              <div className={styles.card_text}>
+                  <h3 className={styles.title_card}>{item.tipo}</h3>
+                  <p className={styles.container_desc}>{item.name}</p>
+                  <p className={styles.container_desc}>{item.descricao}</p>
+                  <h3 className={styles.card_text_h3}>R$ {item.preco} /mêS</h3>
+                  <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}>Mais Detalhes</Link>
+              </div>
+            </div>
+          ))
         )}
         </div>
-    </section>
-
-
-  <Row xs={1} md={3} className="g-4">
-  <Col>
-  <div className={styles.container_card}>
-      {noResults ? (
-        <div
-          style={{
-            width: "100%",
-            textAlign: "center",
-            marginTop: "20px",
-          }}
-        >
-          <Alert variant="warning">Nenhum resultado encontrado.</Alert>
-          <button
-            type="button"
-            onClick={handleReset}
-            style={{ marginTop: "10px" }}
-          >
-            ok
-          </button>
-        </div>
-      ) : (
-        filterData.map((item, index) => (
-          <Card  className={styles.card_flex}  key={index}>
-            <Card.Img
-              variant="top"
-              style={{
-                width: "100%",
-                height: "26vh",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundImage: `url(${process.env.REACT_APP_API}/images/imoveis/${item.images[0]})`,
-              }}
-            />
-            <div className={styles.card_text}>
-              <Card.Body>
-              <Card.Text><span>{item.tipo}</span></Card.Text>
-                <Card.Title><span className={styles.container_desc}>{item.name}</span></Card.Title>
-                <Card.Text> <span className={styles.container_desc}> {item.descricao}</span> </Card.Text>
-                <Card.Title><span>R$ {item.preco} /mêS</span> </Card.Title>
-              </Card.Body>
-              <Nav.Item>
-                <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}>Mais Detalhes </Link>
-              </Nav.Item>
-            </div>
-          </Card>
-        ))
-      )}
-    </div>
-  </Col>
-  </Row>
-
-  </>
+      </div>
+    </>
   );
 }
 
