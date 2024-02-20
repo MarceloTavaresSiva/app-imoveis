@@ -98,34 +98,31 @@ function DetailsImovel() {
         </section>
       )}
 
-      <h2>Veja outros imóveis</h2>
-      <div className={styles.container_card}>
-        {otherImoveis.map((item, index) =>(
-          <Card className={styles.card_flex} key={index} >
-            <Card.Img
-              variant="top"
-              style={{
-                width: "100%",
-                height: "26vh",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundImage: `url(${process.env.REACT_APP_API}/images/imoveis/${item.images[0]})`,
-              }}
-            />
-            <div className={styles.card_text}>
-              <Card.Body>
-              <Card.Text><span>{item.tipo}</span></Card.Text>
-                <Card.Title><span className={styles.container_desc}>{item.name}</span></Card.Title>
-                <Card.Text> <span className={styles.container_desc}> {item.descricao}</span> </Card.Text>
-                <Card.Title><span>R$ {item.preco} /mêS</span> </Card.Title>
-              </Card.Body>
-              <Nav.Item>
-                <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}>Mais Detalhes </Link>
-              </Nav.Item>
-            </div>
-          </Card>
-        ))}
+      <h2 className={styles.text_h2}>Veja outros imóveis</h2>
+      <div className={styles.card}>
+      {otherImoveis.map((item, index) => (
+        <div className={styles.card_flex} key={index}>
+          <div className={styles.img_flex}>
+            <img
+                src={`${process.env.REACT_APP_API}/images/imoveis/${item.images[0]}`}
+                alt={index} />
+          </div>
+
+          <div className={styles.card_text}>
+              <h3>{item.tipo}</h3>
+              <p className={styles.container_desc}>{item.name}</p>
+              <p className={styles.container_desc}>{item.descricao}</p>
+              <h3 className={styles.card_text_h3}>R$ {item.preco} /mêS</h3>
+              <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}>Mais Detalhes</Link>
+          </div>
+        </div>
+    ))}
+
+
+
       </div>
+      
+
     </>
   );
 }
