@@ -9,7 +9,8 @@ import styles from "../ImovelDetails/DetailsImovel.module.css";
 /** Hooks */
 import useFlashMessage from '../../../hooks/useFlashMessage'
 
-import { Card, Nav, Alert, Row, Col } from "react-bootstrap";
+/** SWiper */ 
+import {Swiper, SwiperSlide} from 'swiper/react'
 
 
 function DetailsImovel() {
@@ -70,33 +71,45 @@ function DetailsImovel() {
 
   return (
     <>
-      {imovel.name && (
-        <section className={styles.details_imovel}>
-          <div className={styles.card_img}>
-            {imovel.images.map((image, index) => (
-              <div className={styles.card} key={index}>
-                <img 
+    <div className={styles.container_details}>
+    {imovel.name && (
+       <div className={styles.details_img}>
+      
+        <Swiper
+          slidesPerView={1}
+          pagination={{clickable: true}}
+          navigation 
+          loop
+          >
+          
+          {imovel.images.map((image, index) => (
+            <div className={styles.img_border}>
+              <SwiperSlide key={index}>
+                <img className={styles.slide_item}
                   src={`${process.env.REACT_APP_API}/images/imoveis/${image}`}
-                  alt={imovel.name}
-                />
-              </div>
-            ))}
-          </div>
-          <div className={styles.details_desc}>
-            <h1>{imovel.name}</h1>
-            <p>{imovel.descricao}</p>
-            <p>Tipo: {imovel.tipo}</p>
-            <p className={styles.desc_preco}>Preço: R$ {imovel.preco} /mês</p>
-          </div>
-          {token ? (
-              <button onClick={schedule}>Solicitar uma visita</button>
-            ) : (
-              <p>
-                Você precisa <Link to="/register">criar uma conta</Link> para solicitar a visita
-              </p>
-          )}
-        </section>
+                  alt={imovel.name} />
+            </SwiperSlide>
+            </div>
+          ))}
+        </Swiper>
+        </div>
       )}
+    </div>
+          <div>
+            <div className={styles.details_desc}>
+                <h1>{imovel.name}</h1>
+                <p>{imovel.descricao}</p>
+                <p>Tipo: {imovel.tipo}</p>
+                <p className={styles.desc_preco}>Preço: R$ {imovel.preco} /mês</p>
+            </div>
+            <div>
+                {token ? (
+                    <button onClick={schedule}>Solicitar uma visita</button>
+                  ) : (
+                    <p>Você precisa <Link to="/register">criar uma conta</Link> para solicitar a visita</p>
+                )}
+            </div>
+          </div>
 
       <h2 className={styles.text_h2}>Veja outros imóveis</h2>
       <div className={styles.card}>
@@ -117,12 +130,7 @@ function DetailsImovel() {
           </div>
         </div>
     ))}
-
-
-
       </div>
-      
-
     </>
   );
 }
