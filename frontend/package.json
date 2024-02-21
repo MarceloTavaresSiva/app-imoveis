@@ -24,6 +24,7 @@
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
+    "swiper": "^11.0.6",
     "web-vitals": "^3.5.1"
   },
   "browserslist": {
