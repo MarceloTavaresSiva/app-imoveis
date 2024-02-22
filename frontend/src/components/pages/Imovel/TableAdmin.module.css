@@ -17,8 +17,10 @@ tr:nth-of-type(even) {
 }
 
 table {
-
-  font-size: 0.8rem;
+ width: 80%;
+ font-size: 0.8rem;
+ margin-left: auto;
+ margin-right: auto;
 
 }
 
@@ -28,13 +30,27 @@ caption {
 }
 
 .button_danger{
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border: none;
   width: auto;
   background-color: red;
+  cursor: pointer;;
+  border-radius: 0.2rem;
 }
 
 .button_blue{
   width: auto;
-  background-color:blue;
+  /* background-color:blue; */
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border: none;
+  /* width: 100%; */
+  cursor: pointer;
+  background-color: #007bff;
+  border-radius: 0.2rem;
 }
 
 .container{
@@ -43,3 +59,20 @@ caption {
   max-width: auto;
   margin: 0;
 }
+
+.info {
+  margin-top: 0.9rem;
+  width: 80%;
+  font-size: 1.8rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* a {
+  font-size: 15px;
+  padding: 1rem 2rem;
+  color: #fff;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  background-color: #007bff;
+} */

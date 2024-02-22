@@ -1,6 +1,7 @@
 import api from '../../../utils/api';
-import styles from './TableAdmin.module.css'
-import { useState, useEffect } from 'react'
+import styles from './TableAdmin.module.css';
+import { useState, useEffect } from 'react';
+import {Button, Table} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
 import RoudedImage from '../../layout/RoudedImage';
@@ -29,7 +30,7 @@ function MyAdmin() {
     async function removeImovel(id) {
         let msgType = 'success'
 
-        const data = await api.delete(`/moves/${id}`, {
+        const data = await api.patch(`/moves/remove/${id}`, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`,
             }
@@ -46,12 +47,10 @@ function MyAdmin() {
             })
 
         setFlashMessage(data.message, msgType)
-        console.log(moves)
     }
 
     async function concludeAgendamento(id) {
         let msgType = 'sucess'
-
         const data = await api.patch(`/moves/conclude/${id}`, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`,
@@ -63,20 +62,25 @@ function MyAdmin() {
             })
             .catch((err) => {
                 msgType = 'error'
-                return err.response.data
+                return err.data
+                
             })
+
         setFlashMessage(data.message, msgType)
     }
     return (
 
 
-    <div className="table-responsive">
-            <div className={styles.container}>
+
+        <div className="table-responsive">
+        <div className={styles.container}>
+            <div className={styles.info}>
                 <h1>Meus Imoveis</h1>
                 <Link to="/anunciar/sinup-owner">Cadastrar imovel</Link>
+            </div>
 
 
-                <table className="table">
+                <Table className="table" responsive="sm">
                     <thead className='thead-dark'>
                         <tr scope="row">
                             <th scope="col">ID</th>
@@ -102,19 +106,26 @@ function MyAdmin() {
                             <td>{imovel.tipo}</td>
                             <td>{imovel.preco}</td>
                             <td>
-                                {imovel.available ?("Imovel disponivel"):("Em agendamento")}
+                                {imovel.available && !imovel.renter ? ("Imovel disponivel!") : (!imovel.available  && imovel.renter) ? ("Agendado para visita!"): ("Aguardando confirmação ...!")}
                             </td>
                             <td>
                                 {
-                                    (imovel.available && !imovel.renter) ? (<Link to={`/imovel/edit/${imovel._id}`}><button className={styles.button_blue}>Editar</button></Link>) :
+                                    // <Button className={styles.button_danger} onClick={() => { removeImovel(imovel.renter._id) }}> Excluir </Button>
+                                    (imovel.available && !imovel.renter) ? (<><Link to={`/imovel/edit/${imovel._id}`}><Button className={styles.button_blue}>Editar</Button></Link> </>) :
                                     (!imovel.available && imovel.renter) ? (<>
-                                    <button className={styles.button_blue} onClick={() => {concludeAgendamento(imovel._id)}}> Agendar </button> <button className={styles.button_danger} onClick={() => { removeImovel(imovel.renter._id) }}> Excluir </button></>):<><Link to={`/imovel/edit/${imovel._id}`}><button className={styles.button_blue}>Editar</button></Link></> 
+                                    <Button className={styles.button_blue} onClick={() => {concludeAgendamento(imovel._id)}}> Confirmar </Button> 
+                                    <Link to={`/imovel/edit/${imovel._id}`}><Button className={styles.button_blue}>Editar</Button></Link> 
+                                    <Button className={styles.button_danger} onClick={() => { removeImovel(imovel._id) }}> Excluir </Button>
+                                    </>):
+                                    <><Link to={`/imovel/edit/${imovel._id}`}><Button className={styles.button_blue}>Editar</Button></Link> 
+                                    <Button className={styles.button_danger} onClick={() => { removeImovel(imovel._id) }}> Excluir </Button>
+                                    </> 
                                 }
                             </td>
                         </tr>))}
                         <tr>{(moves.length == 0) ?('Não ha imoveis cadastrados'):''}</tr>
                     </tbody>
-                </table>
+                </Table>
         </div>
     </div>
         

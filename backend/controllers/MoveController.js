@@ -191,6 +191,50 @@ module.exports = class MoveController {
         res.status(200).json({message: "Imovel removido com sucesso!"})
     }
 
+    
+    static async removeRenterById(req, res) {
+        const id = req.params.id
+        const updatedData = {}
+
+            // check if id valid
+        if(!ObjectId.isValid(id)) {
+            res.status(422).json({message: 'ID inválido!'})
+        }
+
+        //check if move exists
+        const move = await Move.findOne({_id: id})
+
+        if(!move) {
+            res.status(404).json({message: 'Imovel não encontrado!'})
+            return
+        }
+
+        //check if loggerd in user registered moves
+        const token = getToken(req)
+        const user = await getUserByToken(token)
+
+        if(move.user._id.toString() !== user._id.toString()) {
+            res.status(422).json({message: 'Problema na solicitação, tente novamente mais tarde!'
+            })
+            updatedData = {
+                name: move.name,
+                tipo: move.tipo,
+                preco: move.preco,
+                descricao: move.descricao,
+                images: move.images,
+                renter: {},
+                user: move.user,
+                available: move.available,
+                }
+
+
+            return
+        }
+
+        await Move.findByIdAndUpdate(id, updatedData)
+        res.status(200).json({message: "Agendamento removido com sucesso!"})
+    }
+
     static async updateMove (req, res) {
         console.log(req.body);
         const id = req.params.id
