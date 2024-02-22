@@ -91,7 +91,12 @@ function Home({ excludeId }) {
   return (
     <>
       <section className={styles.main_banner_img}>
-        <div className={styles.container_searh}>
+        <div className={styles.main_banner_title}>
+          <h1>Aluguel Universitário Descomplicado: Encontre seu Lar Ideal em Nossa Aplicação Web!</h1>
+        </div>
+      </section>
+
+      <div className={styles.container_searh}>
           <form onSubmit={handleSubmit}>
             <div className={styles.box}>
               <span>Preço:</span>
@@ -131,7 +136,14 @@ function Home({ excludeId }) {
             </div>
           )}
         </div>
-      </section>
+
+
+
+
+
+
+
+
 
       <div className={styles.container_card}>
         <div className={styles.card}>
