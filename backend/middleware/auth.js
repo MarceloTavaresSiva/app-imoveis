@@ -20,11 +20,11 @@ const requireAuth = (req, res, next) => {
 };
 
 const checkRole = (roles) => async (req, res, next) => {
-    let id = req.params.id;
+    let id = (req.user.id);
 
-    //retrieve employee info from DB
+    //retrieve employee info frfindOneom DB
     const user = await User.findById(id);
-    
+
     !roles.includes(user.role) ? res.status(401).json({message: "Sorry you do not have access to this route"})
       : next();
   };
