@@ -4,12 +4,25 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 90vh;
+    height: 80vh;
     width: 100%;
 }
 
-.main_banner_img .container_searh { 
+
+.main_banner_title {
     padding-top: 15%;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.main_banner_title h1 {
+    opacity: 0.9;
+    line-height: 4.1rem;
+    color: #fff;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 45px;
 }
 
 .container_searh form {
@@ -163,3 +176,39 @@ form .box {
 .bnt_desc:hover {
     background-color: #0066d3;
 }
+
+
+
+
+
+@media  (max-width: 1000px) {
+    .main_banner_title {
+        width: 90%;
+    }
+    .main_banner_title h1  {
+        font-size: 2em;
+        line-height: 2.6rem;
+    }
+    .main_banner_img {
+        height: 50vh;
+    }
+}
+
+
+@media  (max-width: 660px) {
+    .main_banner_title h1  {
+        font-size: 1.2em;
+        line-height: 2rem;
+    }
+    .main_banner_img {
+        height: 30vh;
+    }
+
+    .main_banner_title {
+        padding-top: 20%;
+    }
+}
+
+
+
+

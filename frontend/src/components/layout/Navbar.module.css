@@ -56,3 +56,40 @@ nav ul li button {
 }
 
 
+
+nav .menu {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.25rem;
+    height: 2rem;
+}
+
+
+/******* Media quries ********/
+
+@media (max-width: 900px) {
+    .navbar {
+        justify-content: center;
+        padding: 10px 0;
+        flex-wrap: wrap;
+        height: 10vh;
+    }
+}
+
+@media (max-width: 520px) {
+    .navbar {
+        margin: 10px;
+        height: 15vh;
+    }
+
+    .navbar ul li  {
+        font-size: 12px;
+    }
+}
+
+
+
+

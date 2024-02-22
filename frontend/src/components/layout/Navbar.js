@@ -3,12 +3,14 @@ import styles from './Navbar.module.css'
 
 import nome from '../../img/nome.png'
 
+
 /** Context */
 import { Context } from "../../context/UserContext"
 import { useContext } from "react"
 
 function Navbar() {
     const {authenticated, userInfo, logout} = useContext(Context)
+
 
     return (
         <nav className={styles.navbar}>
@@ -17,6 +19,7 @@ function Navbar() {
                 <img className={styles.img_logo} src={nome} alt="logoIta" />
             </Link>
             </div>
+
             
             <ul>
                 {authenticated && userInfo.roles === 'customer' ?  (
