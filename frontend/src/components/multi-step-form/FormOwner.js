@@ -43,6 +43,7 @@ const FormOwner = ({data, updateFieldHandler, authenticated, onFileChange}) => {
             type="text"
             name="name"
             id="name"
+            required
             placeholder="Digite o nome"
             value={data.name || ''}
             handleOnChange={(e) => updateFieldHandler("name", e.target.value)}
@@ -53,6 +54,7 @@ const FormOwner = ({data, updateFieldHandler, authenticated, onFileChange}) => {
             type="text"
             name="phone"
             id="phone"
+            required
             value={data.phone || ''}
             handleOnChange={(e) => updateFieldHandler("phone", e.target.value)}
         />
@@ -74,10 +76,11 @@ const FormOwner = ({data, updateFieldHandler, authenticated, onFileChange}) => {
             handleOnChange={onFileChange}
         />
         <Input
-        text="Senha (mínimo 8 caracteres)"
+        text="Senha (mínimo 6 caracteres)"
         type="password"
         name="password"
         id="password"
+        required
         value={data.password || ''}
         handleOnChange={(e) => updateFieldHandler("password", e.target.value)}
     />
@@ -87,6 +90,7 @@ const FormOwner = ({data, updateFieldHandler, authenticated, onFileChange}) => {
         type="password"
         id="confirmpassword"
         name="confirmpassword"
+        required
         value={data.confirmpassword || ''}
         handleOnChange={(e) => updateFieldHandler("confirmpassword", e.target.value)}
     /></> :'' }

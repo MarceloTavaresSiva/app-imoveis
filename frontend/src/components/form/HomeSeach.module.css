@@ -269,14 +269,14 @@ form .box {
 
 @media  (max-width: 660px) {
     .main_banner_title h1  {
-        font-size: 1.2em;
+        font-size: 1.3em;
         line-height: 2rem;
     }
     .main_banner_img {
-        height: 30vh;
+        height: 36vh;
     }
     .main_banner_title {
-        padding-top: 20%;
+        padding-top: 30%;
     }
 }
 

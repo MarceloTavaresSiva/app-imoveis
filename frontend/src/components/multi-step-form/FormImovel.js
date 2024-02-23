@@ -31,6 +31,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 text="Imagem do Imovel"
                 type="file"
                 name="images"
+                required
                 handleOnChange={onFileChange}
                 multiple={true}
             />
@@ -40,6 +41,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 name="nameImovel"
                 id="nameImovel"
                 placeholder="Digite o nome"
+                required
                 value={data.nameImovel || ''}  
                 handleOnChange={(e) => updateFieldHandler("nameImovel", e.target.value)}
             />
@@ -49,6 +51,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 id="preco"
                 name="preco"
                 placeholder="Preço do imovel"
+                required
                 value={data.preco || ''}  
                 handleOnChange={(e) => updateFieldHandler("preco", e.target.value)}
             />
@@ -57,6 +60,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 type="text"
                 name="descricao"
                 id= "descricao"
+                required
                 placeholder="Digite a descrição do Imovel"
                 value={data.descricao || ''}  
                 handleOnChange={(e) => updateFieldHandler("descricao", e.target.value)}
