@@ -15,6 +15,10 @@ function Home({ excludeId }) {
   const [noResults, setNoResults] = useState(false);
   const [showEmpty, setShowEmpty] = useState(false);
 
+  const [maxPrice, setMaxPrice] = useState("");
+
+
+
   // const [token] = useState(localStorage.getItem("token") || "");
 
   useEffect(() => {
@@ -23,6 +27,7 @@ function Home({ excludeId }) {
   const handleReset = () => {
     setItem("");
     setTipo("");
+    setMaxPrice(""); // Limpar o valor do input de max preço
     setFilterData(imoves);
     setNoResults(false);
     setShowEmpty(false);
@@ -63,19 +68,23 @@ function Home({ excludeId }) {
     e.preventDefault();
 
     //Verificar se ambos os campos estão preenchidos
-    if (!searchItem || !searchTipo || searchTipo === "Selecione uma opção!") {
+    if (!searchItem || !searchTipo || searchTipo === "Selecione uma opção!" || !maxPrice) {
       setShowEmpty(true);
       return;
     }
 
     const filterResults = imoves.filter((item) => {
-      const matcheSearch = item.preco
-        .toString()
-        .toLowerCase()
-        .includes(searchItem.toLocaleLowerCase());
-      const matcheTipo = searchTipo === "" || item.tipo === searchTipo;
+      const price = parseFloat(item.preco);
 
+      //verificar se o preço esta dentro do intervalo espercificado
+
+      const matcheSearch =
+      price >= parseFloat(searchItem) && price <= parseFloat(maxPrice);
+
+      const matcheTipo = searchTipo === "" || item.tipo === searchTipo;
+  
       return matcheSearch && matcheTipo;
+
     });
 
     if (filterResults.length > 0) {
@@ -84,7 +93,6 @@ function Home({ excludeId }) {
     } else {
       setNoResults(true);
     }
-    setFilterData(filterResults);
     setShowEmpty(false);
   };
 
@@ -97,39 +105,59 @@ function Home({ excludeId }) {
       </section>
 
       <div className={styles.container_searh}>
-          <form onSubmit={handleSubmit}>
-            <div className={styles.box}>
-              <span>Preço:</span>
-              <input
-                value={searchItem}
-                type="text"
-                name="preco"
-                placeholder="Digite o preço (R$)"
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.box}>
-              <span>Tipo de Imóvel:</span>
-              <select
-                id="tipoImovel"
-                name="tipoImovel"
-                onChange={handleTipos}
-                value={searchTipo}
-              >
-                <option> selecione uma opcão</option>
-                {tipos.map((item, index) => (
-                  <option key={index} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className={styles.box}>
-              <button className={styles.btn_search} type="submit">
-                Buscar
-              </button>
-            </div>
-          </form>
+        <div className={styles.container_title_h2}>
+          <h2>Pesquisar Imoveis por filtro</h2>
+        </div>
+
+          <div className={styles.form_continer}>
+              <form onSubmit={handleSubmit}>
+                    <div className={styles.box}>
+                      <span>R$:</span>
+                      <input
+                        value={searchItem}
+                        type="text"
+                        name="preco"
+                        placeholder="Min"
+                        required
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div className={styles.box}>
+                        <span>R$:</span>
+                        <input
+                          value={maxPrice}
+                          type="text"
+                          name="maxPrice"
+                          placeholder="Max"
+                          required
+                          onChange={(e) => setMaxPrice(e.target.value)}
+                        />
+                    </div>
+
+                    <div className={styles.box}>
+                      <span>Tipo de Imóvel:</span>
+                      <select className={styles.form_select}
+                        id="tipoImovel"
+                        name="tipoImovel"
+                        required
+                        onChange={handleTipos}
+                        value={searchTipo}
+                      >
+                        <option> selecione uma opcão</option>
+                        {tipos.map((item, index) => (
+                          <option key={index} value={item}>
+                            {item}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                <div className={styles.box}>
+                    <button className={styles.btn_search} type="submit">Buscar</button>
+                </div>
+              </form>
+          </div>
           {showEmpty && (
             <div className={styles.menssage}>
               Preencha todos os campos antes de bsucar.
@@ -137,42 +165,30 @@ function Home({ excludeId }) {
           )}
         </div>
 
-
-
-
-
-
-
-
-
       <div className={styles.container_card}>
         <div className={styles.card}>
-        {noResults ? (
-          <div>
-            <div>Nenhum resultado encontrado.</div>
-            <button type="button" onClick={handleReset} >ok</button>
-          </div>
-        ) : (
-          filterData.map((item, index) => (
-            <div className={styles.card_flex} key={index}>
-              <div className={styles.img_flex}>
-                <img
-                    src={`${process.env.REACT_APP_API}/images/imoveis/${item.images[0]}`}
-                    alt={index} />
+              {noResults ? (
+              <div className={styles.card_filter_pesquisa}>
+                <p>Nenhum resultado encontrado.</p>
+                <button className={styles.card_result_button } type="button" onClick={handleReset} >ok</button>
               </div>
-
-              <div className={styles.card_text}>
-                  <h3 className={styles.title_card}>{item.tipo}</h3>
-                  <p className={styles.container_desc}>{item.name}</p>
-                  <p className={styles.container_desc}>{item.descricao}</p>
-                  <h3 className={styles.card_text_h3}>R$ {item.preco} /mêS</h3>
-                  <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}>Mais Detalhes</Link>
-              </div>
-            </div>
-          ))
-        )}
-        </div>
+            ) : (
+              filterData.map((item, index) => (
+                <div className={styles.flex_box}>
+                     <img
+                        src={`${process.env.REACT_APP_API}/images/imoveis/${item.images[0]}`}
+                        alt={index} />
+                  
+                      <h3 className={styles.title_card}>{item.tipo}</h3>
+                      <p className={styles.container_desc}>{item.name}</p>
+                      <p className={styles.container_desc}>{item.descricao}</p>
+                      <h3 className={styles.card_text_h3}>R$ {item.preco} /mêS</h3>
+                      <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
+                </div>
+              ))
+            )}  
       </div>
+    </div>
     </>
   );
 }

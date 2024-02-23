@@ -1,5 +1,6 @@
 import api from '../../../utils/api';
 
+
 import { useState, useEffect } from "react";
 
 import { Link, useParams } from 'react-router-dom';
@@ -14,6 +15,7 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 
 
 function DetailsImovel() {
+  const [moves, setmoves] = useState([])
   const [imovel, setImovel] = useState({});
   const [otherImoveis, setOtherImoveis] = useState([]);
 
@@ -95,41 +97,47 @@ function DetailsImovel() {
         </div>
       )}
     </div>
-          <div>
-            <div className={styles.details_desc}>
+          <div className={styles.flex_Container_Principal}>
+            <div className={styles.flex_card_Descricao}>
                 <h1>{imovel.name}</h1>
+                <p>Tipo do Imovel: {imovel.tipo}</p>
+                <div className={styles.Descricao_imovel}>
+                <h2 > Descrição do Imóvel</h2>
                 <p>{imovel.descricao}</p>
-                <p>Tipo: {imovel.tipo}</p>
-                <p className={styles.desc_preco}>Preço: R$ {imovel.preco} /mês</p>
+                </div>
             </div>
-            <div>
-                {token ? (
-                    <button onClick={schedule}>Solicitar uma visita</button>
-                  ) : (
-                    <p>Você precisa <Link to="/register">criar uma conta</Link> para solicitar a visita</p>
-                )}
+
+            <div className={styles.flex_card_Proprietario}>
+              <h4>Preço do Imovel: R$ {imovel.preco} /mês</h4>
+
+              <h4>Nome do Proprietario: {imovel.user.name}</h4>
+              <h4>Telefone: {imovel.user.phone}</h4>
+
+              {token ? (
+                      <button onClick={schedule} className={styles.bnt_desc}> <span>Solicitar uma visita</span> </button>
+                    ) : (
+                      <p>Você precisa <Link to="/register">criar uma conta</Link> para solicitar a visita</p>
+                  )}
             </div>
           </div>
 
       <h2 className={styles.text_h2}>Veja outros imóveis</h2>
-      <div className={styles.card}>
-      {otherImoveis.map((item, index) => (
-        <div className={styles.card_flex} key={index}>
-          <div className={styles.img_flex}>
+      <div className={styles.container_card}>
+        <div className={styles.card}>
+        {otherImoveis.map((item, index) => (
+          <div className={styles.flex_box}>
             <img
-                src={`${process.env.REACT_APP_API}/images/imoveis/${item.images[0]}`}
+              src={`${process.env.REACT_APP_API}/images/imoveis/${item.images[0]}`}
                 alt={index} />
-          </div>
-
-          <div className={styles.card_text}>
-              <h3>{item.tipo}</h3>
-              <p className={styles.container_desc}>{item.name}</p>
-              <p className={styles.container_desc}>{item.descricao}</p>
-              <h3 className={styles.card_text_h3}>R$ {item.preco} /mêS</h3>
-              <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}>Mais Detalhes</Link>
-          </div>
+                      
+                <h3 className={styles.title_card}>{item.tipo}</h3>
+                <p className={styles.container_desc}>{item.name}</p>
+                <p className={styles.container_desc}>{item.descricao}</p>
+                <h3 className={styles.card_text_h3}>R$ {item.preco} /mêS</h3>
+                <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
+            </div>
+        ))}
         </div>
-    ))}
       </div>
     </>
   );
