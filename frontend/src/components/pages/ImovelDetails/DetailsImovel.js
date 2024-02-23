@@ -15,7 +15,6 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 
 
 function DetailsImovel() {
-  const [moves, setmoves] = useState([])
   const [imovel, setImovel] = useState({});
   const [otherImoveis, setOtherImoveis] = useState([]);
 
@@ -110,8 +109,8 @@ function DetailsImovel() {
             <div className={styles.flex_card_Proprietario}>
               <h4>Preço do Imovel: R$ {imovel.preco} /mês</h4>
 
-              <h4>Nome do Proprietario: {imovel.user.name}</h4>
-              <h4>Telefone: {imovel.user.phone}</h4>
+              <h4>Nome do Proprietario: {imovel.user ? imovel.user.name : ""}</h4>
+              <h4>Telefone: {imovel.user ? imovel.user.phone : ""}</h4>
 
               {token ? (
                       <button onClick={schedule} className={styles.bnt_desc}> <span>Solicitar uma visita</span> </button>
