@@ -72,7 +72,6 @@ nav .menu {
 
 @media (max-width: 900px) {
     .navbar {
-        justify-content: center;
         padding: 10px 0;
         flex-wrap: wrap;
         height: 10vh;
@@ -80,13 +79,17 @@ nav .menu {
 }
 
 @media (max-width: 520px) {
+    html, body {
+        overflow-x: hidden;
+    }
     .navbar {
-        margin: 10px;
+        flex-direction: column;
+        margin: 0px 10px;
         height: 15vh;
     }
 
     .navbar ul li  {
-        font-size: 12px;
+        font-size: 16px;
     }
 }
 
