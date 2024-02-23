@@ -1,4 +1,6 @@
 
+
+/********  Silides Galeria Imovel desc  ***********/
 .container_details{
     width: 100%;
     max-width: 1400px;
@@ -22,6 +24,86 @@
 }
 
 
+/********  Card Descrição Proprietario  ***********/
+
+.flex_Container_Principal {
+    margin: 0 auto;
+    display: flex;
+    max-width: 1400px;
+}
+
+.flex_card_Descricao {
+    margin: 20px;
+    width: 100%;
+}
+
+.flex_card_Descricao h1 {
+    color: #071c1f;
+    font-size: 36px;
+}
+
+.Descricao_imovel {
+    font-weight: bold;
+    font-size: 22px;
+    margin: 4rem 0;
+}
+
+
+.Descricao_imovel h2 {
+    color: #071c1f;
+}
+
+
+.Descricao_imovel p {
+    font-weight: normal;
+    font-size: 1rem;
+    margin: 20px 0;
+    color: #484848; 
+}
+
+.flex_card_Descricao {
+    height: 50vh;
+}
+
+
+
+.flex_card_Proprietario{
+    padding: 5rem 5rem;
+    text-align: center;
+    border-radius: 8px;
+    margin: 20px;
+    width: 700px;
+    border:1px solid #d6d6d6;
+}
+
+.flex_card_Proprietario h4{
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    color: #071c1f;
+}
+
+
+.bnt_desc {
+    cursor: pointer;
+    border: none;
+}
+
+.bnt_desc span {
+    font-size: 18px;
+}
+
+
+
+@media  (max-width: 900px) {
+    .flex_Container_Principal {
+        flex-wrap: wrap;
+    }
+}
+
+
+
+
 
 /********  Card Filter  ***********/
 .text_h2  { 
@@ -32,69 +114,65 @@
 }
 
 
-.container_card {
-    margin: 5rem 0;
-}
-
-.card {
-    display: flex;
+.container_card  {
     max-width: 1400px;
     margin: 0 auto;
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
-.img_flex img {
-    border-radius: 10px 10px 0 0;
-    display: block;
-    width: 100%;
-    height: 25vh;
-    object-fit: cover;
-}
 
-.card_text_h3 {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-}
-
-.card_text  {
-    padding: 12px;
-    margin-top: 1rem;
-}
-
-.card_flex {
-    border-radius: 10px 10px 0 0;
-    width: 100%;
-    position: relative;
-    margin: 20px;
-    flex: 1 1 350px;
+.flex_box {
     border:1px solid #d6d6d6;
-    padding-bottom: 1.5rem;
+    width: 400px;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-.card_flex:hover {
+.flex_box:hover {
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-.container_desc {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: 300;
+.card  {
+    justify-content:space-between ;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.bnt_desc {
-    text-align: center;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    border: none;
+.card img {
+    height:220px;
+    width: 100%;
     border-radius: 5px;
-    font-size: 16px;
-    padding: 3%;
-    text-decoration: none;
+    background-size: cover;
+    object-fit: cover;
 }
 
-.bnt_desc:hover {
+.flex_box .title_card {
+    margin-top: 1rem;
+}
+
+
+.flex_box .container_desc {
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+.flex_box .card_text_h3 {
+    margin-bottom: 20px;
+}
+
+.bnt_desc    {
+    text-align: center;
+    padding: 12px;
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.bnt_desc:hover{
     background-color: #0066d3;
 }
