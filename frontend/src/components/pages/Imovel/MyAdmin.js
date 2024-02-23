@@ -30,7 +30,7 @@ function MyAdmin() {
     async function removeImovel(id) {
         let msgType = 'success'
 
-        const data = await api.patch(`/moves/remove/${id}`, {
+        const data = await api.delete(`/moves/${id}`, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`,
             }
