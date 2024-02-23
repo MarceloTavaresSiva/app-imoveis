@@ -83,13 +83,19 @@ nav .menu {
         overflow-x: hidden;
     }
     .navbar {
-        flex-direction: column;
+        padding: 0 0;
         margin: 0px 10px;
-        height: 15vh;
+        height: 16vh;
     }
 
     .navbar ul li  {
-        font-size: 16px;
+        font-size: 14px;
+        
+    }
+
+    .img_logo {
+        width: 100px;
+        height: 100px;
     }
 }
 
