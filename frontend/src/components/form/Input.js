@@ -7,15 +7,24 @@ function Input({
     placeholder,
     handleOnChange,
     value,
-    multiple,}) {
+    multiple,
+    required,  // Adicionando a propriedade 'required'
+}) {
 
     return(
         <div className={styles.form_control}>
-            <label htmlFor={name}>{text}</label>
-            <input type={type} name={name} id={name} placeholder={placeholder} onChange={handleOnChange}
-            value={value} {...(multiple ? {multiple} : '')}
-            />
-        </div>
+        <label htmlFor={name}>{text}</label>
+        <input 
+            type={type} 
+            name={name} 
+            id={name} 
+            placeholder={placeholder} 
+            onChange={handleOnChange}
+            value={value} 
+            {...(multiple ? {multiple} : '')}
+            {...(required ? {required: 'required'} : {})}  // Adicionando a validação 'required'
+        />
+    </div>
     )
 }
 

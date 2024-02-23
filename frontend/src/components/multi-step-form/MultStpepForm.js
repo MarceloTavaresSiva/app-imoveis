@@ -67,14 +67,12 @@ const MainForm = () => {
       })
       .catch((err) => {
         console.log(err)
-        msgText = error.response.data.message
         msgType = 'error'
         return err.response
       })
 
     setFlashMessage(msgText, msgType)
     navigate('/imovel/myadmin')
-
   }
   const getUserDetails = async () => {
     const response = await api.get(`/users/checkuser`);

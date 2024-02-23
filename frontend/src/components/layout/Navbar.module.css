@@ -79,14 +79,11 @@ nav .menu {
 }
 
 @media (max-width: 520px) {
-    html, body {
-        overflow-x: hidden;
-    }
     .navbar {
         justify-content: center;
         padding: 0 0;
-        margin: 0px 10px;
-        height: 20vh;
+        margin: 0px 0px;
+        height: 22vh;
     }
 
     .navbar ul li  {

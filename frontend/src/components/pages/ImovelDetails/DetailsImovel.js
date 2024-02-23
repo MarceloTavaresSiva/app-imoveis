@@ -107,7 +107,7 @@ function DetailsImovel() {
             </div>
 
             <div className={styles.flex_card_Proprietario}>
-              <h4>Preço do Imovel: R$ {imovel.preco} /mês</h4>
+              <h4>Preço do Imóvel: R$ {imovel.preco} /mês</h4>
 
               <h4>Nome do Proprietario: {imovel.user ? imovel.user.name : ""}</h4>
               <h4>Telefone: {imovel.user ? imovel.user.phone : ""}</h4>
