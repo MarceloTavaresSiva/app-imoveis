@@ -47,7 +47,7 @@ function Navbar() {
                     <li onClick={logout}>Sair</li>
                 </>
                 
-                ) : (
+                ) : (   
                     <>
                      <li>
                         <Link to="anunciar/sinup-owner">Anunciar</Link>
@@ -55,6 +55,10 @@ function Navbar() {
                     <li>
                         <Link to="/login">Entrar</Link>
                     </li>
+                    <li>
+                        <Link to="/contato"> Contato</Link>
+                    </li>
+
                     <li className={styles.active_create}>
                         <Link to="/register"> Criar Conta</Link>
                     </li>
