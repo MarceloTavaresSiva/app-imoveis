@@ -19,7 +19,7 @@ router.post('/addimovel', imageUpload.fields([{ name: 'image', maxCount: 1 }, { 
 //     { name: 'images', maxCount: 3 },
 //   ]), MoveController.create)
 router.get('/all',  MoveController.getAll)
-router.get('/mymoves', verifyToken, checkRole(['admin']), MoveController.getAllUserMoves)
+router.get('/mymoves', verifyToken, checkRole(['admin', 'owner']), MoveController.getAllUserMoves)
 router.get('/myimoveloptions', verifyToken, MoveController.getAllImoveloptions)
 router.get('/admin/imoveis', verifyToken, MoveController.getAdminImoveis)
 router.get('/:id', MoveController.getMoveById)

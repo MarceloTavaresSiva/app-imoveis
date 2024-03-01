@@ -8,7 +8,8 @@ function Input({
     handleOnChange,
     value,
     multiple,
-    required,  // Adicionando a propriedade 'required'
+    required,
+    maxLength,
 }) {
 
     return(
@@ -22,7 +23,8 @@ function Input({
             onChange={handleOnChange}
             value={value} 
             {...(multiple ? {multiple} : '')}
-            {...(required ? {required: 'required'} : {})}  // Adicionando a validação 'required'
+            {...(required ? {required: 'required'} : {})}
+            {...(maxLength ? {maxLength} : {})}
         />
     </div>
     )

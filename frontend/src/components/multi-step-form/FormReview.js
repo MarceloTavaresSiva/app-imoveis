@@ -19,7 +19,11 @@ const image = data.image
 
              {data.image ?
                 <RoudedImage
-                    src={`${process.env.REACT_APP_API}/images/users/${data.image}`}
+                    //src={`${process.env.REACT_APP_API}/images/users/${data.image}`}
+
+                    src={ data.image ? URL.createObjectURL(data.image): `${process.env.REACT_APP_API}/images/users/${image}`}
+
+
                     alt={data.name}
                 />: 
                 ''

@@ -1,10 +1,13 @@
 import api from '../../../utils/api';
 import { useState, useEffect } from 'react'
 
-import { useParams } from 'react-router-dom';
 
 import useFlashMessage from '../../../hooks/useFlashMessage'
 import ImovelForm from '../../form/ImovelForm';
+
+
+import { useNavigate, useParams } from 'react-router-dom'
+
 
 
 function EditImovel () {
@@ -12,6 +15,8 @@ function EditImovel () {
     const [token] = useState(localStorage.getItem("token") || "");
     const {setFlashMessage} = useFlashMessage()
     const {id} = useParams()
+    const navigate = useNavigate()
+
  
     useEffect(() => {
         api.get(`/moves/${id}`, {
@@ -54,6 +59,8 @@ function EditImovel () {
             return err.response.data
         })
         setFlashMessage(data.message, msgType)
+        navigate('/imovel/myadmin')
+        
 
     }
     

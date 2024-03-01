@@ -45,7 +45,7 @@ const MainForm = () => {
   };
 
   const registerImovel = async () => {
-    let msgText = 'Registro realizado com sucesso!'
+    let msgText = 'Imóvel cadastrado com sucesso!'
     let msgType = 'success'
 
     const formData = new FormData()
@@ -61,7 +61,23 @@ const MainForm = () => {
       }
     })
 
-    await api.post(`moves/addimovel`, formData)
+    if(authenticated) {
+      await api.post(`moves/addimovel`, formData)
+
+      .then((response) => {
+        return response.data
+      })
+      .catch((err) => {
+        console.log(err)
+        msgType = 'error'
+        return err.response
+
+      })
+      setFlashMessage(msgText, msgType)
+      navigate('/imovel/myadmin')
+
+    } else {
+      await api.post(`moves/create`, formData)
       .then((response) => {
         return response.data
       })
@@ -70,9 +86,16 @@ const MainForm = () => {
         msgType = 'error'
         return err.response
       })
+      
+      setFlashMessage(msgText, msgType)
+      navigate('/login')
 
+    }
+
+
+      //Validar Token 
     setFlashMessage(msgText, msgType)
-    navigate('/imovel/myadmin')
+    //navigate('/imovel/myadmin')
   }
   const getUserDetails = async () => {
     const response = await api.get(`/users/checkuser`);
