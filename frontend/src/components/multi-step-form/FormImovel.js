@@ -11,6 +11,18 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
 
     const tipos = ['Casa', 'Apartamento', 'Kitnet']
 
+    const formatCurrency = (value) => {
+        const formattedValue = parseFloat(value.replace(/[^\d]/g, '')) || 0;
+        const currency = new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(formattedValue / 100);
+        return `${currency}`;
+    };
+
+
+
+
     return (
         <div className={styleStep.form_principal}>
             <div>
@@ -52,7 +64,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 name="preco"
                 placeholder="Preço do imovel"
                 required
-                value={data.preco || ''}  
+                value={formatCurrency(data.preco || '')}
                 handleOnChange={(e) => updateFieldHandler("preco", e.target.value)}
             />
             <Input
