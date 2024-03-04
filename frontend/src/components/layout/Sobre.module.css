@@ -1,0 +1,37 @@
+.container_sobre {
+    text-align: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 8rem auto;
+}
+
+
+.container_sobre h1 {
+    font-weight: 300;
+    font-size: 2rem;
+    color: black;
+}
+
+.container_sobre h3 {
+    margin: 1.5rem 0;
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.container_sobre_padding {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+
+}
+
+
+.container_sobre_padding p {
+    line-height: 28px;
+    color: black;
+}
+
+
+
+

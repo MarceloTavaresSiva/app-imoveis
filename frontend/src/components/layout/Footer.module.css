@@ -1,4 +1,7 @@
 .footer {
+    text-decoration: none;
+    list-style: none;
+    font-size: 14px;
     height: 250px;
     display: flex;
     align-items: center;
@@ -6,4 +9,8 @@
     background-color: #eee;
     color: #444;
     border-top: 1px solid #666;
+}
+
+.footer li {
+    margin: 0 10px;
 }
