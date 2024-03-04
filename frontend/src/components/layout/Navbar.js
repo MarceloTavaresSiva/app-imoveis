@@ -55,13 +55,6 @@ function Navbar() {
                     <li>
                         <Link to="/login">Entrar</Link>
                     </li>
-                    <li>
-                        <Link to="/contato"> Contato</Link>
-                    </li>
-                    <li>
-                        <Link to="/sobre"> Sobre</Link>
-                    </li>
-
                     <li className={styles.active_create}>
                         <Link to="/register"> Criar Conta</Link>
                     </li>

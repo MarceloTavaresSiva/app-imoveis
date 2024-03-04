@@ -1,16 +1,24 @@
+import styles from './Sobre.module.css'
 
 
 function Sobre() {
     return (
 
         <>
-        <h1>Bem-vindo</h1>
-        <p>O sistema Ita-Aluga foi desenvolvido no ãmbito do Instituto de Ciencias Exatas e Tecnologia (ICET)
-            da Universidade Federal do Amazonas (UFAM), através de um trabalho de Conclusão de Curso, no periodo de 2023/2 ano civil de 2024 </p>
+        <div className={styles.container_sobre}>        
 
-        <h2>Objetivo do Sistema</h2>
-        <p>O objetivo do sistema </p>
-        
+        <h1>Objetivo do Sistema</h1 >
+        <div className={styles.container_sobre_padding}>
+        <p>
+            O objetivo deste trabalho é desenvolver uma aplicação web que sirva como facilitador no
+            processo de aluguel de imóveis para estudantes universitários do município de Itacoatiara - AM. 
+            contribuindo para a facilidade e satisfação dos estudantes que buscam acomodações adequadas
+            durante seu período acadêmico. Simplificaram a busca, seleção e processo de locação, 
+            promovendo, assim, uma solução mais eficaz e moderna para as necessidades habitacionais
+            dos estudantes universitários de Itacoatiara.
+        </p>
+        </div>
+        </div>
         </>
     )
 }

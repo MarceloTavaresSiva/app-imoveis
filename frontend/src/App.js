@@ -41,13 +41,15 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/contato" element={<Contato />} />
-          <Route path="/sobre" element={<Sobre />} />
+
+          <Route path="/footer/contato" element={<Contato />} />
+          <Route path="/footer/sobre" element={<Sobre />} />
 
           <Route path="/imovel/myadmin" element={<MyAdmin />} />  
           <Route path="/imovel/listaimoveis" element={<ListaImoveis/>} />
           <Route path="/imovel/edit/:id" element={<EditImovel/>} />
           <Route path="/user/profile" element={<Profile />} />
+          
           <Route path="anunciar/sinup-owner" element={<RegisterOwner />} />
           <Route path="/imoveldetails/:id" element={< DetailsImovel/>} />
           <Route path="/" element={<Home />} />
