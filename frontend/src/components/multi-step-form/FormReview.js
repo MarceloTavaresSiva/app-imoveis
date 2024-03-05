@@ -7,7 +7,6 @@ import RoudedImage from '../layout/RoudedImage'
 
 const FormReview = ({ data, updateFieldHandler,authenticated }) => {
 
-console.log(data.image);
 const image = data.image
   return (
     <>
@@ -19,11 +18,11 @@ const image = data.image
 
              {data.image ?
                 <RoudedImage
+                //src={ data.image ? URL.createObjectURL(data.image): `${process.env.REACT_APP_API}/images/users/${image}`}
+
                     //src={`${process.env.REACT_APP_API}/images/users/${data.image}`}
-
-                    src={ data.image ? URL.createObjectURL(data.image): `${process.env.REACT_APP_API}/images/users/${image}`}
-
-
+                    src={data.image ?   `${process.env.REACT_APP_API}/images/users/${data.image}` : URL.createObjectURL(preview)}
+                    //src={ data.image ? URL.createObjectURL(data.image): `${process.env.REACT_APP_API}/images/users/${image}`}
                     alt={data.name}
                 />: 
                 ''

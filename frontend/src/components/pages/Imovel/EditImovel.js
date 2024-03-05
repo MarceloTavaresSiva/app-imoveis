@@ -68,8 +68,6 @@ function EditImovel () {
         <>
 
             {/* <h1>Editanto o Imovel: {user.user._id}</h1> */}
-
-            <p>Depois da edição os dados serão atualizados no sistema</p>
             {moves.name && (
                 <ImovelForm handleSubmit={updateImovel} btnText="Atualizar" movesData={moves} />
             )}

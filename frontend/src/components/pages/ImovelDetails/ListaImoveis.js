@@ -56,8 +56,9 @@ function ListaImoveis() {
         // </section>  
         
         <div className="table-responsive">
+                        <h1 className={styles.container_meusImoveis}>Meus Agendamentos</h1>
         <div className={styles.container}>
-            <h1>Meus Agendamentos</h1>
+
 
             <Table className="table" responsive="sm">
                 <thead className='thead-dark'>
@@ -66,7 +67,7 @@ function ListaImoveis() {
                         <th scope="col">Perfil</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Tipo</th>
-                        <th scope="col">Preco</th>
+                        <th scope="col">Preço</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
