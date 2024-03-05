@@ -4,23 +4,14 @@ import styleStep from './MultStep.module.css'
 import Input from '../form/Input'
 import Select from "../form/Select"
 
+
 import RoudedImage from '../layout/RoudedImage'
+
 
 
 const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => {
 
     const tipos = ['Casa', 'Apartamento', 'Kitnet']
-
-    const formatCurrency = (value) => {
-        const formattedValue = parseFloat(value.replace(/[^\d]/g, '')) || 0;
-        const currency = new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        }).format(formattedValue / 100);
-        return `${currency}`;
-    };
-
-
 
 
     return (
@@ -29,6 +20,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 <h1>Cadastre um Imovel</h1>
                 {/* <p>Disponivel para alugar</p> */}
             </div>
+            
             <div className={formStyles.preview_pet_images}>
 
             {data.images  &&
@@ -64,7 +56,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 name="preco"
                 placeholder="Preço do imovel"
                 required
-                value={formatCurrency(data.preco || '')}
+                value={data.preco || ''}
                 handleOnChange={(e) => updateFieldHandler("preco", e.target.value)}
             />
             <Input

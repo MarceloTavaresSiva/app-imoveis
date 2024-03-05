@@ -50,16 +50,14 @@ const FormOwner = ({
         <div className={styleStep.inputs_container}>
             <div className={styles.profile_header}>
                 <h1>Perfil Proprietario</h1>
+
                 {(data.image || preview) && (
                     <RoudedImage
-                        //src={`${process.env.REACT_APP_API}/images/users/${data.image}`}
-                        src={data.image ? URL.createObjectURL(preview || data.image) : `${process.env.REACT_APP_API}/images/imoveis/${image}`}
-                       // src={ data.image ? URL.createObjectURL(data.image): `${process.env.REACT_APP_API}/images/imoveis/${image}`}
-
-
-                        alt={data.name}
-                    />
-                )}
+                    src={data.image ?   `${process.env.REACT_APP_API}/images/users/${data.image}` : URL.createObjectURL(preview)}
+                    alt={data.name}
+                />
+            )}
+                
             </div>
 
             <Input

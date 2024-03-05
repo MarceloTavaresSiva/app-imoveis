@@ -13,6 +13,7 @@ module.exports = class MoveController {
         const {nameImovel, tipo, preco, descricao } = req.body
         const {name, email, phone, password } = req.body
         const images = req.files
+        console.log(images);
         const available = true
         
         //validation
@@ -64,7 +65,7 @@ module.exports = class MoveController {
     })
         //create move
         const move = new Move({
-            name,
+            name: nameImovel,
             tipo,
             preco,
             descricao,

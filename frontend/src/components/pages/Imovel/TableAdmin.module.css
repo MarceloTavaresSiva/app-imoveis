@@ -3,6 +3,7 @@ td {
   padding: 1rem 2rem;
 }
 
+
 th[scope='col'] {
   background-color: #0658f1;
   color: #fff;
@@ -15,6 +16,13 @@ td {
 tr:nth-of-type(even) {
   background-color: #eee;
 }
+
+.container_meusImoveis {
+  width: 80%;
+  font-size: 2rem;
+  margin: 2rem auto;
+}
+
 
 table {
  width: 80%;

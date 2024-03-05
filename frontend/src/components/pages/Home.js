@@ -106,7 +106,7 @@ function Home({ excludeId }) {
 
       <div className={styles.container_searh}>
         <div className={styles.container_title_h2}>
-          <h2>Pesquisar Imoveis por filtro</h2>
+          <h2>Pesquisar imóveis por filtro</h2>
         </div>
 
           <div className={styles.form_continer}>
