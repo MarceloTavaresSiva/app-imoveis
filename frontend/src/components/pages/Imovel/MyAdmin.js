@@ -113,11 +113,13 @@ function MyAdmin() {
                                     // <Button className={styles.button_danger} onClick={() => { removeImovel(imovel.renter._id) }}> Excluir </Button>
                                     (imovel.available && !imovel.renter) ? (<><Link to={`/imovel/edit/${imovel._id}`}><Button className={styles.button_blue}>Editar</Button></Link> </>) :
                                     (!imovel.available && imovel.renter) ? (<>
-                                    <Button className={styles.button_blue} onClick={() => {concludeAgendamento(imovel._id)}}> Confirmar </Button> 
+
                                     <Link to={`/imovel/edit/${imovel._id}`}><Button className={styles.button_blue}>Editar</Button></Link> 
                                     <Button className={styles.button_danger} onClick={() => { removeImovel(imovel._id) }}> Excluir </Button>
                                     </>):
-                                    <><Link to={`/imovel/edit/${imovel._id}`}><Button className={styles.button_blue}>Editar</Button></Link> 
+                                    <>
+                                    <Button className={styles.button_blue} onClick={() => {concludeAgendamento(imovel._id)}}> Confirmar </Button> 
+                                    <Link to={`/imovel/edit/${imovel._id}`}><Button className={styles.button_blue}>Editar</Button></Link> 
                                     <Button className={styles.button_danger} onClick={() => { removeImovel(imovel._id) }}> Excluir </Button>
                                     </> 
                                 }
