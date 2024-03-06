@@ -3,6 +3,7 @@ import styles from './TableAdmin.module.css';
 import { useState, useEffect } from 'react';
 import {Button, Table} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+import CurrencyInput from 'react-currency-input-field';
 
 import RoudedImage from '../../layout/RoudedImage';
 
@@ -104,7 +105,7 @@ function MyAdmin() {
                             </td>
                             <td>{imovel.name}</td>
                             <td>{imovel.tipo}</td>
-                            <td>{imovel.preco}</td>
+                            <td><CurrencyInput decimalsLimit={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={imovel.preco} /></td>
                             <td>
                                 {imovel.available && !imovel.renter ? ("Imovel disponivel!") : (!imovel.available  && imovel.renter) ? ("Agendado para visita!"): ("Aguardando confirmação ...!")}
                             </td>
