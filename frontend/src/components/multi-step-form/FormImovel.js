@@ -56,6 +56,9 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 name="preco"
                 placeholder="Preço do imovel"
                 required
+                mascara={{
+                    mask: Number,
+                }}
                 value={data.preco || ''}
                 handleOnChange={(e) => updateFieldHandler("preco", e.target.value)}
             />

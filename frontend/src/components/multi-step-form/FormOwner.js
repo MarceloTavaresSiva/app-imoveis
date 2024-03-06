@@ -50,13 +50,18 @@ const FormOwner = ({
         <div className={styleStep.inputs_container}>
             <div className={styles.profile_header}>
                 <h1>Perfil Proprietario</h1>
-
+                {authenticated ?
+                
+                "" :
+                <>
                 {(data.image || preview) && (
                     <RoudedImage
-                    src={data.image ?   `${process.env.REACT_APP_API}/images/users/${data.image}` : URL.createObjectURL(preview)}
+                    src={ data.image ? URL.createObjectURL(data.image): `${process.env.REACT_APP_API}/images/users/${data.image}`}
                     alt={data.name}
                 />
-            )}
+                )}
+                </>
+            }
                 
             </div>
 

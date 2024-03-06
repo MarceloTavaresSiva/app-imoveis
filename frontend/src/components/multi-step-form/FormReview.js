@@ -16,13 +16,12 @@ const image = data.image
       <hr />
       <div className={formStyles.preview_pet_images}>
 
-             {data.image ?
+             {!authenticated?
                 <RoudedImage
                 //src={ data.image ? URL.createObjectURL(data.image): `${process.env.REACT_APP_API}/images/users/${image}`}
 
                     //src={`${process.env.REACT_APP_API}/images/users/${data.image}`}
-                    src={data.image ?   `${process.env.REACT_APP_API}/images/users/${data.image}` : URL.createObjectURL(preview)}
-                    //src={ data.image ? URL.createObjectURL(data.image): `${process.env.REACT_APP_API}/images/users/${image}`}
+                    src={ data.image ? URL.createObjectURL(data.image): `${process.env.REACT_APP_API}/images/users/${data.image}`}
                     alt={data.name}
                 />: 
                 ''
