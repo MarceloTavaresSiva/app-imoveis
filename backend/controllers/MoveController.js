@@ -10,7 +10,7 @@ module.exports = class MoveController {
 
     static async create(req, res) {
         
-        const {nameImovel, tipo, preco, descricao } = req.body
+        const {nameImovel, tipo, preco, descricao, cep, rua, numero, complemento, bairro, cidade, estado} = req.body
         const {name, email, phone, password } = req.body
         const images = req.files
         console.log(images);
@@ -34,6 +34,38 @@ module.exports = class MoveController {
 
         if(!descricao) {
             res.status(422).json({message: "A descrição e obrigatorio!" })
+            return
+        }
+        if(!cep) {
+            res.status(422).json({message: "o CEP e obrigatorio!" })
+            return
+        }
+
+        if(!rua) {
+            res.status(422).json({message: "A rua e obrigatorio!" })
+            return
+        }
+
+        if(!numero) {
+            res.status(422).json({message: "O numero e obrigatorio!" })
+            return
+        }
+
+        if(!complemento) {
+            res.status(422).json({message: "O complemento e obrigatorio!" })
+            return
+        }
+
+        if(!bairro) {
+            res.status(422).json({message: "O bairro e obrigatorio!" })
+            return
+        }
+        if(!cidade) {
+            res.status(422).json({message: "A cidade e obrigatorio!" })
+            return
+        }
+        if(!estado) {
+            res.status(422).json({message: "A estado e obrigatorio!" })
             return
         }
 
@@ -69,6 +101,13 @@ module.exports = class MoveController {
             tipo,
             preco,
             descricao,
+            cep,
+            rua,
+            numero,
+            complemento,
+            bairro,
+            cidade,
+            estado,
             available,
             images:[],
             user: {
@@ -221,6 +260,13 @@ module.exports = class MoveController {
                 name: move.name,
                 tipo: move.tipo,
                 preco: move.preco,
+                cep: move.cep,
+                rua: move.rua,
+                numero: move.numero,
+                complemento: move.complemento,
+                bairro: move.bairro,
+                cidade: move.cidade,
+                estado: move.estado,
                 descricao: move.descricao,
                 images: move.images,
                 renter: {},
@@ -239,7 +285,7 @@ module.exports = class MoveController {
     static async updateMove (req, res) {
         console.log(req.body);
         const id = req.params.id
-        const {name, tipo, preco, descricao, available } = req.body
+        const {name, tipo, preco, cep, rua, numero, complemento, bairro, cidade, estado, descricao, available } = req.body
         const images = req.files
         const updatedData = {}
 
@@ -280,6 +326,55 @@ module.exports = class MoveController {
             return
         } else {
             updatedData.preco = preco
+        }
+
+        if(!cep) {
+            res.status(422).json({message: "O cep e obrigatorio!" })
+            return
+        } else {
+            updatedData.cep = cep
+        }
+
+        if(!rua) {
+            res.status(422).json({message: "A rua e obrigatorio!" })
+            return
+        } else {
+            updatedData.rua = rua
+        }
+
+        if(!numero) {
+            res.status(422).json({message: "A rua e obrigatorio!" })
+            return
+        } else {
+            updatedData.numero = numero
+        }
+
+        if(!complemento) {
+            res.status(422).json({message: "O complemento e obrigatorio!" })
+            return
+        } else {
+            updatedData.complemento = complemento
+        }
+
+        if(!bairro) {
+            res.status(422).json({message: "O bairro e obrigatorio!" })
+            return
+        } else {
+            updatedData.bairro = bairro
+        }
+
+        if(!cidade) {
+            res.status(422).json({message: "A cidade e obrigatorio!" })
+            return
+        } else {
+            updatedData.cidade = cidade
+        }
+
+        if(!estado) {
+            res.status(422).json({message: "O estado e obrigatorio!" })
+            return
+        } else {
+            updatedData.estado = estado
         }
         
         if(!descricao) {
@@ -384,7 +479,7 @@ module.exports = class MoveController {
 
     static async addImovel(req, res) {
 
-        const {nameImovel, tipo, preco, descricao } = req.body
+        const {nameImovel, tipo, preco, cep, rua, numero, complemento, bairro, cidade, estado, descricao } = req.body
         const images = req.files
         const available = true
 
@@ -401,6 +496,42 @@ module.exports = class MoveController {
 
         if(!preco) {
             res.status(422).json({message: "O preço e obrigatorio!" })
+            return
+        }
+
+
+        if(!cep) {
+            res.status(422).json({message: "O CEP e obrigatorio!" })
+            return
+        }
+
+        if(!rua) {
+            res.status(422).json({message: "A rua e obrigatorio!" })
+            return
+        }
+
+        if(!numero) {
+            res.status(422).json({message: "O numero e obrigatorio!" })
+            return
+        }
+
+        if(!complemento) {
+            res.status(422).json({message: "O complemento e obrigatorio!" })
+            return
+        }
+
+        if(!bairro) {
+            res.status(422).json({message: "O bairro e obrigatorio!" })
+            return
+        }
+
+        if(!cidade) {
+            res.status(422).json({message: "A cidade e obrigatorio!" })
+            return
+        }
+
+        if(!estado) {
+            res.status(422).json({message: "O estado e obrigatorio!" })
             return
         }
 
@@ -426,6 +557,13 @@ module.exports = class MoveController {
             name: nameImovel,
             tipo,
             preco,
+            cep,
+            rua,
+            numero,
+            complemento,
+            bairro,
+            cidade,
+            estado,
             descricao,
             available,
             images:[],

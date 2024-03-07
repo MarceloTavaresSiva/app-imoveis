@@ -74,6 +74,70 @@ const image = data.image
             value={data.preco}
             readOnly={true}
         />
+
+        <Input
+            text="CEP"
+            type="text"
+            name="cep"
+            id="cep"
+            value={data.cep}
+            readOnly={true}
+        />
+
+        <Input
+            text="Rua"
+            type="text"
+            name="rua"
+            id="rua"
+            value={data.rua}
+            readOnly={true}
+        />
+
+        <Input
+            text="Número da residência"
+            type="text"
+            name="numero"
+            id="numero"
+            value={data.numero}
+            readOnly={true}
+        />
+
+        <Input
+          text="Complemento"
+          type="text"
+          name="complemento"
+          id="complemento"
+          value={data.complemento}
+          readOnly={true}
+        />
+
+        <Input
+          text="Bairro"
+          type="text"
+          name="bairro"
+          id="bairro"
+          value={data.bairro}
+          readOnly={true}
+        />
+
+        <Input
+          text="Cidade"
+          type="text"
+          name="cidade"
+          id="cidade"
+          value={data.cidade}
+          readOnly={true}
+        />
+
+        <Input
+          text="Estado"
+          type="text"
+          name="estado"
+          id="estado"
+          value={data.estado}
+          readOnly={true}
+        />
+
         <Input
             text="Descricão do imovel"
             type="text"
