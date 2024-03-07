@@ -88,9 +88,9 @@ function MyAdmin() {
                             <th scope="col">Perfil</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Tipo</th>
-                            <th scope="col">Preco</th>
+                            <th scope="col">Preço</th>
                             <th scope="col">Disponibilidade</th>
-                            <th scope="col">Opcoes</th>
+                            <th scope="col">Opcões</th>
                         </tr>
                     </thead>
                     <tbody>{moves.length > 0 && moves.map((imovel, item) => (
@@ -119,7 +119,7 @@ function MyAdmin() {
                                     <Button className={styles.button_danger} onClick={() => { removeImovel(imovel._id) }}> Excluir </Button>
                                     </>):
                                     <>
-                                    <Button className={styles.button_blue} onClick={() => {concludeAgendamento(imovel._id)}}> Confirmar </Button> 
+                                    <Button className={styles.button_green} onClick={() => {concludeAgendamento(imovel._id)}}> Confirmar </Button> 
                                     <Link to={`/imovel/edit/${imovel._id}`}><Button className={styles.button_blue}>Editar</Button></Link> 
                                     <Button className={styles.button_danger} onClick={() => { removeImovel(imovel._id) }}> Excluir </Button>
                                     </> 

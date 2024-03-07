@@ -24,6 +24,16 @@ const formTemplate = {
   images: [],
   nameImovel: '',
   preco: '',
+  cep: '',
+  rua: '',
+  numero: '',
+  complemento: '',
+  bairro: '',
+  cidade: '',
+  estado: '',
+
+
+
   descricao: '',
   tipo: ''
 }

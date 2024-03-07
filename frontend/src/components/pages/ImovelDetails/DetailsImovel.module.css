@@ -176,3 +176,20 @@
 .bnt_desc:hover{
     background-color: #0066d3;
 }
+
+
+
+.details_ceps ul  {
+    margin: 1rem 0;
+    display: flex;
+}
+
+
+.details_ceps li  {
+    list-style: none;
+}
+
+
+.flex_card_Descricao .details_ceps li   {
+    padding: 0  5px;
+}

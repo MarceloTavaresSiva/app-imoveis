@@ -100,6 +100,17 @@ function DetailsImovel() {
             <div className={styles.flex_card_Descricao}>
                 <h1>{imovel.name}</h1>
                 <p>Tipo do Imovel: {imovel.tipo}</p>
+
+                <div className={styles.details_ceps}>
+                  <ul>
+                    <li> Rua {imovel.rua} </li>
+                    <li> Numero {imovel.numero} </li>
+                    <li> Bairro {imovel.bairro} </li>
+                    <li> Cidade {imovel.cidade} </li>
+                    <li> Estado ({imovel.estado}) / AM </li>
+                  </ul>
+
+                </div>
                 <div className={styles.Descricao_imovel}>
                 <h2 > Descrição do Imóvel</h2>
                 <p>{imovel.descricao}</p>

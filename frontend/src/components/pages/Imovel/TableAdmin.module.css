@@ -37,6 +37,19 @@ caption {
   padding: 12px;
 }
 
+
+.button_green {
+  background-color: #198754;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border: none;
+  width: auto;
+  cursor: pointer;;
+  border-radius: 0.2rem;
+
+}
+
 .button_danger{
   font-size: 0.8rem;
   padding: 0.5rem 1rem;
@@ -50,6 +63,7 @@ caption {
 
 .button_blue{
   width: auto;
+  margin: 10px;
   /* background-color:blue; */
   font-size: 0.8rem;
   padding: 0.5rem 1rem;

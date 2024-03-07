@@ -62,6 +62,82 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 value={data.preco || ''}
                 handleOnChange={(e) => updateFieldHandler("preco", e.target.value)}
             />
+
+            <Input
+                text="CEP"
+                type="text"
+                name="cep"
+                id="cep"
+                placeholder="Digite o CEP"
+                required
+                handleOnChange={(e) => updateFieldHandler("cep", e.target.value)}
+            />
+
+            <Input
+                text="Rua"
+                type="text"
+                name="rua"
+                id="rua"
+                placeholder="Rua"
+                required
+                value={data.rua || ''}
+                handleOnChange={(e) => updateFieldHandler('rua', e.target.value)}
+            />
+
+            <Input
+                text="Número da residência"
+                type="text"
+                name="numero"
+                id="numero"
+                placeholder="Número"
+                required
+                value={data.numero || ''}
+                handleOnChange={(e) => updateFieldHandler('numero', e.target.value)}
+            />
+
+            <Input
+                text="Complemento"
+                type="text"
+                name="complemento"
+                id="complemento"
+                placeholder="Complemento"
+                value={data.complemento || ''}
+                handleOnChange={(e) => updateFieldHandler('complemento', e.target.value)}
+            />
+
+            <Input
+                text="Bairro"
+                type="text"
+                name="bairro"
+                id="bairro"
+                placeholder="Bairro"
+                required
+                value={data.bairro || ''}
+                handleOnChange={(e) => updateFieldHandler('bairro', e.target.value)}
+            />
+
+            <Input
+                text="Cidade"
+                type="text"
+                name="cidade"
+                id="cidade"
+                placeholder="Cidade"
+                required
+                value={data.cidade || ''}
+                handleOnChange={(e) => updateFieldHandler('cidade', e.target.value)}
+            />
+
+            <Input
+                text="Estado"
+                type="text"
+                name="estado"
+                id="estado"
+                placeholder="Estado"
+                required
+                value={data.estado || ''}
+                handleOnChange={(e) => updateFieldHandler('estado', e.target.value)}
+            />
+                
             <Input
                 text="descricão do imovel"
                 type="text"
