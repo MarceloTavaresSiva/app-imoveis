@@ -109,7 +109,6 @@ function DetailsImovel() {
                     <li> Cidade {imovel.cidade} </li>
                     <li> Estado ({imovel.estado}) / AM </li>
                   </ul>
-
                 </div>
                 <div className={styles.Descricao_imovel}>
                 <h2 > Descrição do Imóvel</h2>
