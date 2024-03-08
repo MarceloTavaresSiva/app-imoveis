@@ -383,9 +383,9 @@ module.exports = class MoveController {
             updatedData.descricao = descricao
         }
 
-        if(images.images.length > 0) {
-            updatedData.images = []
-            images.images.map((image) => {
+        if(images.length > 0) {
+            //updatedData.images = []
+            images.map((image) => {
                 updatedData.images.push(image.filename)
             })
         }
