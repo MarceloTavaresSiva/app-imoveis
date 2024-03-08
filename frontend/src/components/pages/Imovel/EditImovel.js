@@ -60,8 +60,6 @@ function EditImovel () {
         })
         setFlashMessage(data.message, msgType)
         navigate('/imovel/myadmin')
-        
-
     }
     
     return (
