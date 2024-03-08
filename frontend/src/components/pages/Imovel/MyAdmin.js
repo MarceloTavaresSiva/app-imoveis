@@ -73,16 +73,7 @@ function MyAdmin() {
         setFlashMessage(data.message, msgType)
 
     }
-
-
-
-
-
-
     return (
-
-
-
         <div className="table-responsive">
         <div className={styles.container}>
             <div className={styles.info}>
