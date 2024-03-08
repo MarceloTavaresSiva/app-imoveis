@@ -2,6 +2,9 @@ import styles from "../form/HomeSeach.module.css";
 import { useState, useEffect } from "react";
 import api from "../../utils/api";
 
+import CurrencyInput from 'react-currency-input-field';
+
+
 /**Cards Bootstrap */
 import { Card, Nav, Alert, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -182,7 +185,9 @@ function Home({ excludeId }) {
                       <h3 className={styles.title_card}>{item.tipo}</h3>
                       <p className={styles.container_desc}>{item.name}</p>
                       <p className={styles.container_desc}>{item.descricao}</p>
-                      <h3 className={styles.card_text_h3}>R$ {item.preco} /mês</h3>
+
+                      <CurrencyInput decimalsLimit={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={item.preco} disabled style={{border:"none"}}  />
+
                       <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
                 </div>
               ))

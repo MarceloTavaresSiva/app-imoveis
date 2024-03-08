@@ -30,7 +30,6 @@ function MyAdmin() {
             })
             
     }, [token])
-    console.log(moves)
 
     async function removeImovel(id) {
         let msgType = 'success'
