@@ -17,6 +17,8 @@ function MyAdmin() {
     const [token] = useState(localStorage.getItem("token") || "");
     const { setFlashMessage } = useFlashMessage()
 
+
+
     useEffect(() => {
         api.get('/moves/admin/imoveis', {
             headers: {
@@ -26,7 +28,9 @@ function MyAdmin() {
             .then((response) => {
                 setmoves(response.data.moves)
             })
+            
     }, [token])
+    console.log(moves)
 
     async function removeImovel(id) {
         let msgType = 'success'
@@ -68,7 +72,14 @@ function MyAdmin() {
             })
 
         setFlashMessage(data.message, msgType)
+
     }
+
+
+
+
+
+
     return (
 
 
@@ -98,14 +109,16 @@ function MyAdmin() {
                         <tr key={imovel._id}>
                             <th scope="row">{item+1}</th>
                             <td>
-                                <RoudedImage
+                                <RoudedImage 
                                     src={`${process.env.REACT_APP_API}/images/imoveis/${imovel.images[0]}`}
                                     alt={imovel.name}
                                     width="px75" />
                             </td>
                             <td>{imovel.name}</td>
                             <td>{imovel.tipo}</td>
-                            <td><CurrencyInput decimalsLimit={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={imovel.preco} /></td>
+
+
+                            <td><CurrencyInput decimalsLimit={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={imovel.preco} disabled style={{border:"none"}}  /></td>
                             <td>
                                 {imovel.available && !imovel.renter ? ("Imovel disponivel!") : (!imovel.available  && imovel.renter) ? ("Agendado para visita!"): ("Aguardando confirmação ...!")}
                             </td>
