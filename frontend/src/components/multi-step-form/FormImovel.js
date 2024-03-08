@@ -140,7 +140,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
                 
             <Input
                 text="descricão do imovel"
-                type="text"
+                type="textarea"
                 name="descricao"
                 id= "descricao"
                 required

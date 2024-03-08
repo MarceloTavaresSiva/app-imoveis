@@ -65,6 +65,94 @@ function ImovelForm({handleSubmit, movesData, btnText}) {
             handleOnChange={handleChange}
             value={moves.name || ''}
         />
+
+
+        <Input
+            text="CEP"
+            type="text"
+            name="cep"
+            id="cep"
+            placeholder="Digite o CEP"
+            required
+            handleOnChange={handleChange}
+            value={moves.cep || ''}
+        />
+
+
+            <Input
+                text="Rua"
+                type="text"
+                name="rua"
+                id="rua"
+                placeholder="Rua"
+                required
+                handleOnChange={handleChange}
+                value={moves.rua || ''}
+            />
+
+            <Input
+                text="Número da residência"
+                type="text"
+                name="numero"
+                id="numero"
+                placeholder="Número"
+                required
+                handleOnChange={handleChange}
+                value={moves.numero || ''}
+
+            />
+
+            <Input
+                text="Complemento"
+                type="text"
+                name="complemento"
+                id="complemento"
+                placeholder="Complemento"
+                handleOnChange={handleChange}
+                value={moves.complemento || ''}
+            />
+
+            <Input
+                text="Bairro"
+                type="text"
+                name="bairro"
+                id="bairro"
+                placeholder="Bairro"
+                required
+                handleOnChange={handleChange}
+                value={moves.bairro || ''}
+            />
+
+            <Input
+                text="Cidade"
+                type="text"
+                name="cidade"
+                id="cidade"
+                placeholder="Cidade"
+                required
+                handleOnChange={handleChange}
+                value={moves.cidade || ''}
+            />
+
+            <Input
+                text="Estado"
+                type="text"
+                name="estado"
+                id="estado"
+                placeholder="Estado"
+                required
+                handleOnChange={handleChange}
+                value={moves.estado || ''}
+            />
+
+
+
+
+
+
+
+
+
         <Input 
             text="Preço do imovel"
             type="text"

@@ -13,7 +13,6 @@ module.exports = class MoveController {
         const {nameImovel, tipo, preco, descricao, cep, rua, numero, complemento, bairro, cidade, estado} = req.body
         const {name, email, phone, password } = req.body
         const images = req.files
-        console.log(images);
         const available = true
         
         //validation
@@ -283,11 +282,11 @@ module.exports = class MoveController {
     }
 
     static async updateMove (req, res) {
-        console.log(req.body);
         const id = req.params.id
         const {name, tipo, preco, cep, rua, numero, complemento, bairro, cidade, estado, descricao, available } = req.body
         const images = req.files
         const updatedData = {}
+
 
         //check if move exists
         const move = await Move.findOne({_id: id})
@@ -343,7 +342,7 @@ module.exports = class MoveController {
         }
 
         if(!numero) {
-            res.status(422).json({message: "A rua e obrigatorio!" })
+            res.status(422).json({message: "O numero e obrigatorio!" })
             return
         } else {
             updatedData.numero = numero
@@ -383,13 +382,14 @@ module.exports = class MoveController {
         } else {
             updatedData.descricao = descricao
         }
-        
-        if(images.length > 0) {
+
+        if(images.images.length > 0) {
             updatedData.images = []
-            images.map((image) => {
+            images.images.map((image) => {
                 updatedData.images.push(image.filename)
             })
         }
+
 
         await Move.findByIdAndUpdate(id, updatedData)
         res.status(200).json({message: "Imovel atualizado com sucesso!" })
