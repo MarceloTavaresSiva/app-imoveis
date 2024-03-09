@@ -80,10 +80,11 @@ nav .menu {
 
 @media (max-width: 520px) {
     .navbar {
+        padding: 0px; 
         justify-content: center;
         padding: 0 0;
         margin: 0px 0px;
-        height: 22vh;
+        height: 17vh;
     }
 
     .navbar ul li  {
@@ -91,8 +92,27 @@ nav .menu {
         font-size: 15px;
     }
 
+    .navbar li,
+    .navbar a {
+    font-size: 14px;
+    padding: 5px;
+}
 }
 
 
+@media  (max-width: 425px) {
+    .navbar {
+        padding: 1rem 0;
+        justify-content: left;
+        align-items: center;
+        margin: 0px 0px;
+        height: 15vh;
+    }
+
+    .navbar ul li {
+        margin: -1rem 0px;
+    }
+
+}
 
 

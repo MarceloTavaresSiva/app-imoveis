@@ -80,9 +80,7 @@ function MyAdmin() {
                 <h1>Meus Imoveis</h1>
                 <Link to="/anunciar/sinup-owner">Cadastrar imovel</Link>
             </div>
-
-
-                <Table className="table" responsive="sm">
+                <table className="table" responsive="sm">
                     <thead className='thead-dark'>
                         <tr scope="row">
                             <th scope="col">ID</th>
@@ -108,7 +106,7 @@ function MyAdmin() {
                             <td>{imovel.tipo}</td>
 
 
-                            <td><CurrencyInput decimalsLimit={2} decimalScale={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={imovel.preco} disabled style={{border:"none"}}  /></td>
+                            <td><CurrencyInput decimalsLimit={2} decimalScale={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={imovel.preco} disabled style={{border:"none" }}  /></td>
                             <td>
                                 {imovel.available && !imovel.renter ? ("Imovel disponivel!") : (!imovel.available  && imovel.renter) ? ("Agendado para visita!"): ("Aguardando confirmação ...!")}
                             </td>
@@ -131,7 +129,7 @@ function MyAdmin() {
                         </tr>))}
                         <tr>{(moves.length == 0) ?('Não ha imoveis cadastrados'):''}</tr>
                     </tbody>
-                </Table>
+                </table>
         </div>
     </div>
         
