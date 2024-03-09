@@ -63,6 +63,11 @@ form {
 
 /*** Media Queries **/
 @media  (max-width: 700px) {
+
+    .container_title_h2 h2 {
+        font-size: 1rem;
+    }
+
     .container_searh form {
         display: inline-block;
     }
@@ -236,6 +241,21 @@ form .box {
 }
 
 @media  (max-width: 630px) {
+
+    form .box {
+        border-top: 1px solid rgba(128, 128, 128, 0.2);
+        border-left: 1px solid rgba(128, 128, 128, 0.2);
+        border-right: 1px solid rgba(128, 128, 128, 0.2);
+        border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+        margin: 10px 0;
+        border-radius: 5px;
+    }
+    form {
+        padding: 20px 20px;
+    }
+
+
+
     .card  {
         justify-content: center;
     }
@@ -279,5 +299,7 @@ form .box {
         padding-top: 30%;
     }
 }
+
+
 
 

@@ -25,12 +25,16 @@ tr:nth-of-type(even) {
 
 
 table {
- width: 80%;
- font-size: 0.8rem;
- margin-left: auto;
- margin-right: auto;
+  font-size: 0.8rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border-collapse: collapse;
+ }
+ 
 
-}
+
+
 
 caption {
   caption-side: bottom;
@@ -102,3 +106,39 @@ caption {
   cursor: pointer;
   background-color: #007bff;
 } */
+
+
+
+/**** mdia queries */
+@media  (max-width: 1000px) {
+  thead {
+    display: none;
+  }
+
+
+  tbody, tr, td {
+    border: 1px solid #dee2e685;;
+    display: block;
+  }
+
+  tr {
+    margin-bottom: 15px;
+  }
+
+  tbody, tr, td {
+    text-align: left;
+
+    position: relative;
+  }
+
+
+
+
+
+
+
+}
+
+
+
+

@@ -139,7 +139,7 @@ function DetailsImovel() {
                 <h3 className={styles.title_card}>{item.tipo}</h3>
                 <p className={styles.container_desc}>{item.name}</p>
                 <p className={styles.container_desc}>{item.descricao}</p>
-                <h3 className={styles.card_text_h3}>R$ {item.preco} /mêS</h3>
+                <h3 className={styles.card_text_h3}>R$ {item.preco} /mês</h3>
                 <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
             </div>
         ))}
