@@ -20,6 +20,7 @@ function Input({
       decimalSeparator=","
       groupSeparator="."
       name={name}
+      allowNegativeValue={false}
       id={name}
       placeholder={placeholder}
       onValueChange={(value) => handleOnChange({ target: { name, value } })}
@@ -27,6 +28,7 @@ function Input({
       {...(multiple ? { multiple } : '')}
       {...(required ? { required: 'required' } : {})}
       {...(maxLength ? { maxLength } : {})}
+
     />
   ) : type === 'textarea' ? (
     <textarea 

@@ -108,7 +108,7 @@ function MyAdmin() {
                             <td>{imovel.tipo}</td>
 
 
-                            <td><CurrencyInput decimalsLimit={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={imovel.preco} disabled style={{border:"none"}}  /></td>
+                            <td><CurrencyInput decimalsLimit={2} decimalScale={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={imovel.preco} disabled style={{border:"none"}}  /></td>
                             <td>
                                 {imovel.available && !imovel.renter ? ("Imovel disponivel!") : (!imovel.available  && imovel.renter) ? ("Agendado para visita!"): ("Aguardando confirmação ...!")}
                             </td>
