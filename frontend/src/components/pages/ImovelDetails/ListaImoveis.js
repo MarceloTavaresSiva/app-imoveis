@@ -4,6 +4,7 @@ import RoudedImage from '../../layout/RoudedImage';
 import {Button, Table} from 'react-bootstrap';
 import styles from '../Imovel/TableAdmin.module.css';
 
+import CurrencyInput from 'react-currency-input-field';
 
 function ListaImoveis() {
 
@@ -66,9 +67,12 @@ function ListaImoveis() {
                         <th scope="col">ID</th>
                         <th scope="col">Perfil</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Nome</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Preço</th>
                         <th scope="col">Status</th>
+
                     </tr>
                 </thead>
                 <tbody>{moves.length > 0 && moves.map((imovel, item) => (
@@ -81,9 +85,13 @@ function ListaImoveis() {
                                 alt={imovel.name}
                                 width="px75" />
                         </td>
-                        <td>{imovel.name}</td>
+                       
+                        <td>Proprietario: {imovel.user ? imovel.user.name : ""}</td>
+                        <td>{imovel.user ? imovel.user.phone : ""}</td>
                         <td>{imovel.tipo}</td>
-                        <td>{imovel.preco}</td>
+                        <td><CurrencyInput decimalsLimit={2} decimalScale={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={imovel.preco} disabled style={{border:"none", fontSize:"12px", color: "#000",}}  /></td>
+                        <td>{imovel.name}</td>
+
                         <td>
                             {imovel.available ?("Aguarde agendamento em processo ..."):("Visita agendada!")}
                         </td>

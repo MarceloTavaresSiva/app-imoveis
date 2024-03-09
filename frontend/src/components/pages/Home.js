@@ -186,8 +186,12 @@ function Home({ excludeId }) {
                       <p className={styles.container_desc}>{item.name}</p>
                       <p className={styles.container_desc}>{item.descricao}</p>
 
-                      <CurrencyInput decimalsLimit={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={item.preco} disabled style={{border:"none"}}  />
-
+                      <CurrencyInput decimalsLimit={2} decimalScale={2} inputMode="numeric" intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={item.preco} 
+                    
+                      disabled 
+                      style={{border:"none", fontSize:"18px", 
+                      color: "#000", fontWeight:"bold",
+                       marginBottom: "10px"}}  />
                       <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
                 </div>
               ))

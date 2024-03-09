@@ -1,5 +1,6 @@
 import api from '../../../utils/api';
 
+import CurrencyInput from 'react-currency-input-field';
 
 import { useState, useEffect } from "react";
 
@@ -21,7 +22,6 @@ function DetailsImovel() {
   const { id } = useParams();
   const {setFlashMessage} = useFlashMessage()
   const [token] = useState(localStorage.getItem("token") || "");
-
 
   useEffect(() => {
     const getImovelDetails = async () => {
@@ -100,7 +100,6 @@ function DetailsImovel() {
             <div className={styles.flex_card_Descricao}>
                 <h1>{imovel.name}</h1>
                 <p>Tipo do Imovel: {imovel.tipo}</p>
-
                 <div className={styles.details_ceps}>
                   <ul>
                     <li> Rua {imovel.rua} </li>
@@ -117,15 +116,13 @@ function DetailsImovel() {
             </div>
 
             <div className={styles.flex_card_Proprietario}>
-              <h4>Preço do Imóvel: R$ {imovel.preco} /mês</h4>
-
+            <h4>Preço do Imóvel: R$ {imovel.preco} /mês</h4>
               <h4>Nome do Proprietario: {imovel.user ? imovel.user.name : ""}</h4>
               <h4>Telefone: {imovel.user ? imovel.user.phone : ""}</h4>
-
               {token ? (
-                      <button onClick={schedule} className={styles.bnt_desc}> <span>Solicitar uma visita</span> </button>
+                      <button onClick={schedule} className={styles.bnt_desc}> <span>Agendar visita</span> </button>
                     ) : (
-                      <p>Você precisa <Link to="/register">criar uma conta</Link> para solicitar a visita</p>
+                      <p>Você precisa <Link to="/register">criar uma conta</Link> para Agendar visita</p>
                   )}
             </div>
           </div>
