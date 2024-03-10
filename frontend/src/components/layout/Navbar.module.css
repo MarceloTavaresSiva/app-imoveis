@@ -97,6 +97,25 @@ nav .menu {
     font-size: 14px;
     padding: 5px;
 }
+
+.navbar li:hover {
+    background-color: transparent;
+
+}
+
+.navbar li  a:hover {
+    color: #000;
+}
+
+.active_create > a  {
+    color: #fff;
+    background-color: #007bff;
+}
+.active_create > a:hover  {
+    color: #fff;
+    background-color: #007bff;
+}
+
 }
 
 
@@ -112,7 +131,15 @@ nav .menu {
     .navbar ul li {
         margin: -1rem 0px;
     }
-
 }
+
+
+@media  (max-width: 320px) {
+    .navbar {
+        height: 18vh;
+    }
+}
+
+
 
 
