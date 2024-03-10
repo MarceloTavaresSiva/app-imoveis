@@ -46,7 +46,7 @@ export default function useAuth() {
     }
 
     async function login(user) {
-        let msgText = 'Login realizado com sucesso'
+        let msgText = 'Login realizado com sucesso!'
         let msgType = 'success'
 
         try {
@@ -94,10 +94,12 @@ export default function useAuth() {
         
         ([]);
 
-        localStorage.removeItem('token');
+        // localStorage.removeItem('token');
+
         api.defaults.headers.Authorization = undefined;
         navigate('/');
         setFlashMessage(msgText, msgType)
+        localStorage.clear();
     }
 
     return {authenticated,register, logout, userInfo, login}

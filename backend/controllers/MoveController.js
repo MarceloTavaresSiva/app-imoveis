@@ -382,10 +382,14 @@ module.exports = class MoveController {
         } else {
             updatedData.descricao = descricao
         }
+        if(!images.images || images.images.length <= 0) {
+            res.status(422).json({message: " Insira pelo menos uma imagem!" })
+            return
+        }
 
-        if(images.length > 0) {
-            //updatedData.images = []
-            images.map((image) => {
+        if(images.images.length > 0) {
+            updatedData.images = []
+            images.images.map((image) => {
                 updatedData.images.push(image.filename)
             })
         }

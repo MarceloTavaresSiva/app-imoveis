@@ -125,6 +125,9 @@ const MainForm = () => {
   const { currentStep, currentComponent, changeStep, isLastStep } = userForm(formComponents);
 
   function onFileChange(e) {
+
+    e.preventDefault()
+
     const { name, value, files } = e.target;
 
     if (name === 'images') {

@@ -10,8 +10,7 @@ import { useContext } from "react"
 
 function Navbar() {
     const {authenticated, userInfo, logout} = useContext(Context)
-
-
+    
     return (
         <nav className={styles.navbar}>
             <div>
@@ -20,9 +19,10 @@ function Navbar() {
             </Link>
             </div>
 
-            
+
             <ul>
-                {authenticated && userInfo.roles === 'customer' ?  (
+ 
+                {(authenticated && userInfo.roles === 'customer') ?  (
                 <>
                     <li>
                         <Link to="/">Imovel</Link>
@@ -36,7 +36,7 @@ function Navbar() {
                     <li onClick={logout}>Sair</li>
                 </>
 
-                ) : authenticated && userInfo.roles === 'owner' ? (
+                ) : (authenticated && userInfo.roles === 'owner') ? (
                     <>
                     <li>
                         <Link to="imovel/myadmin">Meus Imóveis</Link>
