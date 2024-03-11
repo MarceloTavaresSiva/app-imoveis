@@ -1,6 +1,6 @@
 import api from '../../../utils/api';
 
-import CurrencyInput from 'react-currency-input-field';
+import {formatValue} from 'react-currency-input-field';
 
 import { useState, useEffect } from "react";
 
@@ -70,6 +70,16 @@ function DetailsImovel() {
     //}
   }
 
+  const newValue = formatValue({
+    value: `${imovel.preco}`,
+    suffix: ',00',
+    decimalSeparator: ',',
+    groupSeparator: '.',
+    decimalsLimit: '2', 
+    intlConfig: { locale: 'pt-BR', currency: 'BRL' },
+
+  });
+
   return (
     <>
     <div className={styles.container_details}>
@@ -116,7 +126,7 @@ function DetailsImovel() {
             </div>
 
             <div className={styles.flex_card_Proprietario}>
-            <h4>Preço do Imóvel: R$ {imovel.preco} /mês</h4>
+            <h4>Preço do Imóvel: {newValue} /mês</h4>
               <h4>Nome do Proprietario: {imovel.user ? imovel.user.name : ""}</h4>
               <h4>Telefone: {imovel.user ? imovel.user.phone : ""}</h4>
               {token ? (
