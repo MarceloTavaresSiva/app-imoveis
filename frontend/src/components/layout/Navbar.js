@@ -18,8 +18,6 @@ function Navbar() {
                 <img className={styles.img_logo} src={nome} alt="logoIta" />
             </Link>
             </div>
-
-
             <ul>
  
                 {(authenticated && userInfo.roles === 'customer') ?  (
