@@ -16,7 +16,6 @@ function Register() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        //Enviar user banco
         register(user)
     }
     return (
@@ -66,7 +65,6 @@ function Register() {
                 <input type="submit" value="Cadastrar" />
             </form>
             <p> Já tem conta? <Link to="/login"> Clique aqui. </Link></p>
-
         </section>
     )
 }

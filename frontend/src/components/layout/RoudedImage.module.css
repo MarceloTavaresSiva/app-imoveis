@@ -2,7 +2,7 @@
 .rouded_image {
     width: 200px;
     height: 200px;
-    border-radius: 10%;
+    border-radius: 5%;
 }
 
 .rouded_image.px75 {

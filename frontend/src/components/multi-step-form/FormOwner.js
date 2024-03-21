@@ -3,6 +3,7 @@ import styles from "../form/Profile.module.css";
 import styleStep from "./MultStep.module.css";
 import Input from "../form/Input";
 
+
 import RoudedImage from "../layout/RoudedImage";
 
 const FormOwner = ({
@@ -49,7 +50,7 @@ const FormOwner = ({
     return (
         <div className={styleStep.inputs_container}>
             <div className={styles.profile_header}>
-                <h1>Perfil Proprietario</h1>
+                <h1>Perfil proprietário</h1>
                 {authenticated ?
                 
                 "" :
@@ -110,7 +111,7 @@ const FormOwner = ({
             {!authenticated ? (
                 <>
                     <Input
-                        text="Image"
+                        text="Image do proprietário"
                         type="file"
                         name="image"
                         handleOnChange={onFileChange}

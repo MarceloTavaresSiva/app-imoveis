@@ -4,10 +4,13 @@ import api from "../../utils/api";
 
 import CurrencyInput from 'react-currency-input-field';
 
-
-/**Cards Bootstrap */
-import { Card, Nav, Alert, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+
+import h2 from '../../img/h2.png'
+import h3 from '../../img/h3.png'
+import h6 from '../../img/h6.png'
+
 
 function Home({ excludeId }) {
   const [imoves, setImoves] = useState([]);
@@ -19,8 +22,6 @@ function Home({ excludeId }) {
   const [showEmpty, setShowEmpty] = useState(false);
 
   const [maxPrice, setMaxPrice] = useState("");
-
-
 
   // const [token] = useState(localStorage.getItem("token") || "");
 
@@ -106,6 +107,28 @@ function Home({ excludeId }) {
           <h1>Aluguel Universitário Descomplicado: Encontre seu Lar Ideal em Nossa Aplicação Web!</h1>
         </div>
       </section>
+
+      <section className={styles.feature_property}>
+        <h2>Tipos de propriedades em destaque</h2>
+        <div className={styles.property_card}>
+          <div className={styles.property_box}>
+          <img src={h2} alt="casa" />
+            <p>Casa</p>
+          </div>
+
+          <div className={styles.property_box}>
+          <img src={h3} alt="Apartamento" />
+            <p>Apartamento</p>
+          </div>
+
+          <div className={styles.property_box}>
+          <img src={h6} alt="Kitnet" />
+            <p>Kitnet</p>
+          </div>
+        </div>
+
+      </section>
+
 
       <div className={styles.container_searh}>
         <div className={styles.container_title_h2}>
