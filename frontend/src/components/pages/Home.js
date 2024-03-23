@@ -126,10 +126,7 @@ function Home({ excludeId }) {
             <p>Kitnet</p>
           </div>
         </div>
-
       </section>
-
-
       <div className={styles.container_searh}>
         <div className={styles.container_title_h2}>
           <h2>Pesquisar imóveis por filtro</h2>
