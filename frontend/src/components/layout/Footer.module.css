@@ -1,11 +1,11 @@
 .footer {
-    text-decoration: none;
-    list-style: none;
-    font-size: 14px;
-    height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    list-style: none;
+    font-size: 12px;
+    height: 250px;
     background-color: #eee;
     color: #444;
     border-top: 1px solid #666;
@@ -14,3 +14,15 @@
 .footer li {
     margin: 0 10px;
 }
+
+@media  (max-width: 578px) {
+    .footer {
+        height: 200px;
+        align-items:start;
+        flex-direction: column;
+    }
+    .footer li {
+        margin: 10px 1rem;
+    }
+}
+
