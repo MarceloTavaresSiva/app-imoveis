@@ -5,6 +5,7 @@ import {Button, Table} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import CurrencyInput from 'react-currency-input-field';
 
+
 import RoudedImage from '../../layout/RoudedImage';
 
 /** Components */
@@ -17,8 +18,6 @@ function MyAdmin() {
     const [token] = useState(localStorage.getItem("token") || "");
     const { setFlashMessage } = useFlashMessage()
 
-
-
     useEffect(() => {
         api.get('/moves/admin/imoveis', {
             headers: {
@@ -27,8 +26,7 @@ function MyAdmin() {
         })
             .then((response) => {
                 setmoves(response.data.moves)
-            })
-            
+            })        
     }, [token])
 
     async function removeImovel(id) {
@@ -39,7 +37,6 @@ function MyAdmin() {
                 Authorization: `Bearer ${JSON.parse(token)}`,
             }
         })
-
             .then((response) => {
                 const updateImoveis = moves.filter((imovel) => imovel._id !== id)
                 setmoves(updateImoveis)
@@ -60,7 +57,6 @@ function MyAdmin() {
                 Authorization: `Bearer ${JSON.parse(token)}`,
             },
         })
-
             .then((response) => {
                 return response.data
             })
@@ -69,10 +65,10 @@ function MyAdmin() {
                 return err.data
                 
             })
-
         setFlashMessage(data.message, msgType)
-
     }
+
+
     return (
         <div className="table-responsive">
         <div className={styles.container}>
@@ -104,7 +100,6 @@ function MyAdmin() {
                             </td>
                             <td>{imovel.name}</td>
                             <td>{imovel.tipo}</td>
-
 
                             <td><CurrencyInput decimalsLimit={2} decimalScale={2} intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={imovel.preco} disabled style={{border:"none" }}  /></td>
                             <td>

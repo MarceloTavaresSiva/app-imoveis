@@ -23,9 +23,9 @@ function Login() {
 
     return (
         <section className={styles.form_container}>
-            <h1>Login</h1>
+            <h2 className={styles.form_title}>Login</h2>
 
-            <form onSubmit={handleSubmit}>
+            <form className={styles.form_input} onSubmit={handleSubmit}>
                 <Input 
                     text="E-mail"
                     type="email"

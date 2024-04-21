@@ -6,11 +6,9 @@ import CurrencyInput from 'react-currency-input-field';
 
 import { Link } from "react-router-dom";
 
-
 import h2 from '../../img/h2.png'
 import h3 from '../../img/h3.png'
 import h6 from '../../img/h6.png'
-
 
 function Home({ excludeId }) {
   const [imoves, setImoves] = useState([]);

@@ -6,7 +6,9 @@ import nome from '../../img/nome.png'
 
 /** Context */
 import { Context } from "../../context/UserContext"
-import { useContext, useEffect, useState  } from "react"
+
+import { useContext, useState, useEffect } from "react"
+
 
 function Navbar() {
     const {authenticated, userInfo, logout} = useContext(Context)
@@ -57,8 +59,7 @@ function Navbar() {
                 { to: "/login", label: "Entrar" }
             ]);
         }
-    };
-
+    }
 
 
     return (
@@ -70,19 +71,37 @@ function Navbar() {
             </div>
             <ul>
 
-            {menus.map((menu, index) => (
-                    <li key={index}>
-                        <Link to={menu.to}>{menu.label}</Link>
+                { authenticated ? (
+                    
+                    <>
+                        {menus.map((menu, index) => (
+                            <li key={index}>
+                                <Link to={menu.to}>{menu.label}</Link>
+                            </li>
+                        ))}
+                            {authenticated && (
+                                <li onClick={logout}>Sair</li>
+                            )}
+                    
+                    </>
+                ) : (
+                    <>
+                     <li>
+                        <Link to="anunciar/sinup-owner">Anunciar</Link>
                     </li>
-                ))}
-                {authenticated && (
-                    <li onClick={logout}>Sair</li>
-                )}
+                    <li>
+                        <Link to="/login">Entrar</Link>
+                    </li>
+                    <li className={styles.active_create}>
+                        <Link to="/register"> Criar Conta</Link>
+                    </li>
+                    </>
+                )
+                }
  
             </ul>
         </nav>
-    )
+    );
 }
 
-
-export default Navbar
+export default Navbar;

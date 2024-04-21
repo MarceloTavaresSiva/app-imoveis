@@ -1,9 +1,6 @@
 import{BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 
-
-
-
 /*components */
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -20,7 +17,6 @@ import Container from './components/layout/Container';
 import { UserProvider } from './context/UserContext';
 import Profile from './components/pages/User/Profile';
 import MyAdmin from './components/pages/Imovel/MyAdmin';
-//import AddImovel from './components/pages/Imovel/AddImovel';
 import RegisterOwner from './components/pages/Owner/Register';
 import DetailsImovel from './components/pages/ImovelDetails/DetailsImovel';
 import ListaImoveis from './components/pages/ImovelDetails/ListaImoveis';
@@ -28,9 +24,11 @@ import EditImovel from './components/pages/Imovel/EditImovel';
 import Contato from './components/layout/Contato';
 import Sobre from './components/layout/Sobre';
 
+//import AddImovel from './components/pages/Imovel/AddImovel';
 //<Route path="/imovel/addimoveis" element={<AddImovel/>} />
 
 function App() {
+
   return (
     <Router>
       <UserProvider>
@@ -38,7 +36,7 @@ function App() {
       <Message />
       <Container>
 
-        <Routes>
+      <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
