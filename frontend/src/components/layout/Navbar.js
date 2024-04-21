@@ -9,17 +9,6 @@ import { Context } from "../../context/UserContext"
 
 import { useContext, useState, useEffect } from "react"
 
-function Navbar() {
-    const {authenticated, userInfo, logout} = useContext(Context)
-    const [reloadNavbar, setReloadNavbar] = useState(false);
-
-    useEffect(() => {
-        // When userProfile changes, toggle reloadNavbar to trigger a reload of Navbar
-        setReloadNavbar(prevState => !prevState);
-    }, [userInfo.roles]);
-   
-
-import { useContext, useEffect, useState  } from "react"
 
 function Navbar() {
     const {authenticated, userInfo, logout} = useContext(Context)
@@ -70,7 +59,7 @@ function Navbar() {
                 { to: "/login", label: "Entrar" }
             ]);
         }
-    };
+    }
 
 
     return (
@@ -82,28 +71,37 @@ function Navbar() {
             </div>
             <ul>
 
-
-                ) : (authenticated && userInfo.roles === 'owner') ? (
+                { authenticated ? (
                     
                     <>
-                    <li>
-                        <Link to="imovel/myadmin">Meus Imóveis</Link>
+                        {menus.map((menu, index) => (
+                            <li key={index}>
+                                <Link to={menu.to}>{menu.label}</Link>
+                            </li>
+                        ))}
+                            {authenticated && (
+                                <li onClick={logout}>Sair</li>
+                            )}
+                    
+                    </>
+                ) : (
+                    <>
+                     <li>
+                        <Link to="anunciar/sinup-owner">Anunciar</Link>
                     </li>
                     <li>
-                        <Link to="/user/profile">Editar Perfil</Link>
-
-            {menus.map((menu, index) => (
-                    <li key={index}>
-                        <Link to={menu.to}>{menu.label}</Link>
+                        <Link to="/login">Entrar</Link>
                     </li>
-                ))}
-                {authenticated && (
-                    <li onClick={logout}>Sair</li>
-                )}
+                    <li className={styles.active_create}>
+                        <Link to="/register"> Criar Conta</Link>
+                    </li>
+                    </>
+                )
+                }
  
             </ul>
         </nav>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;
