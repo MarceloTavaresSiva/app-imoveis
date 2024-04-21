@@ -88,7 +88,7 @@ export default function useAuth() {
 
     function logout() {
         const msgText = 'Logout realizado com sucesso!'
-        const msgType = 'success!'
+        const msgType = 'attention'
 
         setAuthenticated(false);
         
