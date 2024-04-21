@@ -22,7 +22,7 @@ router.get('/all',  MoveController.getAll)
 router.get('/mymoves', verifyToken, checkRole(['admin', 'owner']), MoveController.getAllUserMoves)
 router.get('/myimoveloptions', verifyToken, MoveController.getAllImoveloptions)
 router.get('/admin/imoveis', verifyToken, MoveController.getAdminImoveis)
-router.get('/:id', MoveController.getMoveById)
+router.get('/:id', verifyToken, MoveController.getMoveById) // Precisa de restrição aqui
 router.delete('/:id', verifyToken, MoveController.removeMoveById)
 router.patch('/remove/:id', verifyToken, checkRole(['admin', 'owner']), MoveController.removeRenterById)
 router.patch('/:id', verifyToken, imageUpload.fields([{ name: 'images', maxCount: 3 }]), MoveController.updateMove)
