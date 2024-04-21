@@ -18,6 +18,7 @@ function Register() {
         e.preventDefault()
         register(user)
     }
+    
     return (
         <section className={styles.form_container}>
             <h1 className={styles.form_title}> Registrar</h1>
@@ -35,7 +36,9 @@ function Register() {
                     text="Telefone"
                     type="text"
                     name="phone"
-                    placeholder="Digite seu telefone"
+                    required
+                    id="phone"
+                    placeholder="DDD + número"
                     handleOnChange={handleChange}
                 />
 

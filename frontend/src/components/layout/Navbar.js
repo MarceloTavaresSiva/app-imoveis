@@ -6,11 +6,17 @@ import nome from '../../img/nome.png'
 
 /** Context */
 import { Context } from "../../context/UserContext"
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
 
 function Navbar() {
     const {authenticated, userInfo, logout} = useContext(Context)
-    
+    const [reloadNavbar, setReloadNavbar] = useState(false);
+
+    useEffect(() => {
+        // When userProfile changes, toggle reloadNavbar to trigger a reload of Navbar
+        setReloadNavbar(prevState => !prevState);
+    }, [userInfo.roles]);
+   
     return (
         <nav className={styles.navbar}>
             <div>
@@ -35,6 +41,7 @@ function Navbar() {
                 </>
 
                 ) : (authenticated && userInfo.roles === 'owner') ? (
+                    
                     <>
                     <li>
                         <Link to="imovel/myadmin">Meus Imóveis</Link>
@@ -62,6 +69,5 @@ function Navbar() {
         </nav>
     )
 }
-
 
 export default Navbar

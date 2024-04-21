@@ -10,6 +10,11 @@
 }
 
 
+body {
+  background-color: #FEFDED;
+}
+
+
 h1 {
   margin-bottom: 0.8em;
   color: #0d4efd;
