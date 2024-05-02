@@ -1,13 +1,11 @@
 import api from '../../../utils/api';
 import { useState, useEffect } from 'react'
 
-
 import useFlashMessage from '../../../hooks/useFlashMessage'
 import ImovelForm from '../../form/ImovelForm';
 
 
 import { useNavigate, useParams } from 'react-router-dom'
-
 
 
 function EditImovel () {

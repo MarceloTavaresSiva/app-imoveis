@@ -7,7 +7,6 @@ import {useNavigate} from 'react-router-dom'
 import { jwtDecode } from "jwt-decode"
 
 
-
 export default function useAuth() {
 
     const [authenticated, setAuthenticated] = useState(false)
@@ -20,7 +19,6 @@ export default function useAuth() {
         if(token) {
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
             setAuthenticated(true)
-            
             const decoded = jwtDecode(token);
             const {name, roles} = decoded;
             setUserInfo({name, roles});
@@ -69,6 +67,12 @@ export default function useAuth() {
         setAuthenticated(true)
 
         localStorage.setItem('token', JSON.stringify(data.token))
+
+        const token = localStorage.getItem('token')
+        const decoded = jwtDecode(token);
+        const { name, roles } = decoded;
+        setUserInfo({ name, roles });
+        // Removendo o redirecionamento
         navigate('/')
     }
 
@@ -91,14 +95,14 @@ export default function useAuth() {
         const msgType = 'attention'
 
         setAuthenticated(false);
-        
-        ([]);
-
-        // localStorage.removeItem('token');
-
+        setUserInfo(null);
+        localStorage.removeItem('token');
         api.defaults.headers.Authorization = undefined;
+        // Removendo o redirecionamento
         navigate('/');
         setFlashMessage(msgText, msgType)
+        sessionStorage.clear();
+        localStorage.removeItem("formData");
         localStorage.clear();
     }
 

@@ -3,7 +3,6 @@ import styles from './Navbar.module.css'
 
 import nome from '../../img/nome.png'
 
-
 /** Context */
 import { Context } from "../../context/UserContext"
 
@@ -12,28 +11,15 @@ import { useContext, useState, useEffect } from "react"
 
 function Navbar() {
     const {authenticated, userInfo, logout} = useContext(Context)
-    
     const [authenticatedState, setAuthenticatedState] = useState(authenticated);
     const [menus, setMenus] = useState([]);
 
-    useEffect(() => {
-        // Verifica se houve mudança no estado de autenticação
-        if (authenticated !== authenticatedState) {
-            // Atualiza o estado de autenticação
-            setAuthenticatedState(authenticated);
-            // Atualiza os menus com base no tipo de usuário
-            updateMenus(authenticated, userInfo.roles);
-        }
-    }, [authenticated, authenticatedState, userInfo.roles]);
 
     useEffect(() => {
         // Atualiza os menus quando o componente for montado inicialmente
-        updateMenus(authenticated, userInfo.roles);
-    }, []);
-
-    const updateMenus = (isAuthenticated, userRole) => {
-        if (isAuthenticated) {
-            switch(userRole) {
+        if (authenticated) {
+            console.log(userInfo.roles);
+            switch(userInfo.roles) {
                 case "customer":
                     setMenus([
                         { to: "/", label: "Imovel" },
@@ -59,8 +45,7 @@ function Navbar() {
                 { to: "/login", label: "Entrar" }
             ]);
         }
-    }
-
+    }, [authenticated]);
 
     return (
         <nav className={styles.navbar}>
@@ -71,7 +56,7 @@ function Navbar() {
             </div>
             <ul>
 
-                { authenticated ? (
+                {authenticated ? (
                     
                     <>
                         {menus.map((menu, index) => (
@@ -82,7 +67,6 @@ function Navbar() {
                             {authenticated && (
                                 <li onClick={logout}>Sair</li>
                             )}
-                    
                     </>
                 ) : (
                     <>
