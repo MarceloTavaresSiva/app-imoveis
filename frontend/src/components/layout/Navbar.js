@@ -10,7 +10,7 @@ import { useContext, useState, useEffect } from "react"
 
 
 function Navbar() {
-    const {authenticated, userInfo, logout} = useContext(Context)
+    const { authenticated, userInfo, logout } = useContext(Context)
     const [authenticatedState, setAuthenticatedState] = useState(authenticated);
     const [menus, setMenus] = useState([]);
 
@@ -19,7 +19,7 @@ function Navbar() {
         // Atualiza os menus quando o componente for montado inicialmente
         if (authenticated) {
             console.log(userInfo.roles);
-            switch(userInfo.roles) {
+            switch (userInfo.roles) {
                 case "customer":
                     setMenus([
                         { to: "/", label: "Imovel" },
@@ -48,43 +48,43 @@ function Navbar() {
     }, [authenticated]);
 
     return (
-        <nav className={styles.navbar}>
-            <div>
-            <Link to="/">
-                <img className={styles.img_logo} src={nome} alt="logoIta" />
-            </Link>
-            </div>
-            <ul>
+        
+            <nav className={styles.navbar}>
+                <div>
+                    <Link to="/">
+                        <img className={styles.img_logo} src={nome} alt="logoIta" />
+                    </Link>
+                </div>
+                <ul>
 
-                {authenticated ? (
-                    
-                    <>
-                        {menus.map((menu, index) => (
-                            <li key={index}>
-                                <Link to={menu.to}>{menu.label}</Link>
-                            </li>
-                        ))}
+                    {authenticated ? (
+
+                        <>
+                            {menus.map((menu, index) => (
+                                <li key={index}>
+                                    <Link to={menu.to}>{menu.label}</Link>
+                                </li>
+                            ))}
                             {authenticated && (
                                 <li onClick={logout}>Sair</li>
                             )}
-                    </>
-                ) : (
-                    <>
-                     <li>
-                        <Link to="anunciar/sinup-owner">Anunciar</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">Entrar</Link>
-                    </li>
-                    <li className={styles.active_create}>
-                        <Link to="/register"> Criar Conta</Link>
-                    </li>
-                    </>
-                )
-                }
- 
-            </ul>
-        </nav>
+                        </>
+                    ) : (
+                        <>
+                            <li>
+                                <Link to="anunciar/sinup-owner">Anunciar</Link>
+                            </li>
+                            <li>
+                                <Link to="/login">Entrar</Link>
+                            </li>
+                            <li className={styles.active_create}>
+                                <Link to="/register"> Criar Conta</Link>
+                            </li>
+                        </>
+                    )
+                    }
+                </ul>
+            </nav>
     );
 }
 

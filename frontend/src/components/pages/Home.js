@@ -106,25 +106,6 @@ function Home({ excludeId }) {
         </div>
       </section>
 
-      <section className={styles.feature_property}>
-        <h2>Tipos de propriedades em destaque</h2>
-        <div className={styles.property_card}>
-          <div className={styles.property_box}>
-          <img src={h2} alt="casa" />
-            <p>Casa</p>
-          </div>
-
-          <div className={styles.property_box}>
-          <img src={h3} alt="Apartamento" />
-            <p>Apartamento</p>
-          </div>
-
-          <div className={styles.property_box}>
-          <img src={h6} alt="Kitnet" />
-            <p>Kitnet</p>
-          </div>
-        </div>
-      </section>
       <div className={styles.container_searh}>
         <div className={styles.container_title_h2}>
           <h2>Pesquisar imóveis por filtro</h2>

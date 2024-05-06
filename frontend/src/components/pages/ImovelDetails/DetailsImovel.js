@@ -39,7 +39,7 @@ function DetailsImovel() {
       }
     };
 
-    getImovelDetails();
+    getImovelDetails(); 
   }, [id]);
 
   if (!imovel) {

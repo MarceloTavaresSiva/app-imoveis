@@ -27,16 +27,15 @@
 
 
 /********** Css Filtro  *********************/
-
 .container_searh {
     text-align: center;
     background-color: #c5d8ec;
-    padding: 2rem 0;
+    padding: 3rem 0;
     border-radius: 8px;
 }
 
 .container_title_h2 h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -59,20 +58,28 @@ form {
 
 
 /*** Media Queries **/
+@media  (max-width: 950px) {
+    .container_searh form {
+        display: inline-block;
+    }
+
+    form .btn_search {
+        width: 50%;        
+    }
+}
+
+
 @media  (max-width: 700px) {
 
     .container_title_h2 h2 {
         font-size: 1rem;
     }
 
-    .container_searh form {
-        display: inline-block;
-    }
-
     form .btn_search {
-        width: 80%;        
+        width: 60%;        
     }
 }
+
 
 .form_select {
     cursor: pointer;
@@ -100,8 +107,8 @@ input::placeholder {
 }
 
 form .box {
-    padding: 15px;
     border-left: 1px solid rgba(128, 128, 128, 0.2);
+    padding: 1rem;
 }
 
 .btn_search {
@@ -148,7 +155,7 @@ form .box {
 /***************  CONTAINER CARD ********************/
 .container_card  {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 5rem auto;
 }
 
 
@@ -165,7 +172,7 @@ form .box {
 }
 
 .card  {
-    justify-content:space-between ;
+    justify-content:space-between;
     display: flex;
     align-items: center;
     flex-wrap: wrap;

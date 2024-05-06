@@ -1,6 +1,6 @@
 
 nav {
-    background-color: #fff;
+    background-color: #ffffff;
     height: 9cqmin;
     box-shadow: 0 5px 30px rgb(0 22 84 / 10%);
     padding: 15px 0;
@@ -14,15 +14,13 @@ nav ul li button {
     padding: 17px 30px;
 }
 
-
 .navbar {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 1em 10em;
+    padding: 1em 15em;
     color: #fff;
 }
-
 
 .navbar ul {
     display: flex;
@@ -84,7 +82,7 @@ nav .menu {
         justify-content: center;
         padding: 0 0;
         margin: 0px 0px;
-        height: 22vh;
+        height: 12vh;
     }
 
     .navbar ul li  {
@@ -121,7 +119,6 @@ nav .menu {
 
 @media  (max-width: 425px) {
     .navbar {
-        padding: 1rem 0;
         justify-content: left;
         align-items: center;
         margin: 0px 0px;
@@ -137,10 +134,6 @@ nav .menu {
     .navbar ul li a {
         font-size: 14px;
         margin: -30px 0px;
-    }
-
-    .navbar {
-        height: 22vh;
     }
 }
 
