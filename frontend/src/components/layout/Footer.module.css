@@ -4,11 +4,15 @@
     justify-content: center;
     text-decoration: none;
     list-style: none;
-    font-size: 12px;
-    height: 250px;
-    background-color: #eee;
-    color: #444;
+    font-size: 1.2rem;
+    height: 200px;
+    color: #bdbcbc;
+    background-color: #0c0c1d;
     border-top: 1px solid #666;
+}
+
+footer li a {
+    color: #bdbcbc;
 }
 
 .footer li {
@@ -24,5 +28,10 @@
     .footer li {
         margin: 10px 1rem;
     }
+    .footer li a, span {
+        font-size: 14px;
+    }
+
+
 }
 
