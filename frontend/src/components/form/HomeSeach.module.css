@@ -52,8 +52,8 @@ form {
     max-width: 1400px;
     background-color: #fff;
     border-radius: 5px;
-    margin-top: 50px;
-    padding: 0 20px;
+    margin-top: 40px;
+    padding: 0 1rem;
 }
 
 
@@ -72,11 +72,11 @@ form {
 @media  (max-width: 700px) {
 
     .container_title_h2 h2 {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
     form .btn_search {
-        width: 60%;        
+        width: 70%;      
     }
 }
 
@@ -360,6 +360,13 @@ form .box {
     }
 }
 
+
+/* Card flex mobile */
+@media  (max-width: 425px) {
+    .flex_box {
+        margin: 20px 20px;
+    }
+}
 
 
 

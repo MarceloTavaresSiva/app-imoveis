@@ -5,7 +5,7 @@
     text-decoration: none;
     list-style: none;
     font-size: 1.2rem;
-    height: 200px;
+    height: 23vh;
     color: #bdbcbc;
     background-color: #0c0c1d;
     border-top: 1px solid #666;
@@ -31,7 +31,5 @@ footer li a {
     .footer li a, span {
         font-size: 14px;
     }
-
-
 }
 
