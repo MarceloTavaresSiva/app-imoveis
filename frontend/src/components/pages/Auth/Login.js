@@ -23,7 +23,7 @@ function Login() {
 
     return (
         <section className={styles.form_container}>
-            <h2 className={styles.form_title}>Login</h2>
+            <h1 className={styles.form_title}>Login</h1>
 
             <form className={styles.form_input} onSubmit={handleSubmit}>
                 <Input 

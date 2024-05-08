@@ -114,7 +114,7 @@ function Home({ excludeId }) {
           <div className={styles.form_continer}>
               <form onSubmit={handleSubmit}>
                     <div className={styles.box}>
-                      <span>R$:</span>
+                      <span> R$: </span>
                       <input
                         value={searchItem}
                         type="text"
@@ -126,7 +126,7 @@ function Home({ excludeId }) {
                     </div>
 
                     <div className={styles.box}>
-                        <span>R$:</span>
+                        <span> R$: </span>
                         <input
                           value={maxPrice}
                           type="text"
@@ -138,7 +138,7 @@ function Home({ excludeId }) {
                     </div>
 
                     <div className={styles.box}>
-                      <span>Tipo de Imóvel:</span>
+                      <span> Tipo de Imóvel: </span>
                       <select className={styles.form_select}
                         id="tipoImovel"
                         name="tipoImovel"
