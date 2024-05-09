@@ -50,7 +50,7 @@ const FormOwner = ({
     return (
         <div className={styleStep.inputs_container}>
             <div className={styles.profile_header}>
-                <h1>Perfil proprietário</h1>
+                <h1>Perfil Proprietário</h1>
                 {authenticated ?
                 
                 "" :

@@ -1,11 +1,12 @@
 .footer {
+    margin-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     list-style: none;
-    font-size: 1.2rem;
-    height: 23vh;
+    font-size: 1rem;
+    height: 16vh;
     color: #bdbcbc;
     background-color: #0c0c1d;
     border-top: 1px solid #666;
@@ -21,7 +22,7 @@ footer li a {
 
 @media  (max-width: 578px) {
     .footer {
-        height: 200px;
+        height: 160px;
         align-items:start;
         flex-direction: column;
     }
@@ -29,7 +30,7 @@ footer li a {
         margin: 10px 1rem;
     }
     .footer li a, span {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 
