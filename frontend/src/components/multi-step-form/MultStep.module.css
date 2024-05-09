@@ -1,13 +1,14 @@
 .form_principal {
+    border-radius: 12px;
     max-width: 650px;
-    margin: 0  auto;
+    margin: 1rem  auto;
     background: #fff;
-    padding: 1.rem;
-    box-shadow: rgba(100, 100, 111, 0.2) opx 7px 29px 0px
+    padding: 0.5rem;
+   
 }
 
 .form_principal form {
-    max-width: 450px;
+    max-width: 465px;
     margin: 0 auto;
 }
 

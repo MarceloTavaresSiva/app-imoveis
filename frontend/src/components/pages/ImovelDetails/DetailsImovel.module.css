@@ -19,8 +19,8 @@
 }
 
 
-.img_border, img {
-    border-radius: 10px;
+.img_border img {
+    border-radius: 5px;
 }
 
 

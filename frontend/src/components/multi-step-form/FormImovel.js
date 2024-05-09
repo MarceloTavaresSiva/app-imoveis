@@ -15,7 +15,7 @@ const FormImovel = ({data, updateFieldHandler, onFileChange, authenticated}) => 
 
 
     return (
-        <div className={styleStep.form_principal}>
+        <div className={styleStep.inputs_container}>
             <div>
                 <h1>Cadastre um Imovel</h1>
                 {/* <p>Disponivel para alugar</p> */}

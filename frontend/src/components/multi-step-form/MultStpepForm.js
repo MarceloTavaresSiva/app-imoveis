@@ -131,7 +131,7 @@ const MainForm = () => {
     const { name, value, files } = e.target;
 
     if (name === 'images') {
-      const selectedImages = Array.from(files).slice(0, 3);
+      const selectedImages = Array.from(files).slice(0, 6);
       setData({ ...data, [name]: name.includes('images') ? selectedImages : value })
     }
     else {
