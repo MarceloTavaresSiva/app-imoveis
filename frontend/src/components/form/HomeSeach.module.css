@@ -1,4 +1,17 @@
 
+/* Social List */
+.location_list {
+    margin-left: -4px;
+    font-size: 1rem;
+    color: #212529;
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.location_list svg {
+    font-size: 1.3rem;
+}
+
 /*** Navbar  **/
 .main_banner_img {
     background-image: url("../../img/banner.png");
@@ -68,7 +81,6 @@ form {
     }
 }
 
-
 @media  (max-width: 700px) {
 
     .container_title_h2 h2 {
@@ -79,7 +91,6 @@ form {
         width: 70%;      
     }
 }
-
 
 .form_select {
     cursor: pointer;
@@ -133,7 +144,6 @@ form .box {
 }
 
 /** Mensagem de Nenhum encontrado **/
-
 .card_result_button {
     margin-top: 1rem;
     font-weight: bold;
@@ -157,7 +167,6 @@ form .box {
     max-width: 1400px;
     margin: 5rem auto;
 }
-
 
 .flex_box {
     border:1px solid #d6d6d6;
@@ -287,7 +296,6 @@ form .box {
         margin-bottom: 0;
     }
 }
-
 
 
 @media  (max-width: 1230px) {
