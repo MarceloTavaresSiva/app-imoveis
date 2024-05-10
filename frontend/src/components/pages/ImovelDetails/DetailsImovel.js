@@ -89,7 +89,10 @@ function DetailsImovel() {
         <Swiper
           slidesPerView={1}
           pagination={{clickable: true}}
-          navigation 
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          }}
           loop
           >
           
@@ -99,7 +102,7 @@ function DetailsImovel() {
                 <img className={styles.slide_item}
                   src={`${process.env.REACT_APP_API}/images/imoveis/${image}`}
                   alt={imovel.name} />
-            </SwiperSlide>
+              </SwiperSlide>
             </div>
           ))}
         </Swiper>
@@ -108,15 +111,15 @@ function DetailsImovel() {
     </div>
           <div className={styles.flex_Container_Principal}>
             <div className={styles.flex_card_Descricao}>
-                <h1>{imovel.name}</h1>
+                <h3>{imovel.name}</h3>
                 <p>Tipo do Imovel: {imovel.tipo}</p>
                 <div className={styles.details_ceps}>
-                  <ul>
-                    <li> Rua {imovel.rua} </li>
-                    <li> Numero {imovel.numero} </li>
-                    <li> Bairro {imovel.bairro} </li>
+                  <ul className={styles.details_ceps_card}>
+                    <li>Rua {imovel.rua} </li>
+                    <li> Número {imovel.numero}  </li>
+                    <li> Bairro {imovel.bairro}</li>
                     <li> Cidade {imovel.cidade} </li>
-                    <li> Estado ({imovel.estado}) / AM </li>
+                    <li> Estado ({imovel.estado}) AM </li>
                   </ul>
                 </div>
                 <div className={styles.Descricao_imovel}>
