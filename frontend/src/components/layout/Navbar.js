@@ -24,13 +24,15 @@ function Navbar() {
                     setMenus([
                         { to: "/", label: "Imovel" },
                         { to: "imovel/listaimoveis", label: "Agendamento" },
-                        { to: "/user/profile", label: "Editar Perfil" }
+                        { to: "imovel/validation", label: "Avaliação" },
+                        { to: "/user/profile", label: "Perfil" }
+                       
                     ]);
                     break;
                 case "owner":
                     setMenus([
                         { to: "imovel/myadmin", label: "Meus Imóveis" },
-                        { to: "/user/profile", label: "Editar Perfis" }
+                        { to: "/user/profile", label: "Perfil" }
                     ]);
                     break;
                 default:
