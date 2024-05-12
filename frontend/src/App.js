@@ -23,9 +23,9 @@ import ListaImoveis from './components/pages/ImovelDetails/ListaImoveis';
 import EditImovel from './components/pages/Imovel/EditImovel';
 import Contato from './components/layout/Contato';
 import Sobre from './components/layout/Sobre';
+import Validation from './components/pages/Imovel/Validation';
 
-//import AddImovel from './components/pages/Imovel/AddImovel';
-//<Route path="/imovel/addimoveis" element={<AddImovel/>} />
+
 
 function App() {
 
@@ -46,6 +46,10 @@ function App() {
           <Route path="/imovel/myadmin" element={<MyAdmin />} />  
           <Route path="/imovel/listaimoveis" element={<ListaImoveis/>} />
           <Route path="/imovel/edit/:id" element={<EditImovel/>} />
+          <Route path="/imovel/validation" element={<Validation/>} />
+
+
+
           <Route path="/user/profile" element={<Profile />} />
           
           <Route path="anunciar/sinup-owner" element={<RegisterOwner />} />

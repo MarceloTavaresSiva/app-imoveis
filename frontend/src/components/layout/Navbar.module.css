@@ -93,7 +93,7 @@ nav .menu {
     .navbar li,
     .navbar a {
     font-size: 14px;
-    padding: 5px;
+    padding: 0px 6px;
 }
 
 .navbar li:hover {
@@ -114,18 +114,25 @@ nav .menu {
     background-color: #007bff;
 }
 
+.img_logo {
+    margin: -1rem;
+    width: 80px;
+    height: auto;
+}
 }
 
 
 @media  (max-width: 425px) {
     .navbar {
-        justify-content: left;
+        justify-content: center;
         align-items: center;
         margin: 0px 0px;
+        height: 10vh;
     }
 
     .navbar ul li {
-        margin: -1rem 0px;
+        margin: 0px 0px;
+        padding: 0px 6px;
     }
 }
 
