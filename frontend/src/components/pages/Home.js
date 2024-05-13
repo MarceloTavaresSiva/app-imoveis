@@ -186,7 +186,7 @@ function Home({ excludeId }) {
                 <h3 className={styles.title_card}>{item.tipo}</h3>
                 <p className={styles.container_desc}>{item.name}</p>
                 <ul className={styles.location_list}>
-                  <li><FaLocationDot /> Rua{item.rua} - {item.bairro},  {item.cidade} - AM </li>
+                  <li><FaLocationDot /> Rua{item.rua} - {item.bairro}, {item.cidade} - AM </li>
                 </ul>
                 <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
               </div>
