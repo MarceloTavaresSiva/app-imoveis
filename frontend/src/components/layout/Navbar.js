@@ -15,78 +15,58 @@ function Navbar() {
     const [menus, setMenus] = useState([]);
 
 
-    useEffect(() => {
-        // Atualiza os menus quando o componente for montado inicialmente
-        if (authenticated) {
-            console.log(userInfo.roles);
-            switch (userInfo.roles) {
-                case "customer":
-                    setMenus([
-                        { to: "/", label: "Imovel" },
-                        { to: "imovel/listaimoveis", label: "Agendamento" },
-                        { to: "imovel/validation", label: "Avaliação" },
-                        { to: "/user/profile", label: "Perfil" }
-                       
-                    ]);
-                    break;
-                case "owner":
-                    setMenus([
-                        { to: "imovel/myadmin", label: "Meus Imóveis" },
-                        { to: "/user/profile", label: "Perfil" }
-                    ]);
-                    break;
-                default:
-                    setMenus([
-                        {},
-                    ]);
-            }
-        } else {
-            setMenus([
-                { to: "anunciar/sinup-owner", label: "Anunciar" },
-                { to: "/register", label: "Criar Conta" },
-                { to: "/login", label: "Entrar" }
-            ]);
-        }
-    }, [authenticated]);
-
     return (
-        
-            <nav className={styles.navbar}>
-                <div>
-                    <Link to="/">
-                        <img className={styles.img_logo} src={nome} alt="logoIta" />
-                    </Link>
-                </div>
-                <ul>
 
-                    {authenticated ? (
+        <nav className={styles.navbar}>
+            <div>
+                <Link to="/">
+                    <img className={styles.img_logo} src={nome} alt="logoIta" />
+                </Link>
+            </div>
+            <ul>
 
-                        <>
-                            {menus.map((menu, index) => (
-                                <li key={index}>
-                                    <Link to={menu.to}>{menu.label}</Link>
-                                </li>
-                            ))}
-                            {authenticated && (
-                                <li onClick={logout}>Sair</li>
-                            )}
-                        </>
-                    ) : (
-                        <>
-                            <li>
-                                <Link to="anunciar/sinup-owner">Anunciar</Link>
-                            </li>
-                            <li>
-                                <Link to="/login">Entrar</Link>
-                            </li>
-                            <li className={styles.active_create}>
-                                <Link to="/register"> Criar Conta</Link>
-                            </li>
-                        </>
-                    )
-                    }
-                </ul>
-            </nav>
+                {(authenticated && userInfo.roles === 'customer') ? (
+                    <>
+                        <li>
+                            <Link to="/">Imovel</Link>
+                        </li>
+                        <li>
+                            <Link to="imovel/listaimoveis">Agendamento</Link>
+                        </li>
+                        <li>
+                            <Link to="imovel/validation">Avaliação</Link>
+                        </li>
+                        <li>
+                            <Link to="/user/profile">Editar Perfil</Link>
+                        </li>
+                        <li onClick={logout}>Sair</li>
+                    </>
+                ) : (authenticated && userInfo.roles === 'owner') ? (
+            <>
+
+                <li>
+                    <Link to="imovel/myadmin">Meus Imóveis</Link>
+                </li>
+                <li>
+                    <Link to="/user/profile">Editar Perfil</Link>
+                </li>
+                <li onClick={logout}>Sair</li>
+                </>
+            ) : (
+            <>
+                <li>
+                    <Link to="anunciar/sinup-owner">Anunciar</Link>
+                </li>
+                <li>
+                    <Link to="/login">Entrar</Link>
+                </li>
+                <li className={styles.active_create}>
+                    <Link to="/register"> Criar Conta</Link>
+                </li>
+            </>
+            )}
+            </ul>
+        </nav >
     );
 }
 

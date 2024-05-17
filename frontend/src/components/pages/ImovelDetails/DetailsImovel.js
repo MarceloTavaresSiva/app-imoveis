@@ -21,7 +21,6 @@ import CurrencyInput from 'react-currency-input-field';
 function DetailsImovel() {
   const [imovel, setImovel] = useState({});
   const [otherImoveis, setOtherImoveis] = useState([]);
-
   const { id } = useParams();
   const { setFlashMessage } = useFlashMessage()
   const [token] = useState(localStorage.getItem("token") || "");
