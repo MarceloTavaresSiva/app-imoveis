@@ -25,7 +25,7 @@ router.get('/admin/imoveis', verifyToken, checkRole(['admin', 'owner']), MoveCon
 router.get('/:id', verifyToken, MoveController.getMoveById) // Precisa de restrição aqui
 router.delete('/:id', verifyToken, MoveController.removeMoveById)
 router.patch('/remove/:id', verifyToken, checkRole(['admin', 'owner']), MoveController.removeRenterById)
-router.patch('/:id', verifyToken, imageUpload.fields([{ name: 'images', maxCount: 3 }]), MoveController.updateMove)
+router.patch('/:id', verifyToken, imageUpload.fields([{ name: 'images', maxCount:3 }]), MoveController.updateMove)
 
 router.patch('/schedule/:id', verifyToken, MoveController.schedule)
 router.patch('/conclude/:id',verifyToken, checkRole(['admin', 'owner']),  MoveController.concludeVisit)
