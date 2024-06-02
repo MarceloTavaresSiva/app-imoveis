@@ -11,8 +11,8 @@ const {imageUpload} = require('../helpers/image-upload')
 // const upload = multer()
 
 
-router.post('/create', imageUpload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 3 }]), MoveController.create)
-router.post('/addimovel', imageUpload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 3 }]), MoveController.addImovel)
+router.post('/create', imageUpload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 6 }]), MoveController.create)
+router.post('/addimovel', imageUpload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 6 }]), MoveController.addImovel)
 
 // router.post('/create', upload.fields([
 //     { name: 'image', maxCount: 1 },
@@ -25,7 +25,7 @@ router.get('/admin/imoveis', verifyToken, checkRole(['admin', 'owner']), MoveCon
 router.get('/:id', verifyToken, MoveController.getMoveById) // Precisa de restrição aqui
 router.delete('/:id', verifyToken, MoveController.removeMoveById)
 router.patch('/remove/:id', verifyToken, checkRole(['admin', 'owner']), MoveController.removeRenterById)
-router.patch('/:id', verifyToken, imageUpload.fields([{ name: 'images', maxCount:3 }]), MoveController.updateMove)
+router.patch('/:id', verifyToken, imageUpload.fields([{ name: 'images', maxCount:6 }]), MoveController.updateMove)
 
 router.patch('/schedule/:id', verifyToken, MoveController.schedule)
 router.patch('/conclude/:id',verifyToken, checkRole(['admin', 'owner']),  MoveController.concludeVisit)
