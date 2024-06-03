@@ -114,7 +114,8 @@ function DetailsImovel() {
       <div className={styles.flex_Container_Principal}>
         <div className={styles.flex_card_Descricao}>
           <h3>{imovel.name}</h3>
-          <p>Tipo do Imovel: {imovel.tipo}</p>
+          <div className={styles.sobre_linha_responsive}></div>
+          <p className={styles.linha_space}>Tipo do Imovel: {imovel.tipo}</p>
           <div className={styles.details_ceps}>
             <ul className={styles.details_ceps_card}>
               <li>Rua {imovel.rua} </li>
@@ -126,6 +127,7 @@ function DetailsImovel() {
           </div>
           <div className={styles.Descricao_imovel}>
             <h2 > Descrição do Imóvel</h2>
+            <div className={styles.sobre_linha_responsive}></div>
             <p>{imovel.descricao}</p>
           </div>
         </div>
@@ -142,7 +144,9 @@ function DetailsImovel() {
         </div>
       </div>
 
+      <div className={styles.espace_outros_imoveis}>
       <h2 className={styles.text_h2}>Veja outros imóveis</h2>
+      <div className={styles.add_list_imoveis}></div>
       <div className={styles.container_card}>
         <div className={styles.card}>
           {otherImoveis.map((item, index) => (
@@ -163,12 +167,13 @@ function DetailsImovel() {
               <h3 className={styles.title_card}>{item.tipo}</h3>
               <p className={styles.container_desc}>{item.name}</p>
               <ul className={styles.location_list}>
-                <li><FaLocationDot /> Rua{item.rua} - {item.bairro},  {item.cidade} - AM </li>
+                <li><FaLocationDot /> Rua{item.rua} - {item.bairro}, {item.cidade} - AM </li>
               </ul>
               <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
             </div>
           ))}
         </div>
+      </div>
       </div>
     </>
   );
