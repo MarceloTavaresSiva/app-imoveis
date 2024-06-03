@@ -290,3 +290,14 @@
 }
 
 
+
+@media  (max-width: 425px) {
+    .flex_card_Descricao {
+        margin: 2rem 1rem;
+    }
+
+
+    .flex_card_Descricao h3 {
+        font-size: 1rem;
+    }
+}
