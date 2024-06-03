@@ -1,5 +1,9 @@
 import api from '../../../utils/api';
 
+import { FaWhatsapp } from "react-icons/fa";
+import { GrSchedules } from "react-icons/gr";
+
+
 import { formatValue } from 'react-currency-input-field';
 
 import { useState, useEffect } from "react";
@@ -82,6 +86,9 @@ function DetailsImovel() {
 
   });
 
+  const whatsappMessage = `Olá, estou interessado no imóvel ${imovel.name}. Ainda está disponível?`;
+
+
   return (
     <>
       <div className={styles.container_details}>
@@ -136,8 +143,19 @@ function DetailsImovel() {
           <h4>Preço do Imóvel: {newValue} /mês</h4>
           <h4>Nome do Proprietario: {imovel.user ? imovel.user.name : ""}</h4>
           <h4>Telefone: {imovel.user ? imovel.user.phone : ""}</h4>
+
+
+          <div className={styles.responsive_wa_chat}>
+          <FaWhatsapp />
+          <a
+            aria-label="Chat on WhatsApp"
+            href={`https://wa.me/92992114005?text=${encodeURIComponent(whatsappMessage)}`}
+            target="_blank"
+            rel="noopener noreferrer" > Chat WhatsApp </a>
+          </div>
           {token ? (
-            <button onClick={schedule} className={styles.bnt_desc}> <span>Agendar visita</span> </button>
+            
+            <button onClick={schedule} className={styles.bnt_desc}><GrSchedules /> <span> Agendar visita</span></button>
           ) : (
             <p>Você precisa <Link to="/register">criar uma conta</Link> para Agendar visita</p>
           )}
@@ -145,35 +163,35 @@ function DetailsImovel() {
       </div>
 
       <div className={styles.espace_outros_imoveis}>
-      <h2 className={styles.text_h2}>Veja outros imóveis</h2>
-      <div className={styles.add_list_imoveis}></div>
-      <div className={styles.container_card}>
-        <div className={styles.card}>
-          {otherImoveis.map((item, index) => (
-            <div className={styles.flex_box}>
-              <img
-                src={`${process.env.REACT_APP_API}/images/imoveis/${item.images[0]}`}
-                alt={index} />
+        <h2 className={styles.text_h2}>Veja outros imóveis</h2>
+        <div className={styles.add_list_imoveis}></div>
+        <div className={styles.container_card}>
+          <div className={styles.card}>
+            {otherImoveis.map((item, index) => (
+              <div className={styles.flex_box}>
+                <img
+                  src={`${process.env.REACT_APP_API}/images/imoveis/${item.images[0]}`}
+                  alt={index} />
 
-              <CurrencyInput decimalsLimit={2} decimalScale={2} inputMode="numeric" intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={item.preco}
+                <CurrencyInput decimalsLimit={2} decimalScale={2} inputMode="numeric" intlConfig={{ locale: 'pt-BR', currency: 'BRL' }} defaultValue={item.preco}
 
-                disabled
-                style={{
-                  border: "none", fontSize: "20px",
-                  color: "#000", fontWeight: "bold",
-                  marginTop: "1rem"
-                }} />
+                  disabled
+                  style={{
+                    border: "none", fontSize: "20px",
+                    color: "#000", fontWeight: "bold",
+                    marginTop: "1rem"
+                  }} />
 
-              <h3 className={styles.title_card}>{item.tipo}</h3>
-              <p className={styles.container_desc}>{item.name}</p>
-              <ul className={styles.location_list}>
-                <li><FaLocationDot /> Rua{item.rua} - {item.bairro}, {item.cidade} - AM </li>
-              </ul>
-              <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
-            </div>
-          ))}
+                <h3 className={styles.title_card}>{item.tipo}</h3>
+                <p className={styles.container_desc}>{item.name}</p>
+                <ul className={styles.location_list}>
+                  <li><FaLocationDot /> Rua{item.rua} - {item.bairro}, {item.cidade} - AM </li>
+                </ul>
+                <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
       </div>
     </>
   );
