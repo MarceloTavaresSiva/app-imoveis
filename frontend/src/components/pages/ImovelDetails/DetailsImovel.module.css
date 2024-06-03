@@ -69,7 +69,9 @@
     
 }
 
-
+.linha_space {
+    margin: 1rem 0;
+}
 
 
 
@@ -90,11 +92,19 @@
     color: #071c1f;
 }
 
+.sobre_linha_responsive {
+    margin-top: 1rem;
+    width: 100%;
+    height: 2px;
+    background: hsla(0,0%,80%,.5);
+}
+
+
 
 .Descricao_imovel p {
     font-weight: normal;
     font-size: 1rem;
-    margin: 20px 0;
+    margin: 1rem 0;
     color: #484848; 
     line-height: 26px;
 }
@@ -145,10 +155,11 @@
 
 /********  Card Filter  ***********/
 .text_h2  { 
-    font-size: 28px;
+    font-size: 32px;
     padding-left: 20px;
     max-width: 1400px;
     margin: 0 auto;
+    border-bottom: 5px solid #0066d3;
 }
 
 
@@ -252,4 +263,10 @@
 
 .flex_card_Descricao .details_ceps li   {
     padding: 0  5px;
+}
+
+
+
+.espace_outros_imoveis {
+    margin: 5rem 0;
 }
