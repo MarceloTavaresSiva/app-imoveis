@@ -8,7 +8,7 @@ import { formatValue } from 'react-currency-input-field';
 
 import { useState, useEffect } from "react";
 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams,useNavigate } from 'react-router-dom';
 
 import styles from "../ImovelDetails/DetailsImovel.module.css";
 
@@ -26,6 +26,8 @@ function DetailsImovel() {
   const [imovel, setImovel] = useState({});
   const [otherImoveis, setOtherImoveis] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const { setFlashMessage } = useFlashMessage()
   const [token] = useState(localStorage.getItem("token") || "");
 
@@ -187,7 +189,13 @@ function DetailsImovel() {
                 <ul className={styles.location_list}>
                   <li><FaLocationDot /> Rua{item.rua} - {item.bairro}, {item.cidade} - AM </li>
                 </ul>
-                <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
+
+                <button
+                  className={styles.bnt_desc}
+                  onClick={() => window.location.href = `/imoveldetails/${item._id}`}
+                >
+                  Mais Detalhes
+                </button>
               </div>
             ))}
           </div>
