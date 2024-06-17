@@ -189,13 +189,7 @@ function DetailsImovel() {
                 <ul className={styles.location_list}>
                   <li><FaLocationDot /> Rua{item.rua} - {item.bairro}, {item.cidade} - AM </li>
                 </ul>
-
-                <button
-                  className={styles.bnt_desc}
-                  onClick={() => window.location.href = `/imoveldetails/${item._id}`}
-                >
-                  Mais Detalhes
-                </button>
+                <Link to={`/imoveldetails/${item._id}`} className={styles.bnt_desc}> Mais Detalhes</Link>
               </div>
             ))}
           </div>
